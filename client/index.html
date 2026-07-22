@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta-Earn Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Arial', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#07111f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:450px;
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:25px;
+    color:white;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.tabs{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.tabs button{
+    flex:1;
+    padding:15px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.active{
+    background:#06b6d4;
+    color:white;
+}
+
+.form{
+    display:none;
+}
+
+.active-form{
+    display:block;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+}
+
+.submit-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#06b6d4;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.message{
+    text-align:center;
+    margin-top:15px;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Meta-Earn</h1>
+
+<div class="tabs">
+
+<button id="loginTab" class="active">
+Login
+</button>
+
+<button id="registerTab">
+Register
+</button>
+
+</div>
+
+
+<!-- LOGIN FORM -->
+
+<div id="loginForm" class="form active-form">
+<input 
+type="text"
+id="loginUsername"
+placeholder="Username">
+
+<input 
+type="text"
+id="loginphone"
+placeholder="Phone Number">
+
+<input 
+type="password"
+id="loginPassword"
+placeholder="Password">
+
+
+<button class="submit-btn"
+onclick="loginUser()">
+Login
+</button>
+
+</div>
+
+
+<!-- REGISTER FORM -->
+
+<div id="registerForm" class="form">
+
+<input 
+type="text"
+id="registerUsername"
+placeholder="Username">
+
+<input 
+type="text"
+id="registerfullname"
+placeholder="fullname">
+
+<input 
+type="email"
+id="registerEmail"
+placeholder="Email">
+
+<input 
+type="phone"
+id="registerphone"
+placeholder="Phone Number">
+
+<input 
+type="password"
+id="registerPassword"
+placeholder="Password">
+
+
+<button class="submit-btn"
+onclick="registerUser()">
+Register
+</button>
+
+</div>
+
+
+<div id="message"
+class="message">
+</div>
+<script>
+
+// API URL
+const API = "http://localhost:5000";
+
+
+// =========================
+// TAB SWITCHING
+// =========================
+
+const loginTab = document.getElementById("loginTab");
+const registerTab = document.getElementById("registerTab");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+loginTab.onclick = () => {
+
+    loginTab.classList.add("active");
+    registerTab.classList.remove("active");
+
+    loginForm.classList.add("active-form");
+    registerForm.classList.remove("active-form");
+
+    document.getElementById("message").innerHTML = "";
+};
+
+
+registerTab.onclick = () => {
+
+    registerTab.classList.add("active");
+    loginTab.classList.remove("active");
+
+    registerForm.classList.add("active-form");
+    loginForm.classList.remove("active-form");
+
+    document.getElementById("message").innerHTML = "";
+};
+
+
+// =========================
+// LOGIN FUNCTION
+// =========================
+
+async function loginUser() {
+
+    const message = document.getElementById("message");
+
+    try {
+
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+const phone = document.getElementById("loginphone").value;
+
+        const response = await fetch(
+            "http://localhost:5000/api/auth/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+        console.log("Login response:", data);
+
+
+        if (data.success) {
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userId", data.user.id);
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            console.log("Redirecting...");
+
+
+            window.location.href = "dashboard.html";
+
+
+        } else {
+
+            message.innerHTML = data.message;
+
+        }
+
+
+    } catch (error) {
+
+        console.log("Login error:", error);
+
+        message.innerHTML =
+        "Cannot connect to server";
+
+    }
+
+}
+
+
+// =========================
+// REGISTER FUNCTION
+// =========================
+
+async function registerUser() {
+
+    const message = document.getElementById("message");
+
+    try {
+
+        const fullname = document.getElementById("registerfullname").value.trim();
+        const username = document.getElementById("registerUsername").value.trim();
+        const email = document.getElementById("registerEmail").value.trim();
+        const phone = document.getElementById("registerphone").value.trim();
+        const password = document.getElementById("registerPassword").value.trim();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const referral_code = urlParams.get("ref") || "";
+
+        // Frontend validation
+        if (
+            !fullname ||
+            !username ||
+            !email ||
+            !phone ||
+            !password
+        ) {
+            message.innerHTML = "Please fill all fields";
+            return;
+        }
+
+        console.log("Sending Register Data:", {
+            fullname,
+            username,
+            email,
+            phone,
+            password,
+            referral_code
+        });
+
+        const response = await fetch(
+            API + "/api/auth/register",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fullname,
+                    username,
+                    email,
+                    phone,
+                    password,
+                    referral_code
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        console.log("Status:", response.status);
+        console.log("REGISTER RESPONSE:", data);
+
+        if (!response.ok) {
+            message.innerHTML = data.message || "Registration failed.";
+            return;
+        }
+
+        message.innerHTML = "Registration successful. Please login.";
+
+        document.getElementById("registerfullname").value = "";
+        document.getElementById("registerUsername").value = "";
+        document.getElementById("registerEmail").value = "";
+        document.getElementById("registerphone").value = "";
+        document.getElementById("registerPassword").value = "";
+
+        loginTab.click();
+
+    } catch (error) {
+
+        console.error("Register Error:", error);
+
+        message.innerHTML = "Cannot connect to server.";
+
+    }
+}
+
+</script>
+
+</body>
+</html>

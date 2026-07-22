@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Meta_Earn Admin Recovery</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    radial-gradient(circle at top,#0b1220,#050913);
+    color:white;
+}
+
+.box{
+
+    width:400px;
+    max-width:90%;
+    background:rgba(255,255,255,.08);
+    padding:35px;
+    border-radius:25px;
+    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 30px #2563eb;
+
+}
+
+.logo{
+
+    text-align:center;
+    font-size:28px;
+    font-weight:900;
+    color:#38bdf8;
+
+}
+
+.title{
+
+    text-align:center;
+    color:#94a3b8;
+    margin:10px 0 25px;
+
+}
+
+.question{
+
+    color:#facc15;
+    margin-bottom:10px;
+    font-weight:bold;
+
+}
+
+input{
+
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+
+}
+
+button{
+
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:
+    linear-gradient(135deg,#6366f1,#2563eb);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+#status{
+
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="box">
+
+<div class="logo">
+META_EARN
+</div>
+
+
+<div class="title">
+Admin Password Recovery
+</div>
+
+
+<div class="question">
+Security Question:
+<br>
+What is your school?
+</div>
+
+
+<input 
+id="answer"
+placeholder="Enter your answer">
+
+
+<input 
+id="newPassword"
+type="password"
+placeholder="New password">
+
+
+<button onclick="resetPassword()">
+Change Password
+</button>
+
+
+<div id="status"></div>
+
+
+</div>
+
+
+
+<script>
+
+
+async function resetPassword(){
+
+const answer =
+document.getElementById("answer").value.trim();
+
+
+const password =
+document.getElementById("newPassword").value;
+
+
+const status =
+document.getElementById("status");
+
+
+if(!answer || !password){
+
+status.style.color="red";
+
+status.innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+
+try{
+
+
+const response = await fetch(
+"http://localhost:5000/api/admin/reset-password",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+answer,
+password
+
+})
+
+});
+
+
+const data =
+await response.json();
+
+
+if(data.success){
+
+status.style.color="#22c55e";
+
+status.innerHTML =
+"Password changed successfully";
+
+setTimeout(()=>{
+
+window.location.href =
+"admin-login.html";
+
+},1500);
+
+
+}else{
+
+status.style.color="red";
+
+status.innerHTML =
+data.message;
+
+}
+
+
+}catch(error){
+
+status.style.color="red";
+
+status.innerHTML =
+"Server connection error";
+
+}
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

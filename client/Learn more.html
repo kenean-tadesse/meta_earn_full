@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaEarn Growth Journey</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* SECTION */
+.growth-section{
+    min-height:100vh;
+    padding:120px 8%;
+    text-align:center;
+    background:
+    radial-gradient(circle at top,#00d4ff22,transparent 40%),
+    linear-gradient(180deg,#050816,#0a1128);
+}
+
+.growth-title{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#00e5ff,#00ffcc);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.growth-subtitle{
+    max-width:900px;
+    margin:auto;
+    font-size:1.3rem;
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:80px;
+}
+
+/* TIMELINE */
+.timeline{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:240px;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.05);
+    -webkit-backdrop-filter:blur(15px); /* Safari support */
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.08);
+    transform:translateY(100px);
+    opacity:0;
+    transition:1s;
+}
+
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(0,229,255,.3);
+}
+
+.card .icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#00e5ff;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+/* BOTTOM SECTION */
+.mindset{
+    padding:150px 10%;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,#00d4ff15,transparent 60%),
+    linear-gradient(180deg,#0a1128,#050816);
+}
+
+.mindset h2{
+    font-size:4rem;
+    margin-bottom:50px;
+    color:#00e5ff;
+}
+
+.mindset p{
+    font-size:1.35rem;
+    line-height:2.2;
+    color:#dbeafe;
+    max-width:1100px;
+    margin:25px auto;
+}
+
+.highlight{
+    color:#00e5ff;
+    font-weight:700;
+}
+
+.quote{
+    margin-top:70px;
+    font-size:2.2rem;
+    font-weight:800;
+    color:white;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #00e5ff;
+    }
+    to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff,
+        0 0 60px #00e5ff;
+    }
+}
+
+/* BUTTON */
+.cta{
+    margin-top:60px;
+}
+
+.cta button{
+    padding:18px 50px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#00e5ff,#00ffcc);
+    color:#001b2e;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.cta button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(0,229,255,.5);
+}
+
+@media(max-width:768px){
+
+.growth-title,
+.mindset h2{
+    font-size:2.5rem;
+}
+
+.mindset p{
+    font-size:1.1rem;
+}
+
+.quote{
+    font-size:1.6rem;
+}
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#fff;
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(.96);
+}
+
+</style>
+</head>
+<body>
+
+    <button class="back-button" onclick="goBack()" title="Back">
+    ←
+</button>
+<section class="growth-section">
+
+<h1 class="growth-title">Your Journey To Greater Success</h1>
+
+<p class="growth-subtitle">
+Every achievement begins with a decision.
+A decision to learn, improve, stay consistent,
+and become better than yesterday.
+MetaEarn is built for people who refuse to settle for average.
+</p>
+
+<div class="timeline">
+
+<div class="card">
+<div class="icon">🌱</div>
+<h3>Start</h3>
+<p>Every expert was once a beginner. Every success story started with a first step.</p>
+</div>
+
+<div class="card">
+<div class="icon">📚</div>
+<h3>Learn</h3>
+<p>Knowledge is the foundation of growth. Learn continuously and opportunities multiply.</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Improve</h3>
+<p>Small improvements repeated daily create extraordinary transformation over time.</p>
+</div>
+
+<div class="card">
+<div class="icon">🚀</div>
+<h3>Grow</h3>
+<p>Growth begins when comfort ends. Push boundaries and unlock new possibilities.</p>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>Succeed</h3>
+<p>Success is the natural result of patience, effort, learning and consistency.</p>
+</div>
+
+</div>
+
+</section>
+<section class="mindset">
+
+<h2>The Power Of Continuous Growth</h2>
+
+<p>
+Most people wait for the perfect moment before taking action.
+The truth is that the perfect moment never arrives.
+Growth belongs to those who start before they feel ready,
+learn while moving forward, and continue despite challenges.
+</p>
+
+<p>
+The difference between those who remain where they are and those who achieve remarkable success
+is rarely intelligence, luck, or talent.
+The real difference is <span class="highlight">consistency</span>.
+The willingness to show up every day,
+learn something new,
+improve one small skill,
+and take one step closer to a better future.
+</p>
+
+<p>
+At MetaEarn we believe that every task completed,
+every lesson learned,
+every connection built,
+and every challenge overcome
+creates momentum for greater achievements.
+Small actions may seem insignificant today,
+but over weeks, months, and years they compound into life-changing results.
+</p>
+
+<p>
+An open mind creates new opportunities.
+A growth mindset transforms obstacles into lessons.
+Discipline transforms goals into accomplishments.
+Patience transforms effort into success.
+And consistency transforms ordinary people into extraordinary achievers.
+</p>
+
+<p>
+The future belongs to people who never stop learning.
+People who embrace change.
+People who keep moving forward when progress feels slow.
+People who understand that greatness is built one day at a time.
+</p>
+
+<p>
+Your current situation does not define your future.
+Your background does not limit your potential.
+Your mistakes do not determine your destiny.
+What matters most is your willingness to grow,
+adapt,
+learn,
+and keep going.
+</p>
+
+<p>
+Every day is a new opportunity to improve.
+Every challenge is an opportunity to become stronger.
+Every lesson is an opportunity to become wiser.
+And every action you take today is an investment in the person you will become tomorrow.
+</p>
+
+<div class="quote">
+"Success Is Not Built In A Day. It Is Built Daily."
+</div>
+
+<div class="cta">
+<button onclick="window.location.href='index.html'">
+Start Your Journey
+</button>
+</div>
+
+</section>
+
+<script>
+
+    function goBack(){
+
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
+
+        history.back();
+
+    }else{
+
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
+
+    }
+
+}
+const cards=document.querySelectorAll('.card');
+
+window.addEventListener('scroll',()=>{
+
+cards.forEach(card=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top < window.innerHeight-100){
+card.classList.add('show');
+}
+
+});
+
+});
+</script>
+
+</body>
+</html>

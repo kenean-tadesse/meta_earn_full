@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Deposits</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top,#0b1220,#050913);
+    color:white;
+    min-height:100vh;
+    padding:20px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#38bdf8;
+}
+
+.container{
+    background:rgba(255,255,255,0.06);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 25px #2563eb;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+th{
+    color:#38bdf8;
+}
+
+.pending{
+    color:#facc15;
+}
+
+.approved{
+    color:#22c55e;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(135deg,#6366f1,#2563eb);
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="header">
+    <h1>Deposit Management</h1>
+    <p>Approve or reject user deposits</p>
+</div>
+
+
+<div class="container">
+
+<table>
+
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Action</th>
+</tr>
+</thead>
+
+<tbody id="depositTable">
+
+<tr>
+<td colspan="6">
+Loading deposits...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<script>
+
+
+const token =
+localStorage.getItem("adminToken");
+
+
+// Load deposits
+
+async function loadDeposits(){
+
+try{
+
+const response = await fetch(
+"http://localhost:5000/api/deposits",
+{
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
+});
+
+
+const data = await response.json();
+
+const table =
+document.getElementById("depositTable");
+
+
+table.innerHTML = "";
+
+
+data.deposits.forEach(deposit=>{
+
+
+table.innerHTML += `
+
+<tr>
+
+<td>${deposit.id}</td>
+
+<td>${deposit.username}</td>
+
+<td>${deposit.amount} Birr</td>
+
+
+<td class="${deposit.status}">
+${deposit.status}
+</td>
+
+
+<td>
+${new Date(deposit.created_at)
+.toLocaleString()}
+</td>
+
+
+<td>
+
+<button onclick="approveDeposit(${deposit.id})">
+
+Approve
+
+</button>
+
+</td>
+
+
+</tr>
+
+`;
+
+});
+
+
+}catch(error){
+
+document.getElementById("depositTable")
+.innerHTML =
+"<tr><td colspan='6'>Failed to load deposits</td></tr>";
+
+}
+
+
+}
+
+
+// Approve Deposit
+
+async function approveDeposit(id){
+
+
+const response = await fetch(
+`http://localhost:5000/api/deposits/approve/${id}`,
+{
+
+method:"PUT",
+
+headers:{
+
+Authorization:`Bearer ${token}`
+
+}
+
+});
+
+
+const data =
+await response.json();
+
+
+alert(data.message);
+
+
+// Refresh table automatically
+
+loadDeposits();
+
+
+}
+
+
+// Start page
+
+loadDeposits();
+
+
+</script>
+
+
+</body>
+
+</html>

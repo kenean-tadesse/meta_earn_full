@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaEarn Wallet</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#07111f;
+color:white;
+padding-bottom:100px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:linear-gradient(135deg,#4f46e5,#06b6d4);
+padding:25px;
+border-radius:25px;
+margin-bottom:20px;
+}
+
+.balance{
+font-size:40px;
+font-weight:800;
+margin-top:10px;
+}
+
+.box{
+background:rgba(255,255,255,.06);
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+border:none;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+background:linear-gradient(135deg,#4f46e5,#06b6d4);
+color:white;
+}
+
+#withdrawMessage{
+margin-top:15px;
+text-align:center;
+font-weight:bold;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#07111f;
+padding:15px;
+display:flex;
+justify-content:space-around;
+}
+
+.nav{
+text-align:center;
+cursor:pointer;
+}
+
+.active{
+color:#06b6d4;
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#fff;
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(.96);
+}
+</style>
+</head>
+<body>
+<button class="back-button" onclick="goBack()" title="Back">
+    ←
+</button>
+<div class="container">
+
+<div class="card">
+<div>Wallet Balance</div>
+<div class="balance" id="balance">ETB 0.00</div>
+</div>
+
+<div class="box">
+
+<h3>"if you want withdraw your money write the right amount
+    and wait for admin aproval!""
+</h3>
+
+
+
+</div>
+
+<div class="box">
+
+<h3>Withdraw</h3>
+
+<input
+type="number"
+id="withdrawAmount"
+placeholder="Amount">
+
+<input
+type="text"
+id="bankName"
+placeholder="Bank Name">
+
+<input
+type="text"
+id="bankAccount"
+placeholder="Bank Account">
+
+<button onclick="withdrawMoney()">
+    Submit Withdrawal
+</button>
+
+<p id="withdrawMessage"></p>
+
+</div>
+
+</div>
+
+<div class="bottom-nav">
+
+<div class="nav"
+onclick="location.href='dashboard.html'">
+🏠<br>Home
+</div>
+
+<div class="nav"
+onclick="location.href='tasks.html'">
+📦<br>Tasks
+</div>
+
+<div class="nav"
+onclick="location.href='orders.html'">
+📊<br>Orders
+</div>
+
+<div class="nav active">
+👛<br>Wallet
+</div>
+
+<div class="nav"
+onclick="location.href='profile.html'">
+👤<br>Profile
+</div>
+
+</div>
+
+<script>
+function goBack(){
+
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
+
+        history.back();
+
+    }else{
+
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
+
+    }
+
+}
+const token =
+localStorage.getItem("token");
+
+if(!token){
+
+window.location.href =
+"index.html";
+
+}
+
+async function loadWallet(){
+
+try{
+
+const response =
+await fetch(
+"http://localhost:5000/api/users/profile",
+{
+headers:{
+Authorization: `Bearer ${token}`
+}
+}
+);
+
+const data =
+await response.json();
+
+if(data.success){
+
+document.getElementById("balance").innerHTML =
+"ETB " + Number(data.user.balance).toFixed(2);
+
+}
+
+}catch(error){
+
+alert("Failed to load wallet");
+
+}
+
+}
+
+async function depositMoney() {
+
+    const amount = document.getElementById("depositAmount").value;
+
+    if (!amount || Number(amount) <= 0) {
+        alert("Please enter a valid deposit amount.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5000/api/deposits", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                amount: Number(amount)
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert(data.message);
+            loadWallet();
+            document.getElementById("depositAmount").value = "";
+        } else {
+            alert(data.message);
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Failed to submit deposit.");
+    }
+}
+
+loadWallet();
+
+async function withdrawMoney() {
+
+    const amount = document.getElementById("withdrawAmount").value.trim();
+    const bank_name = document.getElementById("bankName").value.trim();
+    const bank_account = document.getElementById("bankAccount").value.trim();
+    const msg = document.getElementById("withdrawMessage");
+
+    if (!amount || Number(amount) <= 0) {
+        msg.innerHTML = "🔴 Please enter a valid withdrawal amount.";
+        msg.style.color = "#ef4444";
+        return;
+    }
+
+    if (!bank_name || !bank_account) {
+        msg.innerHTML = "🔴 Please enter your bank information.";
+        msg.style.color = "#ef4444";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/withdrawals",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    amount,
+                    bank_name,
+                    bank_account
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            msg.innerHTML =
+                "🟡 Waiting for Admin Approval";
+
+            msg.style.color = "#FFD700";
+
+            document.getElementById("withdrawAmount").value = "";
+            document.getElementById("bankName").value = "";
+            document.getElementById("bankAccount").value = "";
+
+        } else {
+
+            msg.innerHTML = "🔴 " + data.message;
+            msg.style.color = "#ef4444";
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+        msg.innerHTML = "🔴 Unable to connect to the server.";
+        msg.style.color = "#ef4444";
+
+    }
+
+}
+
+async function checkWithdrawalStatus() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/withdrawals/history",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!data.success || !data.withdrawal) return;
+
+        const msg = document.getElementById("withdrawMessage");
+
+        switch (data.withdrawal.status) {
+
+            case "pending":
+
+                msg.innerHTML =
+                    "🟡 Waiting for Admin Approval";
+
+                msg.style.color = "#FFD700";
+                break;
+
+            case "approved":
+
+                msg.innerHTML =
+                    "🟢 Your withdrawal has been approved successfully.";
+
+                msg.style.color = "#22c55e";
+
+                loadWallet();
+                  // Keep the message for 10 seconds, then hide it
+    setTimeout(() => {
+        msg.innerHTML = "";
+    }, 10000);
+
+                break;
+
+            case "rejected":
+
+                msg.innerHTML =
+                    "🔴 Your withdrawal request was rejected.";
+
+                msg.style.color = "#ef4444";
+                  // Keep the message for 10 seconds, then hide it
+    setTimeout(() => {
+        msg.innerHTML = "";
+    }, 10000);
+                break;
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+loadWallet();
+checkWithdrawalStatus();
+
+/* Check every 5 seconds for status changes */
+setInterval(checkWithdrawalStatus, 5000);
+
+</script>
+
+</body>
+</html>

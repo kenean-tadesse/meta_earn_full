@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta_Earn Deposit</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top, #0b1220, #050913);
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Main Card */
+.deposit-card{
+    width:380px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px #2563eb;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        box-shadow:0 0 15px #2563eb;
+    }
+
+    to{
+        box-shadow:0 0 35px #38bdf8;
+    }
+}
+
+h1{
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+
+/* Account Section */
+
+.account-box{
+    background:#111827;
+    padding:18px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.account-title{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.account-number{
+    font-size:26px;
+    font-weight:bold;
+    color:#22c55e;
+    margin:10px 0;
+}
+
+
+.owner{
+    color:#e2e8f0;
+}
+
+
+/* Buttons */
+
+.copy-btn,
+.submit-btn{
+
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    transition:0.3s;
+}
+
+
+.copy-btn:hover,
+.submit-btn:hover{
+    transform:scale(1.03);
+}
+
+
+.copy-btn{
+    margin-top:10px;
+}
+
+
+/* Inputs */
+
+input{
+
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #334155;
+    background:#0b1220;
+    color:white;
+    outline:none;
+
+}
+
+
+.submit-btn{
+    margin-top:20px;
+}
+
+
+/* Message */
+
+#message{
+
+    margin-top:15px;
+    font-weight:bold;
+
+}
+
+
+.yellow{
+    color:#facc15;
+}
+
+
+.green{
+    color:#22c55e;
+}
+
+
+.red{
+    color:#ef4444;
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#fff;
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(.96);
+}
+
+</style>
+
+</head>
+
+
+<body>
+<button class="back-button" onclick="goBack()" title="Back">
+    ←
+</button>
+
+<div class="deposit-card">
+
+    <h1>Deposit Balance</h1>
+
+
+    <div class="account-box">
+
+        <p class="account-title">
+            Deposit Account Number
+        </p>
+
+
+        <div class="account-number" id="accountNumber">
+            1000191981743
+        </div>
+
+
+        <button class="copy-btn" onclick="copyAccount()">
+            Copy Account Number
+        </button>
+
+
+        <p class="owner">
+            Account Holder:
+            <b>Workenh Tadesse</b>
+        </p>
+
+
+    </div>
+
+
+    <input 
+        type="text"
+        id="username"
+        placeholder="Enter your username">
+
+
+    <input 
+        type="number"
+        id="amount"
+        placeholder="Enter deposit amount">
+
+
+    <button class="submit-btn" onclick="submitDeposit()">
+        Submit Deposit
+    </button>
+
+
+    <div id="message"></div>
+
+
+</div>
+
+
+<script>
+
+function goBack(){
+
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
+
+        history.back();
+
+    }else{
+
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
+
+    }
+
+}
+/* Copy Account Number */
+
+function copyAccount(){
+
+    navigator.clipboard.writeText(
+        "1000191981743"
+    );
+
+    alert(
+        "Account number copied successfully!"
+    );
+
+}
+
+
+ /* =========================================================
+   META_EARN - DEPOSITS ROUTE (HTML COMPATIBLE VERSION)
+========================================================= */
+
+const express = require("express");
+const router = express.Router();
+const db = require("../config/db");
+
+// ===============================
+// CREATE DEPOSIT (FROM YOUR HTML)
+// ===============================
+router.post("/", async (req, res) => {
+    try {
+        const { username, amount, method } = req.body;
+
+        // ===============================
+        // VALIDATION
+        // ===============================
+        if (!username || !amount) {
+            return res.status(400).json({
+                success: false,
+                message: "Username and amount are required"
+            });
+        }
+
+        if (amount <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid amount"
+            });
+        }
+
+        // ===============================
+        // CHECK USER EXISTS
+        // ===============================
+        const [users] = await db.query(
+            "SELECT * FROM users WHERE username = ?",
+            [username]
+        );
+
+        if (users.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        const user = users[0];
+
+        // ===============================
+        // INSERT DEPOSIT
+        // ===============================
+        const [result] = await db.query(
+            `INSERT INTO deposits (user_id, amount, method, status, created_at)
+             VALUES (?, ?, ?, 'pending', NOW())`,
+            [user.id, amount, method || "manual"]
+        );
+
+        res.json({
+            success: true,
+            message: "Deposit submitted successfully",
+            depositId: result.insertId,
+            user: {
+                id: user.id,
+                username: user.username
+            }
+        });
+
+    } catch (error) {
+        console.error("Deposit Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error",
+            error: error.message
+        });
+    }
+});
+
+// ===============================
+// GET ALL DEPOSITS (ADMIN)
+// ===============================
+router.get("/", async (req, res) => {
+    try {
+        const [rows] = await db.query(
+            `SELECT d.*, u.username
+            FROM deposits d
+            LEFT JOIN users u ON d.user_id = u.id
+            ORDER BY d.created_at DESC`
+        );
+
+        res.json({
+            success: true,
+            deposits: rows
+        });
+
+    } catch (error) {
+        console.error("Error fetching deposits:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error",
+            error: error.message
+        });
+    }
+});
+
+// ===============================
+// APPROVE DEPOSIT
+// ===============================
+// Client-side deposit handling
+async function submitDeposit() {
+    const username = document.getElementById("username").value; 
+    const amount = document.getElementById("amount").value; 
+    const message = document.getElementById("message");
+    if (!username || !amount) { 
+        message.className = "red"; 
+        message.innerHTML = "Username and amount are required."; 
+        return; 
+    } 
+    try { 
+        const response = await fetch("http://localhost:5000/api/deposits", { 
+            method: "POST", 
+            headers: { "Content-Type": "application/json" }, 
+            body: JSON.stringify({ username, amount }) 
+        }); 
+        const data = await response.json(); 
+        if (data.success) { 
+            message.className = "yellow";
+            message.innerHTML = "⏳ Waiting for admin approval<br> Your deposit request has been submitted successfully."; 
+        } else { 
+            message.className = "red"; 
+            message.innerHTML = data.message; 
+        } 
+    } catch (error) { 
+        message.className = "red"; 
+        message.innerHTML = "Server connection failed.";
+        console.log(error); 
+    } 
+}
+
+</script>
+
+</body>
+
+</html>

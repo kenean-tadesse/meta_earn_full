@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">
+META EARN Dashboard
+</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="language.js"></script>
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#081120;
+color:white;
+min-height:100vh;
+}
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left,#4f46e5 0%,transparent 35%),
+radial-gradient(circle at top right,#06b6d4 0%,transparent 30%),
+#081120;
+z-index:-1;
+}
+
+.container{
+padding:20px;
+max-width:500px;
+margin:auto;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:10px;
+}
+
+.avatar{
+width:55px;
+height:55px;
+border-radius:50%;
+background:linear-gradient(135deg,#6366f1,#06b6d4);
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+font-size:22px;
+}
+
+.balance-card{
+margin-top:25px;
+padding:25px;
+border-radius:30px;
+background:rgba(255,255,255,.08);
+-webkit-backdrop-filter:blur(20px);
+backdrop-filter:blur(20px);
+}
+
+.balance-label{
+opacity:.7;
+font-size:14px;
+}
+
+.balance{
+font-size:42px;
+font-weight:800;
+margin-top:10px;
+}
+
+.level{
+margin-top:15px;
+display:inline-block;
+padding:8px 18px;
+border-radius:999px;
+background:linear-gradient(90deg,#f59e0b,#fbbf24);
+font-weight:700;
+color:#111;
+}
+
+.info{
+margin-top:15px;
+font-size:14px;
+opacity:.8;
+}
+
+.wallet-actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:25px;
+}
+
+.action{
+padding:20px;
+text-align:center;
+border-radius:20px;
+background:rgba(255,255,255,.06);
+cursor:pointer;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+padding:15px;
+background:rgba(8,17,32,.95);
+display:flex;
+justify-content:space-around;
+}
+
+.nav-item{
+text-align:center;
+font-size:13px;
+cursor:pointer;
+}
+
+.active{
+color:#06b6d4;
+}
+.upgrade-card{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:18px;
+border-radius:22px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+background:linear-gradient(270deg,#7c3aed,#06b6d4,#f59e0b,#7c3aed);
+background-size:300% 300%;
+animation:gradientMove 6s ease infinite;
+box-shadow:0 10px 35px rgba(124,58,237,.35);
+transition:.3s;
+}
+
+.upgrade-card:hover{
+transform:translateY(-6px) scale(1.03);
+box-shadow:0 15px 50px rgba(124,58,237,.55);
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Shine effect */
+.upgrade-card::before{
+content:"";
+position:absolute;
+top:0;
+left:-150%;
+width:60%;
+height:100%;
+background:rgba(255,255,255,.25);
+transform:skewX(-25deg);
+animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+0%{left:-150%;}
+100%{left:150%;}
+}
+
+/* Icon animation */
+.icon{
+font-size:28px;
+animation:float 2s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+}
+
+.text{
+flex:1;
+margin-left:12px;
+z-index:2;
+}
+
+.title{
+font-weight:800;
+font-size:16px;
+}
+
+.subtitle{
+font-size:12px;
+opacity:.85;
+}
+
+.arrow{
+font-size:22px;
+font-weight:bold;
+animation:arrowMove 1.5s infinite;
+}
+
+@keyframes arrowMove{
+0%,100%{transform:translateX(0);}
+50%{transform:translateX(5px);}
+}
+.language-box{
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+}
+
+.language-select{
+
+padding:10px 15px;
+
+border:none;
+
+outline:none;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.08);
+
+color:white;
+
+font-weight:700;
+
+font-size:15px;
+
+backdrop-filter:blur(15px);
+
+-webkit-backdrop-filter:blur(15px);
+
+cursor:pointer;
+
+}
+
+.language-select option{
+
+background:#081120;
+
+color:white;
+
+}
+.premium-referral-btn{
+    width:100%;
+    max-width:420px;
+    margin:20px auto;
+    padding:18px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+
+    text-decoration:none;
+    color:#fff;
+
+    box-shadow:
+        0 10px 30px rgba(37,117,252,.35),
+        inset 0 1px 1px rgba(255,255,255,.25);
+
+    transition:.35s;
+    overflow:hidden;
+    position:relative;
+}
+
+.premium-referral-btn::before{
+    content:"";
+    position:absolute;
+    top:-40%;
+    left:-30%;
+    width:120%;
+    height:220%;
+    background:rgba(255,255,255,.12);
+    transform:rotate(25deg);
+    transition:.6s;
+}
+
+.premium-referral-btn:hover::before{
+    left:120%;
+}
+
+.premium-referral-btn:hover{
+    transform:translateY(-5px) scale(1.02);
+    box-shadow:
+        0 18px 40px rgba(37,117,252,.45);
+}
+
+.referral-icon{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+}
+
+.referral-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.referral-title{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.referral-subtitle{
+    margin-top:4px;
+    font-size:13px;
+    opacity:.9;
+}
+
+.referral-arrow{
+    font-size:22px;
+    transition:.3s;
+}
+
+.premium-referral-btn:hover .referral-arrow{
+    transform:translateX(8px);
+}
+
+.referral-code-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+.referral-label{
+
+    color:#d1d5db;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+.referral-code-box input{
+
+    width:110px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.08);
+
+    color:#00E5FF;
+
+    text-align:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    outline:none;
+
+}
+
+.referral-code-box button{
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.referral-code-box button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 10px rgba(37,99,235,.4);
+
+}
+</style>
+</head>
+<body>
+<div class="language-box">
+
+<select
+id="languageSelector"
+class="language-select"
+title="Select language">
+
+<option value="en">🇺🇸 English</option>
+
+<option value="am">🇪🇹 አማርኛ</option>
+
+<option value="om">🇪🇹 Afaan Oromoo</option>
+
+</select>
+
+</div>
+<div class="bg"></div>
+
+<div class="container">
+
+<div class="header">
+
+<div>
+<h3 id="username" data-lang="loading">
+Loading...
+</h3>
+
+<p id="email" data-lang="loading">
+Loading...
+</p>
+</div>
+
+<div class="avatar" id="avatar">
+N
+</div>
+
+</div>
+
+<div class="balance-card">
+
+<div class="balance-label"
+data-lang="availableBalance">
+Available Balance
+</div>
+
+<div class="balance" id="balance">
+ETB 0.00
+</div>
+
+<div class="level" id="vip">
+VIP 0
+</div>
+
+<div class="referral-code-box">
+
+    <span class="referral-label">
+        Referral Code
+    </span>
+
+   <input
+    id="dashboardReferralCode"
+    type="text"
+    readonly>
+
+    <button onclick="copyReferralCode()">
+        📋
+    </button>
+
+</div>
+
+</div>
+
+<div class="wallet-actions">
+
+<div class="action" onclick="location.href='wallet.html'">
+💳
+<div data-lang="withdrawal">
+Withdrawal
+</div>
+</div>
+
+<div class="action" onclick="location.href='orders.html'">
+📊
+<div data-lang="orders">
+Orders
+</div>
+</div>
+<div class="action upgrade-card" onclick="location.href='levels.html'">
+
+<div class="icon">👑</div>
+
+<div class="text">
+<div data-lang="upgradeLevel">
+Upgrade Level
+</div>
+</div>
+
+<div class="arrow">➜</div>
+
+</div>
+</div>
+
+<br><br>
+<a href="referral.html" class="premium-referral-btn">
+    <div class="referral-icon">
+        <i class="fas fa-user-friends"></i>
+    </div>
+
+    <div class="referral-content">
+        <span class="referral-title">Referral Center</span>
+        <span class="referral-subtitle">Invite friends & Earn Commission</span>
+    </div>
+
+    <div class="referral-arrow">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+</a>
+
+
+
+<br><br>
+
+</div>
+
+<div class="bottom-nav">
+
+<div class="nav-item active">
+🏠<div data-lang="home">
+Home
+</div>
+</div>
+
+<div class="nav-item"
+onclick="location.href='tasks.html'">
+📦
+<div data-lang="dailyWelcomeBonus">
+Daily Welcome Bonus
+</div>
+</div>
+
+<div class="nav-item"
+onclick="location.href='deposits.html'">
+👛<div data-lang="deposits">
+Deposits
+</div>
+</div>
+
+<div class="nav-item"
+onclick="location.href='profile.html'">
+👤<div data-lang="profile">
+Profile
+</div>
+</div>
+<div class="nav-item"
+onclick="location.href='about us.html'">
+👛<div data-lang="aboutUs">
+About Us
+</div>
+</div>
+<div class="nav-item"
+onclick="location.href='learn more.html'">
+<br>
+<div data-lang="learnMore">
+Learn More
+</div>
+</div>
+<!-- Premium Telegram Contact Button -->
+
+<style>
+
+.contact-container{
+position:fixed;
+bottom:90px;
+right:20px;
+z-index:9999;
+}
+
+.contact-btn{
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px 24px;
+background:linear-gradient(135deg,#0088cc,#229ED9,#38bdf8);
+border-radius:50px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+font-size:16px;
+box-shadow:0 10px 25px rgba(0,136,204,.4);
+transition:.3s;
+animation:pulse 2s infinite;
+}
+
+.contact-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(0,136,204,.6);
+}
+
+@keyframes pulse{
+
+0%{
+box-shadow:0 0 0 0 rgba(0,136,204,.5);
+}
+
+70%{
+box-shadow:0 0 0 18px rgba(0,136,204,0);
+}
+
+100%{
+box-shadow:0 0 0 0 rgba(0,136,204,0);
+}
+
+}
+
+.live-box{
+margin: 90px 0px;
+height:180px;
+overflow:hidden;
+border-radius:22px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.08);
+position:relative;
+}
+
+.live-title{
+padding:14px 18px;
+font-size:16px;
+font-weight:700;
+border-bottom:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.04);
+color:#38bdf8;
+}
+
+.live-list{
+position:absolute;
+left:0;
+right:0;
+bottom:-100%;
+animation:scrollUp 200s linear infinite;
+}
+
+.live-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 18px;
+border-bottom:1px solid rgba(255,255,255,.05);
+font-size:14px;
+}
+
+.live-user{
+font-weight:700;
+color:#fff;
+}
+
+.live-amount{
+color:#22c55e;
+font-weight:bold;
+}
+
+@keyframes scrollUp{
+
+0%{
+transform:translateY(100%);
+}
+
+100%{
+transform:translateY(-100%);
+}
+
+}
+</style>
+
+<div class="contact-container">
+
+<a
+class="contact-btn"
+href="https://t.me/Kenean730"
+target="_blank"
+rel="noopener noreferrer">
+
+📨 <span data-lang="contactUs">
+Contact Us
+</span>
+
+</a>
+
+</div>
+</div>
+
+<div class="live-box">
+
+<div class="live-title">
+🔥 Live Withdrawals
+</div>
+
+<div class="live-list" id="liveList">
+
+</div>
+
+</div>
+
+<div class="wallet-actions">
+<script>
+const token = localStorage.getItem("token");
+
+if (!token) {
+    alert("Please login first");
+    window.location.href = "index.html";
+}
+
+async function loadProfile() {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/users/profile",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(data.user);
+console.log("Referral Code =", data.user.referral_code);
+
+        if (!data.success) {
+            alert("Session expired. Login again.");
+            localStorage.clear();
+            window.location.href = "index.html";
+            return;
+        }
+
+        const user = data.user;
+
+        document.getElementById("username").innerText =
+            user.fullname || user.username;
+
+        document.getElementById("email").innerText =
+            user.email;
+
+        document.getElementById("balance").innerText =
+            "ETB " + Number(user.balance).toFixed(2);
+
+        document.getElementById("vip").innerText =
+            "👑 VIP " + user.vip_level;
+
+  document.getElementById("dashboardReferralCode").value =
+    user.referral_code || "----";
+
+function copyReferralCode() {
+
+    navigator.clipboard.writeText(
+        document.getElementById("dashboardReferralCode").value
+    );
+
+    alert("Referral code copied!");
+}
+
+        document.getElementById("avatar").innerText =
+            user.username.charAt(0).toUpperCase();
+
+    } catch (error) {
+        console.error("Profile error:", error);
+        alert("Cannot connect to server");
+    }
+}
+const usernames=[
+
+"Abel_M",
+"Bereket21",
+"LALKIDAN17",
+"MeronA",
+"Hanna07",
+"GIRMA A",
+"NatnaelX",
+"LensaO",
+"SamuelM",
+
+"MarthaK",
+"YonasM",
+"SelamT",
+"BirukA",
+"CAALTUU B",
+"Henok77",
+"KalebG",
+"MekdesB",
+"bedaassaK",
+"FitsumD",
+
+"gueshem",
+"NardosK",
+"NahomM",
+"animawT",
+"ADANEg",
+"RahelT",
+"DawitZ",
+
+"BethelM",
+"YaredK",
+"ezragirma",
+"tigistF",
+"HelinaS",
+"tsegayeT",
+
+"KidusA",
+"RuthM",
+"almazt",
+"AbenezerH",
+"BiniyamT",
+"kidanemariamT",
+
+"FikirA",
+"EyerusalemG",
+"BELACHEWu",
+"GenetW",
+"TemesgenB"
+
+];
+
+const used=[];
+
+function randomName(){
+
+let available=usernames.filter(
+x=>!used.includes(x)
+);
+
+if(available.length===0){
+used.length=0;
+available=[...usernames];
+}
+
+const name=
+available[
+Math.floor(Math.random()*available.length)
+];
+
+used.push(name);
+
+return name;
+
+}
+
+function randomAmount(){
+
+return (
+Math.floor(Math.random()*9000)+500
+).toLocaleString();
+
+}
+
+function randomTime(){
+
+const r=Math.floor(Math.random()*3);
+
+if(r===0){
+
+return Math.floor(Math.random()*55+5)
++" seconds ago";
+
+}
+
+if(r===1){
+
+return Math.floor(Math.random()*50+1)
++" minutes ago";
+
+}
+
+return Math.floor(Math.random()*3+1)
++" hours ago";
+
+}
+
+const list=document.getElementById("liveList");
+
+function createItem(){
+
+const item=document.createElement("div");
+
+item.className="live-item";
+
+item.innerHTML=`
+
+<div>
+
+<div class="live-user">
+
+${randomName()}
+
+</div>
+
+<div class="live-time">
+
+${randomTime()}
+
+</div>
+
+</div>
+
+<div class="live-amount">
+
++ ${randomAmount()} ETB
+
+</div>
+
+`;
+
+list.appendChild(item);
+
+}
+
+for(let i=0;i<30;i++){
+
+createItem();
+
+}
+
+setInterval(function(){
+
+list.removeChild(list.firstElementChild);
+
+createItem();
+
+},10000);
+loadProfile();
+document.title =
+"META EARN | " + t("dashboard");
+</script>
+
+</body>
+</html>

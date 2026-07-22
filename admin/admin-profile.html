@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Profile</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top,#0b1220,#050913);
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 25px #2563eb;
+}
+
+h1{
+    text-align:center;
+    color:#38bdf8;
+    margin-bottom:25px;
+}
+
+.info{
+    margin-bottom:15px;
+    padding:12px;
+    background:rgba(255,255,255,0.05);
+    border-radius:10px;
+}
+
+label{
+    color:#94a3b8;
+    display:block;
+    margin-bottom:5px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#6366f1,#2563eb);
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.logout{
+    background:linear-gradient(135deg,#ef4444,#b91c1c);
+}
+
+.message{
+    margin-top:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<h1>Admin Profile</h1>
+
+
+<div class="info">
+<b>Username:</b>
+<span id="username">
+Loading...
+</span>
+</div>
+
+
+<div class="info">
+<b>Email:</b>
+<span id="email">
+Loading...
+</span>
+</div>
+
+
+<div class="info">
+<b>Role:</b>
+<span id="role">
+Loading...
+</span>
+</div>
+
+
+<div class="info">
+<b>Created:</b>
+<span id="created">
+Loading...
+</span>
+</div>
+
+
+<h3>Change Password</h3>
+
+
+<input 
+type="password"
+id="password"
+placeholder="Enter new password">
+
+
+<button onclick="changePassword()">
+Update Password
+</button>
+
+
+<div id="message" class="message"></div>
+
+
+<button 
+class="logout"
+onclick="logout()">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+<script>
+
+
+const token =
+localStorage.getItem("adminToken");
+
+
+
+// Load admin profile
+
+async function loadProfile(){
+
+try{
+
+const response = await fetch(
+"http://localhost:5000/api/users/profile",
+{
+headers:{
+Authorization:`Bearer ${token}`
+}
+}
+);
+
+
+const data = await response.json();
+console.log(data); 
+
+if(data.success){
+
+document.getElementById("username").innerHTML =
+data.user.username;
+
+
+document.getElementById("email").innerHTML =
+data.user.email;
+
+
+document.getElementById("role").textContent =
+data.user.role || "Admin";
+
+document.getElementById("created").textContent =
+data.user.created_at
+    ? new Date(data.user.created_at).toLocaleString()
+    : "N/A";
+
+
+}
+
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+// Change password
+
+async function changePassword(){
+
+
+const password =
+document.getElementById("password").value;
+
+
+if(password.length < 6){
+
+document.getElementById("message").innerHTML =
+"Password must be at least 6 characters";
+
+return;
+
+}
+
+
+const response = await fetch(
+"http://localhost:5000/api/users/change-password",
+{
+
+method:"PUT",
+
+headers:{
+
+"Content-Type":"application/json",
+
+Authorization:`Bearer ${token}`
+
+},
+
+body:JSON.stringify({
+
+password
+
+})
+
+}
+
+);
+
+
+const data =
+await response.json();
+
+
+document.getElementById("message").innerHTML =
+data.message;
+
+
+document.getElementById("password").value = "";
+
+
+}
+
+
+
+// Logout
+
+function logout(){
+
+localStorage.removeItem("adminToken");
+
+
+window.location.href =
+"admin-login.html";
+
+}
+
+
+
+// Start page
+
+loadProfile();
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaEarn Admin - User Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(135deg,#050816,#0f172a);
+
+color:white;
+padding:25px;
+
+min-height:100vh;
+
+}
+
+.container{
+
+max-width:1500px;
+margin:auto;
+
+}
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+flex-wrap:wrap;
+gap:15px;
+
+}
+
+.title h1{
+
+font-size:32px;
+font-weight:800;
+
+}
+
+.title p{
+
+color:#94a3b8;
+
+}
+
+.refreshBtn{
+
+background:#2563eb;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+color:white;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+
+}
+
+.refreshBtn:hover{
+
+background:#1d4ed8;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+margin-bottom:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.06);
+-webkit-backdrop-filter:blur(20px);
+backdrop-filter:blur(20px);
+padding:22px;
+
+box-shadow:0 0 25px rgba(37,99,235,.3);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.card h3{
+
+font-size:14px;
+color:#94a3b8;
+
+margin-bottom:10px;
+
+}
+
+.card h1{
+
+font-size:32px;
+font-weight:700;
+
+color:#38bdf8;
+
+}
+
+.searchBar{
+
+margin-bottom:25px;
+
+display:flex;
+
+gap:15px;
+
+}
+
+.searchBar input{
+
+flex:1;
+
+padding:15px;
+
+border:none;
+
+outline:none;
+
+border-radius:12px;
+
+background:#111827;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.tableBox{
+
+background:rgba(255,255,255,.06);
+
+	/* Ensure compatibility: define standard property and vendor prefix */
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+
+padding:20px;
+
+overflow:auto;
+
+box-shadow:0 0 20px rgba(37,99,235,.25);
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+min-width:1200px;
+
+}
+
+th{
+
+background:#1e293b;
+
+padding:15px;
+
+color:#38bdf8;
+
+}
+
+td{
+
+padding:14px;
+
+text-align:center;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.roleAdmin{
+
+color:#22c55e;
+font-weight:700;
+
+}
+
+.roleUser{
+
+color:#facc15;
+
+}
+
+.vip{
+
+color:#38bdf8;
+font-weight:700;
+
+}
+
+.actionBtn{
+
+padding:8px 14px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+margin:2px;
+
+font-size:13px;
+
+color:white;
+
+}
+
+.balanceBtn{
+
+background:#16a34a;
+
+}
+
+.vipBtn{
+
+background:#2563eb;
+
+}
+
+.roleBtn{
+
+background:#9333ea;
+
+}
+
+.deleteBtn{
+
+background:#dc2626;
+
+}
+
+.loading{
+
+text-align:center;
+
+padding:50px;
+
+font-size:20px;
+
+color:#94a3b8;
+
+}
+
+@media(max-width:850px){
+
+.header{
+
+flex-direction:column;
+align-items:flex-start;
+
+}
+
+}
+.modal{
+
+display:none;
+
+position:fixed;
+
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.6);
+
+justify-content:center;
+
+align-items:center;
+
+z-index:9999;
+
+}
+
+.modal-content{
+
+width:420px;
+
+max-width:95%;
+
+background:#111827;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 0 30px rgba(37,99,235,.4);
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.modal-content h2{
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+.modalInput{
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+background:#1e293b;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.modalButtons{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:10px;
+
+}
+
+.saveBtn{
+
+background:#16a34a;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.closeBtn{
+
+background:#dc2626;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+#toast{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+background:#16a34a;
+
+padding:15px 22px;
+
+border-radius:10px;
+
+display:none;
+
+color:white;
+
+font-weight:600;
+
+box-shadow:0 0 20px rgba(0,0,0,.3);
+
+}
+/* =========================
+   TASK ACCESS BUTTONS
+========================= */
+
+.taskAccessBtn{
+
+padding:8px 14px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:13px;
+
+font-weight:600;
+
+color:white;
+
+transition:.2s;
+
+}
+
+.taskAccessBtn:hover{
+
+transform:scale(1.05);
+
+}
+
+.activateTaskBtn{
+
+background:#16a34a;
+
+}
+
+.deactivateTaskBtn{
+
+background:#dc2626;
+
+}
+
+.taskActive{
+
+color:#22c55e;
+
+font-weight:700;
+
+}
+
+.taskInactive{
+
+color:#ef4444;
+
+font-weight:700;
+
+}
+.taskAccessBtn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    transition: 0.2s;
+}
+
+.taskAccessBtn:hover {
+    transform: scale(1.05);
+}
+
+.activateTaskBtn {
+    background: #16a34a;
+}
+
+.deactivateTaskBtn {
+    background: #2563eb;
+}
+
+.taskActive {
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.taskInactive {
+    color: #ef4444;
+    font-weight: 700;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="title">
+
+<h1>User Management</h1>
+
+<p>Manage all registered NovaEarn users</p>
+
+</div>
+
+<button class="refreshBtn" onclick="loadUsers()">
+
+Refresh
+
+</button>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Users</h3>
+
+<h1 id="totalUsers">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Balance</h3>
+
+<h1 id="totalBalance">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>VIP Members</h3>
+
+<h1 id="vipUsers">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Administrators</h3>
+
+<h1 id="adminUsers">0</h1>
+
+</div>
+
+</div>
+
+<div class="searchBar">
+
+<input
+type="text"
+id="search"
+placeholder="Search username or email..."
+onkeyup="searchUsers()">
+
+</div>
+
+<div class="tableBox">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Username</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Balance</th>
+
+<th>VIP</th>
+
+<th>Referral</th>
+
+<th>Role</th>
+
+<th>Task Access</th>
+
+<th>Created</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="userTable">
+
+<tr>
+
+<td colspan="11" class="loading">
+
+Loading Users...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="users.js"></script>
+<!-- ========================= -->
+<!-- EDIT USER MODAL -->
+<!-- ========================= -->
+
+<div id="userModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Edit User</h2>
+
+<input type="hidden" id="editUserId">
+
+<label>Balance</label>
+
+<input
+type="number"
+id="editBalance"
+class="modalInput">
+
+<label>VIP Level</label>
+
+<select id="editVIP" class="modalInput">
+
+<option value="0">VIP 0</option>
+<option value="1">VIP 1</option>
+<option value="2">VIP 2</option>
+<option value="3">VIP 3</option>
+<option value="4">VIP 4</option>
+<option value="5">VIP 5</option>
+
+</select>
+
+<label>Role</label>
+
+<select id="editRole" class="modalInput">
+
+<option value="user">User</option>
+
+<option value="admin">Admin</option>
+
+</select>
+
+<div class="modalButtons">
+
+<button class="saveBtn"
+onclick="saveUser()">
+
+Save
+
+</button>
+
+<button class="closeBtn"
+onclick="closeModal()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="toast"></div>
+</body>
+
+</html>

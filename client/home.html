@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta_Earn Platform</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+    radial-gradient(circle at top,#00e5ff22,transparent 35%),
+    linear-gradient(135deg,#020617,#0b1120,#111827);
+    color:white;
+}
+
+/* Floating Particles */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+    radial-gradient(circle,rgba(0,229,255,.5) 1px,transparent 1px);
+    background-size:60px 60px;
+    animation:particles 25s linear infinite;
+    opacity:.25;
+    pointer-events:none;
+}
+
+@keyframes particles{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-200px);
+    }
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero-content{
+    max-width:1100px;
+}
+
+/* Logo */
+
+.logo{
+    font-size:5rem;
+    font-weight:900;
+    letter-spacing:4px;
+    background:linear-gradient(
+    90deg,
+    #00e5ff,
+    #00ffcc,
+    #ffffff
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:logoGlow 3s infinite alternate;
+}
+
+@keyframes logoGlow{
+    from{
+        filter:drop-shadow(0 0 10px rgba(0,229,255,.4));
+    }
+    to{
+        filter:drop-shadow(0 0 40px rgba(0,229,255,.9));
+    }
+}
+
+/* Motto */
+
+.motto{
+    margin-top:20px;
+    font-size:1.4rem;
+    color:#cbd5e1;
+    font-style:italic;
+    line-height:1.8;
+}
+
+/* Description */
+
+.description{
+    margin-top:40px;
+    font-size:1.3rem;
+    line-height:2;
+    color:#dbeafe;
+}
+
+/* Growth Animation */
+
+.growth-container{
+    margin:80px auto;
+    max-width:850px;
+    position:relative;
+}
+
+.progress-track{
+    height:10px;
+    border-radius:50px;
+    background:#1e293b;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    border-radius:50px;
+    background:linear-gradient(
+    90deg,
+    #00e5ff,
+    #00ffcc,
+    #ffffff
+    );
+    animation:grow 6s infinite;
+}
+
+@keyframes grow{
+    0%{width:0%;}
+    100%{width:100%;}
+}
+
+.icons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:-55px;
+}
+
+.icon{
+    font-size:50px;
+    animation:bounce 2s infinite;
+}
+
+.icon:nth-child(2){animation-delay:.2s;}
+.icon:nth-child(3){animation-delay:.4s;}
+.icon:nth-child(4){animation-delay:.6s;}
+.icon:nth-child(5){animation-delay:.8s;}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.labels{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    color:#94a3b8;
+    font-weight:700;
+    font-size:.9rem;
+}
+
+/* Button */
+
+.cta-section{
+    margin-top:70px;
+}
+
+.journey-btn{
+
+    padding:22px 70px;
+    border:none;
+    border-radius:60px;
+    cursor:pointer;
+
+    font-size:1.3rem;
+    font-weight:800;
+
+    color:#001b2e;
+
+    background:linear-gradient(
+    90deg,
+    #00e5ff,
+    #00ffcc,
+    #ffffff
+    );
+
+    background-size:300% 300%;
+
+    animation:
+    buttonGradient 5s ease infinite;
+
+    transition:.4s;
+
+    box-shadow:
+    0 0 20px rgba(0,229,255,.4),
+    0 0 60px rgba(0,229,255,.3);
+}
+
+.journey-btn:hover{
+
+    transform:
+    translateY(-6px)-
+    scale(1.08);
+
+    box-shadow:
+    0 0 40px rgba(0,229,255,.8),
+    0 0 100px rgba(0,229,255,.5);
+}
+
+@keyframes buttonGradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+/* Quote */
+
+.quote{
+    margin-top:90px;
+    font-size:1.8rem;
+    font-weight:800;
+    color:white;
+    animation:quoteGlow 2s infinite alternate;
+}
+
+@keyframes quoteGlow{
+
+    from{
+        text-shadow:0 0 10px #00e5ff;
+    }
+
+    to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff,
+        0 0 80px #00e5ff;
+    }
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.logo{
+    font-size:3rem;
+}
+.motto{
+    font-size:1.1rem;
+}
+
+.description{
+    font-size:1rem;
+}
+
+.icon{
+    font-size:35px;
+}
+
+.labels{
+    font-size:.7rem;
+}
+
+.quote{
+    font-size:1.2rem;
+}
+
+.journey-btn{
+    width:100%;
+    max-width:320px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1 class="logo">
+META_EARN PLATFORM
+</h1>
+
+<p class="motto">
+"Where Consistent Effort Becomes Opportunity,
+Growth Becomes Wealth,
+And Dreams Become Reality."
+</p>
+
+<p class="description">
+Welcome to Meta_Earn, a platform designed for ambitious individuals who believe in growth,
+learning, consistency, and success. Every achievement begins with a single step.
+Every lesson learned increases your value. Every challenge overcome makes you stronger.
+And every day of consistent effort moves you closer to the future you deserve.
+
+Meta_Earn is more than a platform. It is a journey of personal development,
+opportunity creation, financial growth, and limitless potential.
+Your future is not created by chance. It is created by the actions you take today.
+</p>
+
+<div class="growth-container">
+
+<div class="progress-track">
+<div class="progress-fill"></div>
+</div>
+
+<div class="icons">
+<div class="icon">🌱</div>
+<div class="icon">📚</div>
+<div class="icon">⚡</div>
+<div class="icon">🚀</div>
+<div class="icon">💎</div>
+</div>
+
+<div class="labels">
+<span>START</span>
+<span>LEARN</span>
+<span>IMPROVE</span>
+<span>GROW</span>
+<span>SUCCESS</span>
+</div>
+
+</div>
+
+<div class="cta-section">
+
+<button
+class="journey-btn"
+onclick="window.location.href='index.html'">
+
+START YOUR JOURNEY →
+
+</button>
+
+</div>
+
+<div class="quote">
+
+"Success Is Not Built In A Day.
+It Is Built Daily."
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta_Earn • Task Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#0b1220,#050913);
+    color:white;
+    min-height:100vh;
+    padding-bottom:80px;
+}
+
+/* TOP BAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:rgba(255,255,255,.03);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.topbar h2{
+    font-size:18px;
+    font-weight:700;
+}
+
+.wallet{
+    font-weight:700;
+    color:#22c55e;
+}
+
+
+/* HEADER */
+
+.header{
+    padding:25px 20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.header p{
+    color:#94a3b8;
+    margin-top:6px;
+    font-size:14px;
+}
+
+
+/* TASK GRID */
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
+}
+
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    padding:18px;
+    transition:.3s;
+}
+
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#3b82f6;
+}
+
+
+.title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+
+.desc{
+    font-size:13px;
+    color:#94a3b8;
+    margin-bottom:10px;
+}
+
+
+/* BADGES */
+
+.badge{
+    display:inline-block;
+    padding:4px 10px;
+    font-size:11px;
+    border-radius:50px;
+    margin-bottom:10px;
+}
+
+
+.active{
+    background:#0f5132;
+    color:#22c55e;
+}
+
+
+.pending{
+    background:#3f1d1d;
+    color:#ef4444;
+}
+
+
+.locked{
+    background:#1f2937;
+    color:#9ca3af;
+}
+
+
+/* REWARD */
+
+.reward{
+    color:#22c55e;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+
+/* BUTTON */
+
+.btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:
+    linear-gradient(135deg,#6366f1,#3b82f6);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+
+.btn:hover{
+    opacity:.9;
+    transform:scale(1.02);
+}
+
+
+.btn:disabled{
+    background:#1f2937;
+    cursor:not-allowed;
+}
+/* telegram button*/
+.telegram-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    width:100%;
+    margin:15px 0;
+    padding:15px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#229ED9,#0088cc,#0066ff);
+    background-size:200% 200%;
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:700;
+    box-shadow:0 12px 35px rgba(34,158,217,.45);
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+    animation:gradientMove 5s ease infinite;
+}
+
+.telegram-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:80%;
+    height:100%;
+    background:rgba(255,255,255,.35);
+    transform:skewX(-25deg);
+    transition:.8s;
+}
+
+.telegram-btn:hover::before{
+    left:140%;
+}
+
+.telegram-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 18px 45px rgba(34,158,217,.65);
+}
+
+.telegram-btn i{
+    font-size:24px;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* INPUT */
+
+input,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#0b1220;
+    color:white;
+    outline:none;
+}
+
+
+textarea{
+    resize:none;
+}
+
+
+/* STATUS */
+
+.status{
+    margin-top:10px;
+    font-size:13px;
+}
+
+
+.green{
+    color:#22c55e;
+}
+
+
+.red{
+    color:#ef4444;
+}
+
+
+.yellow{
+    color:#facc15;
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#fff;
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(.96);
+}
+</style>
+
+</head>
+
+<body>
+<button class="back-button" onclick="goBack()" title="Back">
+    ←
+</button>
+
+<div class="topbar">
+
+<h2>
+Task Center
+</h2>
+
+
+<div class="wallet" id="balance">
+Balance: 0 Birr
+</div>
+
+</div>
+
+
+<div class="header">
+
+<h1>
+Meta_Earn Tasks
+</h1>
+
+<p>
+Complete tasks, earn rewards, grow daily
+</p>
+
+</div>
+
+
+<div class="container">
+  <!-- TASK 1 -->
+
+<div class="card">
+
+    <div class="badge active">
+        DAILY
+    </div>
+
+    <div class="title">
+        Daily Task 1
+    </div>
+
+    <div class="desc">
+        Complete this task once every 24 hours and receive your reward.
+    </div>
+
+    <div class="reward">
+        Reward: 50 Birr
+    </div>
+
+    <button 
+        class="btn"
+        id="task1Btn"
+        onclick="completeTask(1, 't1')">
+        Complete Task
+    </button>
+
+    <div id="t1" class="status"></div>
+
+</div>
+
+
+<!-- TASK 2 -->
+
+<div class="card">
+
+    <div id="t2badge" class="badge locked">
+        CHECKING...
+    </div>
+
+    <div class="title">
+        Premium Task 2
+    </div>
+
+    <div class="desc">
+        Premium daily task controlled by admin and available based on your level.
+    </div>
+
+    <div class="reward">
+        Reward: 50 Birr
+    </div>
+
+    <button 
+        id="task2Btn"
+        class="btn"
+        onclick="completeTask(2, 't2')">
+        Complete Task
+    </button>
+
+    <div id="t2" class="status"></div>
+
+</div>
+
+
+<!-- TELEGRAM TASK -->
+
+<div class="card">
+
+    <div class="badge active">
+        TELEGRAM
+    </div>
+
+    <div class="title">
+        Telegram Growth Task
+    </div>
+
+   <div class="desc">
+    Join our official Telegram group first, then invite members and submit your work.
+</div>
+
+<a href="https://t.me/+3yb-iyCsYf8zOTQ8"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="telegram-btn">
+   <i class="fab fa-telegram-plane"></i>
+   Join Official Telegram Group
+</a>
+
+<input
+    type="text"
+    id="tgUser"
+    placeholder="Your Telegram Username">
+
+    <input
+        type="number"
+        id="tgCount"
+        placeholder="Number of members invited">
+
+    <button 
+        class="btn"
+        onclick="submitTelegram()">
+        Submit For Approval
+    </button>
+
+    <div id="tg" class="status"></div>
+
+</div>
+
+
+<!-- FEEDBACK TASK -->
+
+<div class="card">
+
+    <div class="badge active">
+        FEEDBACK
+    </div>
+
+    <div class="title">
+        Community Feedback
+    </div>
+
+    <div class="desc">
+        Share your feedback with us. You can receive rewards two times every day.
+    </div>
+
+    <div class="reward">
+        Reward: 10 Birr
+    </div>
+
+    <textarea
+        id="fbText"
+        rows="3"
+        placeholder="Write your feedback here...">
+    </textarea>
+
+    <button
+        class="btn"
+        onclick="submitFeedback()">
+        Submit Feedback
+    </button>
+
+    <div id="fb" class="status"></div>
+
+</div>
+
+</div>
+<script>
+function goBack(){
+
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
+
+        history.back();
+
+    }else{
+
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
+
+    }
+
+}
+// ===========================
+// AUTHENTICATION CHECK
+// ===========================
+
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "index.html";
+}
+
+
+// ===========================
+// LOAD USER BALANCE
+// ===========================
+
+async function loadBalance() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/tasks",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (data.success) {
+
+            document.getElementById("balance").innerHTML =
+                `Balance: ${data.user.balance} Birr`;
+
+        } else {
+
+            localStorage.clear();
+            window.location.href = "index.html";
+
+        }
+
+    } catch (error) {
+
+        console.log("Balance Error:", error);
+
+    }
+}
+
+
+// ===========================
+// LOAD TASK STATUS
+// ===========================
+
+async function loadTasks() {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/tasks",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!data.success) return;
+
+        const container = document.querySelector(".container");
+
+        // Remove previously loaded VIP tasks
+        document.querySelectorAll(".vip-task").forEach(e => e.remove());
+
+        // Display only VIP 2 to VIP 5 tasks
+        const vipTasks = data.tasks.filter(task =>
+            task.required_vip >= 2 &&
+            task.required_vip <= 5
+        );
+
+        vipTasks.forEach(task => {
+            container.innerHTML += `
+                <div class="card vip-task">
+                    <div class="badge active">
+                        VIP ${task.required_vip}
+                    </div>
+
+                    <div class="title">
+                        ${task.title}
+                    </div>
+
+                    <div class="desc">
+                        ${task.description}
+                    </div>
+
+                    <div class="reward">
+                        Reward: ${task.commission} Birr
+                    </div>
+
+                    <button
+                        class="btn"
+                        onclick="completeTask(${task.id}, 'task${task.id}')">
+                        Complete Task
+                    </button>
+
+                    <div id="task${task.id}" class="status"></div>
+                </div>
+            `;
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+// ===========================
+// COMPLETE TASKS
+// ===========================
+
+async function completeTask(id, elementId) {
+
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:5000/api/tasks/complete/${id}`,
+            {
+                method: "POST",
+
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        const status =
+            document.getElementById(elementId);
+
+
+        if (data.success) {
+
+
+            status.innerHTML =
+                `✔️ ${data.message} +${data.reward} Birr`;
+
+
+            status.className =
+                "status green";
+
+
+            // Update balance instantly
+
+            document.getElementById("balance").innerHTML =
+                `Balance: ${data.balance} Birr`;
+
+
+        } else {
+
+
+            status.innerHTML =
+                data.message;
+
+
+            status.className =
+                "status red";
+
+        }
+
+
+    } catch (error) {
+
+
+        document.getElementById(elementId).innerHTML =
+            "Server error. Try again.";
+
+
+        console.log(error);
+
+    }
+
+}
+//added code for complated tasks
+
+const completedTasks = data.completedTasks || [];
+
+data.tasks.forEach(task => {
+    const isCompleted = completedTasks.includes(task.id);
+
+    const card = document.createElement("div");
+
+    card.className = "task";
+
+    card.innerHTML = `
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <div class="reward">
+            Reward: ${task.commission} ETB
+        </div>
+        <button
+            ${isCompleted ? "disabled" : ""}
+            style="${isCompleted ? "background:#16a34a;" : ""}"
+            onclick="completeTask(${task.id}, this)">
+            ${isCompleted ? "✔ Completed" : "Complete Task"}
+        </button>
+    `;
+
+    container.appendChild(card);
+
+});
+
+document.getElementById("completedCount").textContent = completedTasks.length;
+completed = completedTasks.length;
+updateProgress();
+
+// ===========================
+// TELEGRAM SUBMIT
+// ===========================
+
+async function submitTelegram(){
+
+    const username =
+    document.getElementById("tgUser").value.trim();
+
+    const members =
+    document.getElementById("tgCount").value.trim();
+
+    const status =
+    document.getElementById("tg");
+
+    if(!username || !members){
+        status.className = "status red";
+        status.innerHTML =
+        "Please fill all Telegram information.";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/tasks/telegram-submit",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization:`Bearer ${token}`
+                },
+                body:JSON.stringify({
+                    username,
+                    members
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if(data.success){
+
+            status.className = "status yellow";
+
+            status.innerHTML =
+            "Submitted successfully. Waiting for admin approval.";
+
+            document.getElementById("tgUser").value = "";
+            document.getElementById("tgCount").value = "";
+
+        }else{
+
+            status.className = "status red";
+
+            status.innerHTML =
+            data.message || "Submission failed";
+
+        }
+
+    }catch(error){
+
+        status.className = "status red";
+
+        status.innerHTML =
+        "Server connection error.";
+
+    }
+
+}
+
+
+// ===========================
+// FEEDBACK SUBMIT
+// ===========================
+
+async function submitFeedback(){
+
+    const text =
+    document.getElementById("fbText").value.trim();
+
+    const status =
+    document.getElementById("fb");
+
+    if(!text){
+
+        status.className = "status red";
+
+        status.innerHTML =
+        "Please write your feedback.";
+
+        return;
+
+    }
+
+
+    try{
+
+        const response = await fetch(
+            "http://localhost:5000/api/tasks/feedback",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization:`Bearer ${token}`
+                },
+                body:JSON.stringify({
+                    text
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if(data.success){
+
+            status.className = "status green";
+
+            status.innerHTML =
+            "Submitted successfully. Thank you for your support.";
+
+            document.getElementById("fbText").value = "";
+
+
+            // Update balance immediately
+            if(data.balance){
+
+                document.getElementById("balance").innerHTML =
+                `Balance: ${data.balance} Birr`;
+
+            }
+
+
+            // Hide message after 1 second
+            setTimeout(() => {
+
+                status.innerHTML = "";
+
+            }, 1000);
+
+
+        }else{
+
+            status.className = "status red";
+
+            status.innerHTML =
+            data.message || "Submission failed";
+
+        }
+
+
+    }catch(error){
+
+        status.className = "status red";
+
+        status.innerHTML =
+        "Server connection error.";
+
+    }
+
+}
+
+// ===========================
+// INITIAL PAGE LOAD
+// ===========================
+
+loadBalance();
+loadTasks();
+
+</script>
+
+</body>
+
+</html>

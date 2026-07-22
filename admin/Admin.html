@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta_Earn Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+
+body{
+
+    background:
+    radial-gradient(circle at top,#0b1220,#050913);
+
+    color:white;
+    min-height:100vh;
+
+}
+
+
+/* Header */
+
+.header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 30px;
+
+    background:rgba(255,255,255,0.05);
+
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.logo{
+
+    font-size:28px;
+    font-weight:800;
+
+    color:#38bdf8;
+
+}
+
+
+.admin-name{
+
+    color:#22c55e;
+    font-weight:600;
+
+}
+
+
+/* Dashboard */
+
+.container{
+
+    padding:25px;
+
+}
+
+
+.welcome{
+
+    margin-bottom:25px;
+
+}
+
+
+.welcome h1{
+
+    font-size:30px;
+
+}
+
+
+.welcome p{
+
+    color:#94a3b8;
+
+}
+
+
+/* Cards */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:
+    rgba(255,255,255,0.06);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    box-shadow:0 0 20px rgba(37,99,235,.3);
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-7px);
+
+    box-shadow:
+    0 0 30px #2563eb;
+
+}
+
+
+.card h2{
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+}
+
+
+.card p{
+
+    color:#94a3b8;
+
+    margin-bottom:20px;
+
+}
+
+
+/* Buttons */
+
+.btn{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(135deg,#6366f1,#2563eb);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.btn:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+.footer{
+
+    text-align:center;
+
+    margin-top:40px;
+
+    color:#64748b;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<div class="logo">
+Meta_Earn ADMIN
+</div>
+
+
+<div class="admin-name">
+Administrator
+</div>
+
+
+</div>
+
+
+<div class="container">
+
+
+<div class="welcome">
+
+<h1>
+Welcome Back Admin
+</h1>
+
+<p>
+Control users, payments, tasks and system operations.
+</p>
+
+</div>
+
+
+
+<div class="cards">
+
+
+<!-- Deposits -->
+
+
+<div class="card">
+
+<h2>
+💰 Deposits
+</h2>
+
+<p>
+Approve or reject user deposits
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-deposits.html'
+">
+
+Manage Deposits
+
+</button>
+
+</div>
+
+
+
+<!-- Withdrawals -->
+
+
+<div class="card">
+
+<h2>
+🏦 Withdrawals
+</h2>
+
+<p>
+Review withdrawal requests
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-withdrawals.html'
+">
+
+Manage Withdrawals
+
+</button>
+
+</div>
+
+
+
+<!-- Users -->
+
+
+<div class="card">
+
+<h2>
+👥 Users
+</h2>
+
+<p>
+View all registered users
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-users.html'
+">
+
+Manage Users
+
+</button>
+
+</div>
+
+
+
+<!-- Tasks -->
+
+
+<div class="card">
+
+<h2>
+📋 Tasks
+</h2>
+
+<p>
+Create and control tasks
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-tasks.html'
+">
+
+Manage Tasks
+
+</button>
+
+</div>
+<div class="card">
+
+<h2>
+📋 Levels
+</h2>
+
+<p>
+aprove or reject level request
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-levels.html'
+">
+
+Manage Levels
+
+</button>
+
+</div>
+
+
+
+<!-- Profile -->
+
+
+<div class="card">
+
+<h2>
+⚙ Profile
+</h2>
+
+<p>
+Admin settings and account
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-profile.html'
+">
+
+Open Profile
+
+</button>
+
+</div>
+
+
+
+<!-- Login -->
+
+
+<div class="card">
+
+<h2>
+🔐 Login
+</h2>
+
+<p>
+Admin authentication page
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-login.html'
+">
+
+Admin Login
+
+</button>
+
+</div>
+<div class="card">
+
+<h2>
+referral
+</h2>
+
+<p>
+Manage referral programs and commissions.
+</p>
+
+<button class="btn"
+onclick="
+location.href='admin-referral.html'
+">
+
+Manage Referral
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+Meta_Earn Admin System © 2026
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

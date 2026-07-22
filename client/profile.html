@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta Earn - Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#07111f;
+    color:#fff;
+    padding-bottom:100px;
+}
+
+.container{
+    max-width:500px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:22px;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.title{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.info{
+    margin:12px 0;
+    font-size:17px;
+    color:#d1d5db;
+}
+
+.info span{
+    color:#ffffff;
+    font-weight:600;
+}
+
+h3{
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    margin-top:12px;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:18px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    color:white;
+}
+
+.save-btn{
+    background:linear-gradient(135deg,#4f46e5,#06b6d4);
+}
+
+.logout-btn{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:#07111f;
+    display:flex;
+    justify-content:space-around;
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+    text-align:center;
+    color:white;
+    cursor:pointer;
+}
+
+.active{
+    color:#06b6d4;
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#ffffff;
+text-decoration:none;
+font-size:24px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+transition:0.3s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(0.96);
+}
+
+</style>
+</head>
+
+<body>
+  <a href="javascript:history.back()" class="back-button" title="Back">
+    ←
+</a>  
+
+<div class="container">
+
+<div class="card">
+
+<div class="title">
+My Profile
+</div>
+
+<div class="info">
+Username:
+<span id="username">Loading...</span>
+</div>
+
+<div class="info">
+Email:
+<span id="email">Loading...</span>
+</div>
+
+<div class="info">
+Balance:
+ETB <span id="balance">0.00</span>
+</div>
+
+<div class="info">
+Level:
+<span id="vip">Junior</span>
+</div>
+
+<div class="info">
+Referral Code:
+<span id="referral">------</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Bank Information</h3>
+
+<input
+type="text"
+id="bankName"
+placeholder="Bank Name">
+
+<input
+type="text"
+id="bankAccount"
+placeholder="Bank Account">
+
+<button
+class="save-btn"
+onclick="saveBankInfo()">
+Save Bank Information
+</button>
+
+</div>
+
+<button
+class="logout-btn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<div class="bottom-nav">
+
+<div class="nav"
+onclick="location.href='dashboard.html'">
+🏠
+<br>
+Home
+</div>
+
+<div class="nav"
+onclick="location.href='tasks.html'">
+📦
+<br>
+Work Items
+</div>
+
+<div class="nav"
+onclick="location.href='orders.html'">
+📊
+<br>
+Orders
+</div>
+
+<div class="nav"
+onclick="location.href='wallet.html'">
+👛
+<br>
+Wallet
+</div>
+
+<div class="nav active">
+👤
+<br>
+Profile
+</div>
+
+</div>
+
+<script>
+    
+    function goBack(){
+
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
+
+        history.back();
+
+    }else{
+
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
+
+    }
+
+}
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "index.html";
+}
+
+// ================================
+// LOAD PROFILE
+// ================================
+async function loadProfile() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/users/profile",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!data.success) {
+            alert("Session expired. Please login again.");
+            localStorage.clear();
+            window.location.href = "index.html";
+            return;
+        }
+
+        const user = data.user;
+
+        document.getElementById("username").innerText =
+            user.username || "-";
+
+        document.getElementById("email").innerText =
+            user.email || "-";
+
+        document.getElementById("balance").innerText =
+            Number(user.balance || 0).toFixed(2);
+
+        document.getElementById("vip").innerText =
+            user.vip_level || 1;
+
+        document.getElementById("referral").innerText =
+            user.referral_code || "-";
+
+        document.getElementById("bankName").value =
+            user.bank_name || "";
+
+        document.getElementById("bankAccount").value =
+            user.bank_account || "";
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        alert("Failed to load profile.");
+
+    }
+
+}
+
+
+// ================================
+// SAVE BANK INFORMATION
+// ================================
+async function saveBankInfo() {
+
+    const bank_name =
+        document.getElementById("bankName").value.trim();
+
+    const bank_account =
+        document.getElementById("bankAccount").value.trim();
+
+    if (bank_name === "" || bank_account === "") {
+
+        alert("Please enter bank information.");
+
+        return;
+
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/users/bank",
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+
+                body: JSON.stringify({
+                    bank_name,
+                    bank_account
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        if (data.success) {
+            loadProfile();
+        }
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        alert("Server error.");
+
+    }
+
+}
+
+
+// ================================
+// LOGOUT
+// ================================
+function logout() {
+
+    if (confirm("Are you sure you want to logout?")) {
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        window.location.href = "index.html";
+
+    }
+
+}
+
+
+// ================================
+// START PAGE
+// ================================
+loadProfile();
+
+</script>
+</body>
+</html>
