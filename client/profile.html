@@ -251,22 +251,8 @@ Profile
 </div>
 
 <script>
-    
-    function goBack(){
+const API_URL = "https://meta-earn-api.onrender.com"; // <-- Replace with your actual backend URL
 
-    // If there is a previous page
-    if(document.referrer && history.length > 1){
-
-        history.back();
-
-    }else{
-
-        // Change this to your dashboard or home page
-        window.location.href = "dashboard.html";
-
-    }
-
-}
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -276,24 +262,26 @@ if (!token) {
 // ================================
 // LOAD PROFILE
 // ================================
-    const API_URL = "https://meta-earn-api.onrender.com";
 async function loadProfile() {
 
     try {
 
-const response = await fetch(
-    `${API_URL}/api/users/profile`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
+        const response = await fetch(`${API_URL}/api/users/profile`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             }
-        );
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to load profile");
+        }
 
         const data = await response.json();
 
         if (!data.success) {
-            alert("Session expired. Please login again.");
+            alert(data.message || "Session expired. Please login again.");
             localStorage.clear();
             window.location.href = "index.html";
             return;
@@ -301,77 +289,54 @@ const response = await fetch(
 
         const user = data.user;
 
-        document.getElementById("username").innerText =
-            user.username || "-";
+        document.getElementById("username").textContent = user.username || "-";
+        document.getElementById("email").textContent = user.email || "-";
+        document.getElementById("balance").textContent = Number(user.balance || 0).toFixed(2);
+        document.getElementById("vip").textContent = user.vip_level || "Junior";
+        document.getElementById("referral").textContent = user.referral_code || "-";
 
-        document.getElementById("email").innerText =
-            user.email || "-";
+        document.getElementById("bankName").value = user.bank_name || "";
+        document.getElementById("bankAccount").value = user.bank_account || "";
 
-        document.getElementById("balance").innerText =
-            Number(user.balance || 0).toFixed(2);
+    } catch (err) {
 
-        document.getElementById("vip").innerText =
-            user.vip_level || 1;
-
-        document.getElementById("referral").innerText =
-            user.referral_code || "-";
-
-        document.getElementById("bankName").value =
-            user.bank_name || "";
-
-        document.getElementById("bankAccount").value =
-            user.bank_account || "";
-
-    }
-
-    catch (error) {
-
-        console.log(error);
-
+        console.error(err);
         alert("Failed to load profile.");
 
     }
 
 }
 
-
 // ================================
-// SAVE BANK INFORMATION
+// SAVE BANK INFO
 // ================================
 async function saveBankInfo() {
 
-    const bank_name =
-        document.getElementById("bankName").value.trim();
+    const bank_name = document.getElementById("bankName").value.trim();
+    const bank_account = document.getElementById("bankAccount").value.trim();
 
-    const bank_account =
-        document.getElementById("bankAccount").value.trim();
-
-    if (bank_name === "" || bank_account === "") {
-
+    if (!bank_name || !bank_account) {
         alert("Please enter bank information.");
-
         return;
-
     }
 
     try {
 
-        const response = await fetch(
-            ${API_URL}/api/users/bank",
-            {
-                method: "PUT",
+        const response = await fetch(`${API_URL}/api/users/bank`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                bank_name,
+                bank_account
+            })
+        });
 
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                },
-
-                body: JSON.stringify({
-                    bank_name,
-                    bank_account
-                })
-            }
-        );
+        if (!response.ok) {
+            throw new Error("Failed to save bank information");
+        }
 
         const data = await response.json();
 
@@ -381,18 +346,14 @@ async function saveBankInfo() {
             loadProfile();
         }
 
-    }
+    } catch (err) {
 
-    catch (error) {
-
-        console.log(error);
-
+        console.error(err);
         alert("Server error.");
 
     }
 
 }
-
 
 // ================================
 // LOGOUT
@@ -410,12 +371,7 @@ function logout() {
 
 }
 
-
-// ================================
-// START PAGE
-// ================================
 loadProfile();
-
 </script>
 </body>
 </html>
