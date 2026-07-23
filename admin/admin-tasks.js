@@ -1,4 +1,8 @@
-const API = "https://meta-earn-14.onrender.com:5000/api/tasks";
+// ======================================
+// META EARN ADMIN TASKS
+// ======================================
+
+const API = "https://meta-earn-14.onrender.com/api/tasks";
 const token = localStorage.getItem("adminToken");
 
 if (!token) {
@@ -10,11 +14,12 @@ async function api(url, options = {}) {
 
     options.headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         ...(options.headers || {})
     };
 
     const response = await fetch(url, options);
+
     const data = await response.json();
 
     if (!response.ok) {
