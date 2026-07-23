@@ -20,7 +20,7 @@ const rowsPerPage = 10;
 
 async function api(url) {
 
-    const res = await fetch("http://localhost:5000" + url, {
+    const res = await fetch("https://meta-earn-14.onrender.com" + url, {
         headers: {
             "Authorization": "Bearer " + token,
             "Content-Type": "application/json"
