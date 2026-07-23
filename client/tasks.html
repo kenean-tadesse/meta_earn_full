@@ -524,7 +524,7 @@ async function loadBalance() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/tasks",
+            "https://meta-earn-14.onrender.com/api/tasks",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -563,7 +563,7 @@ async function loadBalance() {
 async function loadTasks() {
     try {
         const response = await fetch(
-            "http://localhost:5000/api/tasks",
+            "https://meta-earn-14.onrender.com/api/tasks",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -632,7 +632,7 @@ async function completeTask(id, elementId) {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/tasks/complete/${id}`,
+            `https://meta-earn-14.onrender.com/api/tasks/complete/${id}`,
             {
                 method: "POST",
 
@@ -750,7 +750,7 @@ async function submitTelegram(){
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/tasks/telegram-submit",
+            "https://meta-earn-14.onrender.com/api/tasks/telegram-submit",
             {
                 method:"POST",
                 headers:{
@@ -824,7 +824,7 @@ async function submitFeedback(){
     try{
 
         const response = await fetch(
-            "http://localhost:5000/api/tasks/feedback",
+            "https://meta-earn-14.onrender.com/api/tasks/feedback",
             {
                 method:"POST",
                 headers:{
