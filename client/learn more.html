@@ -3,174 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meta Earn - Membership Levels</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>MetaEarn Growth Journey</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#081120;
-min-height:100vh;
-color:#fff;
-overflow-x:hidden;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
 }
 
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
-background:
-radial-gradient(circle at top left,#4f46e5 0%,transparent 35%),
-radial-gradient(circle at top right,#06b6d4 0%,transparent 35%),
-#081120;
+/* SECTION */
+.growth-section{
+    min-height:100vh;
+    padding:120px 8%;
+    text-align:center;
+    background:
+    radial-gradient(circle at top,#00d4ff22,transparent 40%),
+    linear-gradient(180deg,#050816,#0a1128);
 }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
+.growth-title{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#00e5ff,#00ffcc);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
-.header{
-text-align:center;
-margin-top:20px;
-margin-bottom:30px;
+.growth-subtitle{
+    max-width:900px;
+    margin:auto;
+    font-size:1.3rem;
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:80px;
 }
 
-.logo{
-font-size:38px;
-font-weight:800;
-background:linear-gradient(90deg,#06b6d4,#6366f1);
-  background-clip:text;
+/* TIMELINE */
+.timeline{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
 }
 
-.subtitle{
-opacity:.7;
-margin-top:10px;
+.card{
+    width:240px;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.05);
+    -webkit-backdrop-filter:blur(15px); /* Safari support */
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.08);
+    transform:translateY(100px);
+    opacity:0;
+    transition:1s;
 }
 
-.status-card{
-background:rgba(255,255,255,.08);
--webkit-backdrop-filter:blur(20px);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.12);
-border-radius:25px;
-padding:20px;
-margin-bottom:30px;
-text-align:center;
+.card.show{
+    transform:translateY(0);
+    opacity:1;
 }
 
-.status{
-display:inline-block;
-padding:10px 20px;
-border-radius:30px;
-background:#f59e0b;
-color:#fff;
-font-weight:700;
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(0,229,255,.3);
 }
 
-.level-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+.card .icon{
+    font-size:55px;
+    margin-bottom:20px;
 }
 
-.level-card{
-background:rgba(255,255,255,.07);
--webkit-backdrop-filter:blur(20px);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.12);
-border-radius:30px;
-padding:25px;
-transition:.3s;
-position:relative;
-overflow:hidden;
+.card h3{
+    color:#00e5ff;
+    margin-bottom:15px;
 }
 
-.level-card:hover{
-transform:translateY(-8px);
+.card p{
+    color:#cbd5e1;
+    line-height:1.7;
 }
 
-.level-card::before{
-content:'';
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:5px;
+/* BOTTOM SECTION */
+.mindset{
+    padding:150px 10%;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,#00d4ff15,transparent 60%),
+    linear-gradient(180deg,#0a1128,#050816);
 }
 
-.vip1::before{background:#22c55e;}
-.vip2::before{background:#3b82f6;}
-.vip3::before{background:#8b5cf6;}
-.vip4::before{background:#f59e0b;}
-.vip5::before{background:#ef4444;}
-
-.level-name{
-font-size:28px;
-font-weight:800;
-margin-bottom:15px;
+.mindset h2{
+    font-size:4rem;
+    margin-bottom:50px;
+    color:#00e5ff;
 }
 
-.level-price{
-font-size:42px;
-font-weight:800;
-margin-bottom:10px;
+.mindset p{
+    font-size:1.35rem;
+    line-height:2.2;
+    color:#dbeafe;
+    max-width:1100px;
+    margin:25px auto;
 }
 
-.currency{
-font-size:18px;
-opacity:.8;
+.highlight{
+    color:#00e5ff;
+    font-weight:700;
 }
 
-.feature{
-padding:10px 0;
-border-bottom:1px solid rgba(255,255,255,.08);
-font-size:15px;
+.quote{
+    margin-top:70px;
+    font-size:2.2rem;
+    font-weight:800;
+    color:white;
+    animation:glow 2s infinite alternate;
 }
 
-.feature:last-child{
-border:none;
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #00e5ff;
+    }
+    to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff,
+        0 0 60px #00e5ff;
+    }
 }
 
-.btn{
-width:100%;
-margin-top:20px;
-padding:15px;
-border:none;
-border-radius:16px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
-background:linear-gradient(90deg,#6366f1,#06b6d4);
-color:white;
+/* BUTTON */
+.cta{
+    margin-top:60px;
 }
 
-.badge{
-position:absolute;
-top:15px;
-right:15px;
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:700;
-background:rgba(255,255,255,.15);
+.cta button{
+    padding:18px 50px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#00e5ff,#00ffcc);
+    color:#001b2e;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.4s;
 }
 
-.footer{
-text-align:center;
-margin-top:40px;
-opacity:.6;
-font-size:14px;
+.cta button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(0,229,255,.5);
+}
+
+@media(max-width:768px){
+
+.growth-title,
+.mindset h2{
+    font-size:2.5rem;
+}
+
+.mindset p{
+    font-size:1.1rem;
+}
+
+.quote{
+    font-size:1.6rem;
+}
 }
 .back-button{
 position:fixed;
@@ -203,125 +210,137 @@ box-shadow:0 12px 25px rgba(0,0,0,.35);
 .back-button:active{
 transform:scale(.96);
 }
+
 </style>
 </head>
-
 <body>
-<button class="back-button" onclick="goBack()" title="Back">
+
+    <button class="back-button" onclick="goBack()" title="Back">
     ←
 </button>
+<section class="growth-section">
 
-<div class="bg"></div>
+<h1 class="growth-title">Your Journey To Greater Success</h1>
 
-<div class="container">
+<p class="growth-subtitle">
+Every achievement begins with a decision.
+A decision to learn, improve, stay consistent,
+and become better than yesterday.
+MetaEarn is built for people who refuse to settle for average.
+</p>
 
-<div class="header">
-<div class="logo">META EARN</div>
-<div class="subtitle">
-Premium Membership Levels
-</div>
-</div>
+<div class="timeline">
 
-<div class="status-card">
-<h2>Account Status</h2>
-<br>
-<span class="status">
-Waiting For Admin Approval
-</span>
-</div>
-<div id="accountStatus"></div>
-
-<h2>
-Current Level:
-<span id="currentLevel">
-VIP 1
-</span>
-</h2>
-
-<div id="levelsContainer"></div>
-
-<div class="level-grid">
-
-<div class="level-card vip1">
-<div class="badge">STARTER</div>
-<div class="level-name">VIP 1</div>
-<div class="level-price">2,000 <span class="currency">ETB</span></div>
-
-<div class="feature">5 Daily Activities</div>
-<div class="feature">Basic Dashboard Access</div>
-<div class="feature">Community Support</div>
-<div class="feature">Account Verification</div>
-
-<button class="btn" onclick="selectVIP(1)">Select VIP 1</button>
+<div class="card">
+<div class="icon">🌱</div>
+<h3>Start</h3>
+<p>Every expert was once a beginner. Every success story started with a first step.</p>
 </div>
 
-<div class="level-card vip2">
-<div class="badge">POPULAR</div>
-<div class="level-name">VIP 2</div>
-<div class="level-price">5,000 <span class="currency">ETB</span></div>
+<div class="card">
+<div class="icon">📚</div>
+<h3>Learn</h3>
+<p>Knowledge is the foundation of growth. Learn continuously and opportunities multiply.</p>
+</div>
 
-<div class="feature">10 Daily Activities</div>
-<div class="feature">Priority Support</div>
-<div class="feature">Advanced Dashboard</div>
-<div class="feature">Referral Access</div>
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Improve</h3>
+<p>Small improvements repeated daily create extraordinary transformation over time.</p>
+</div>
 
-<button id="vip2Btn" class="btn" onclick="selectVIP(2)">
-Select VIP 2
+<div class="card">
+<div class="icon">🚀</div>
+<h3>Grow</h3>
+<p>Growth begins when comfort ends. Push boundaries and unlock new possibilities.</p>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>Succeed</h3>
+<p>Success is the natural result of patience, effort, learning and consistency.</p>
+</div>
+
+</div>
+
+</section>
+<section class="mindset">
+
+<h2>The Power Of Continuous Growth</h2>
+
+<p>
+Most people wait for the perfect moment before taking action.
+The truth is that the perfect moment never arrives.
+Growth belongs to those who start before they feel ready,
+learn while moving forward, and continue despite challenges.
+</p>
+
+<p>
+The difference between those who remain where they are and those who achieve remarkable success
+is rarely intelligence, luck, or talent.
+The real difference is <span class="highlight">consistency</span>.
+The willingness to show up every day,
+learn something new,
+improve one small skill,
+and take one step closer to a better future.
+</p>
+
+<p>
+At MetaEarn we believe that every task completed,
+every lesson learned,
+every connection built,
+and every challenge overcome
+creates momentum for greater achievements.
+Small actions may seem insignificant today,
+but over weeks, months, and years they compound into life-changing results.
+</p>
+
+<p>
+An open mind creates new opportunities.
+A growth mindset transforms obstacles into lessons.
+Discipline transforms goals into accomplishments.
+Patience transforms effort into success.
+And consistency transforms ordinary people into extraordinary achievers.
+</p>
+
+<p>
+The future belongs to people who never stop learning.
+People who embrace change.
+People who keep moving forward when progress feels slow.
+People who understand that greatness is built one day at a time.
+</p>
+
+<p>
+Your current situation does not define your future.
+Your background does not limit your potential.
+Your mistakes do not determine your destiny.
+What matters most is your willingness to grow,
+adapt,
+learn,
+and keep going.
+</p>
+
+<p>
+Every day is a new opportunity to improve.
+Every challenge is an opportunity to become stronger.
+Every lesson is an opportunity to become wiser.
+And every action you take today is an investment in the person you will become tomorrow.
+</p>
+
+<div class="quote">
+"Success Is Not Built In A Day. It Is Built Daily."
+</div>
+
+<div class="cta">
+<button onclick="window.location.href='index.html'">
+Start Your Journey
 </button>
 </div>
 
-<div class="level-card vip3">
-<div class="badge">PRO</div>
-<div class="level-name">VIP 3</div>
-<div class="level-price">10,000 <span class="currency">ETB</span></div>
-<div class="feature">20 Daily Activities</div>
-<div class="feature">Premium Support</div>
-<div class="feature">Analytics Access</div>
-<div class="feature">Priority Processing</div>
+</section>
 
-<button id="vip3Btn" class="btn" onclick="selectVIP(3)">
-Select VIP 3
-</button>
-</div>
-
-<div class="level-card vip4">
-<div class="badge">ELITE</div>
-<div class="level-name">VIP 4</div>
-<div class="level-price">20,000 <span class="currency">ETB</span></div>
-
-<div class="feature">40 Daily Activities</div>
-<div class="feature">Dedicated Support</div>
-<div class="feature">Advanced Analytics</div>
-<div class="feature">Elite Membership</div>
-
-<button id="vip4Btn" class="btn" onclick="selectVIP(4)">
-Select VIP 4
-</button>
-</div>
-
-<div class="level-card vip5">
-<div class="badge">PREMIUM</div>
-<div class="level-name">VIP 5</div>
-<div class="level-price">50,000 <span class="currency">ETB</span></div>
-
-<div class="feature">80 Daily Activities</div>
-<div class="feature">VIP Support</div>
-<div class="feature">Full Platform Access</div>
-<div class="feature">Highest Membership Tier</div>
-
-<button id="vip5Btn" class="btn" onclick="selectVIP(5)">
-Select VIP 5
-</button>
-</div>
-
-</div>
-
-<div class="footer">
-© 2026 Meta Earn. All Rights Reserved.
-</div>
-
-</div>
 <script>
+
     function goBack(){
 
     // If there is a previous page
@@ -337,178 +356,21 @@ Select VIP 5
     }
 
 }
-const API = "https://meta-earn-14.onrender.com/api/levels";
+const cards=document.querySelectorAll('.card');
 
-function getButton(level){
-    return document.getElementById("vip" + level + "Btn");
+window.addEventListener('scroll',()=>{
+
+cards.forEach(card=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top < window.innerHeight-100){
+card.classList.add('show');
 }
 
-async function selectVIP(vipId){
+});
 
-    const userId = localStorage.getItem("userId");
-
-    try{
-
-        // Check current user status
-        const check = await fetch(API + "/user/" + userId);
-        const userData = await check.json();
-
-        if(!userData.success){
-            alert("User not found.");
-            return;
-        }
-
-        // Already approved
-       if(userData.user.membership_level_id == vipId){
-
-    switch(vipId){
-
-        case 1:
-            window.location.href="tasks.html";
-            break;
-
-        case 2:
-            window.location.href="level2.html";
-            break;
-
-        case 3:
-            window.location.href="level3.html";
-            break;
-
-        case 4:
-            window.location.href="level4.html";
-            break;
-
-        case 5:
-            window.location.href="level5.html";
-            break;
-
-    }
-
-    return;
-}
-
-        // Already waiting
-        if(userData.user.requested_level == vipId){
-            alert("Your request is waiting for admin approval.");
-            return;
-        }
-
-        // Send request
-        const response = await fetch(API + "/request",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                userId:userId,
-                levelId:vipId
-            })
-        });
-
-        const data = await response.json();
-
-        if(data.success){
-            alert("Request submitted successfully.");
-            loadUserLevel();
-        }else{
-            alert(data.message);
-        }
-
-    }catch(err){
-        console.log(err);
-        alert("Server error.");
-    }
-}
-async function loadUserLevel() {
-
-    const userId = localStorage.getItem("userId");
-
-    try {
-
-        const response = await fetch(API + "/user/" + userId);
-        const data = await response.json();
-
-        if (!data.success) return;
-
-        const currentLevel = parseInt(data.user.membership_level_id);
-        const requestedLevel = data.user.requested_level;
-
-        document.getElementById("currentLevel").innerHTML = "VIP " + currentLevel;
-        
-
-        // Reset all buttons
-        for (let i = 1; i <= 5; i++) {
-
-            const btn = getButton(i);
-
-            btn.disabled = false;
-            btn.onclick = () => selectVIP(i);
-            btn.innerHTML = "Select VIP " + i;
-            btn.style.background =
-                "linear-gradient(90deg,#6366f1,#06b6d4)";
-        }
-
-        // Waiting for approval
-        if (requestedLevel != null) {
-
-            const btn = getButton(requestedLevel);
-
-            if (btn) {
-                btn.innerHTML = "🟡 Waiting Approval";
-                btn.disabled = true;
-                btn.style.background = "#f59e0b";
-            }
-
-            document.querySelector(".status").innerHTML =
-                "🟡 Waiting For Admin Approval";
-
-            document.querySelector(".status").style.background =
-                "#f59e0b";
-        }
-        else {
-
-            document.querySelector(".status").innerHTML =
-                "🟢 Account Active";
-
-            document.querySelector(".status").style.background =
-                "#16a34a";
-        }
-
-        // Approved VIP
-        const currentBtn = getButton(currentLevel);
-
-        if (currentBtn) {
-
-            currentBtn.innerHTML = "🚀 Open VIP " + currentLevel;
-
-            currentBtn.disabled = false;
-
-            currentBtn.style.background = "#2563eb";
-
-            currentBtn.onclick = function () {
-
-                window.location.href =
-                    "tasks.html?vip=" + currentLevel;
-
-            };
-        }
-
-    } catch (err) {
-
-        console.log(err);
-
-    }
-
-}
-
-window.onload = function () {
-
-    loadUserLevel();
-
-    setInterval(loadUserLevel, 40000);
-
-};
+});
 </script>
 
 </body>
