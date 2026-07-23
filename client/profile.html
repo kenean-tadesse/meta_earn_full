@@ -276,12 +276,13 @@ if (!token) {
 // ================================
 // LOAD PROFILE
 // ================================
+    const API_URL = "https://meta-earn-api.onrender.com";
 async function loadProfile() {
 
     try {
 
-        const response = await fetch(
-            "http://localhost:5000/api/users/profile",
+const response = await fetch(
+    `${API_URL}/api/users/profile`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
