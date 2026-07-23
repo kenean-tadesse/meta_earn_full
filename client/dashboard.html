@@ -733,10 +733,12 @@ if (!token) {
     window.location.href = "index.html";
 }
 
+const API = "https://meta-earn-14.onrender.com";
+
 async function loadProfile() {
     try {
         const response = await fetch(
-            "http://localhost:5000/api/users/profile",
+            `${API}/api/users/profile`,
             {
                 method: "GET",
                 headers: {
