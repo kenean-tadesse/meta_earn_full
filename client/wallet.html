@@ -236,7 +236,7 @@ try{
 
 const response =
 await fetch(
-"http://localhost:5000/api/users/profile",
+"https://meta-earn-14.onrender.com/api/users/profile",
 {
 headers:{
 Authorization: `Bearer ${token}`
@@ -272,7 +272,7 @@ async function depositMoney() {
     }
 
     try {
-        const response = await fetch("http://localhost:5000/api/deposits", {
+        const response = await fetch("https://meta-earn-14.onrender.com/api/deposits", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -323,7 +323,7 @@ async function withdrawMoney() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/withdrawals",
+            "https://meta-earn-14.onrender.com/api/withdrawals",
             {
                 method: "POST",
                 headers: {
@@ -374,7 +374,7 @@ async function checkWithdrawalStatus() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/withdrawals/history",
+            "https://meta-earn-14.onrender.com/api/withdrawals/history",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
