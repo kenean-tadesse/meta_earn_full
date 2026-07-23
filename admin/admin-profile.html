@@ -31,6 +31,7 @@ body{
     width:100%;
     max-width:500px;
     background:rgba(255,255,255,0.06);
+    -webkit-backdrop-filter:blur(15px);
     backdrop-filter:blur(15px);
     border-radius:20px;
     padding:30px;
@@ -180,7 +181,7 @@ async function loadProfile(){
 try{
 
 const response = await fetch(
-"http://localhost:5000/api/users/profile",
+"https://meta-earn-14.onrender.com/api/users/profile",
 {
 headers:{
 Authorization:`Bearer ${token}`
@@ -245,7 +246,7 @@ return;
 
 
 const response = await fetch(
-"http://localhost:5000/api/users/change-password",
+"https://meta-earn-14.onrender.com/api/users/change-password",
 {
 
 method:"PUT",
