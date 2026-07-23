@@ -6,8 +6,8 @@
 // API CONFIGURATION
 // ================================
 
-const API = "http://localhost:5000/api/admin/users";
-const ADMIN_API = "http://localhost:5000/api/admin";
+const API = "https://meta-earn-14.onrender.com/api/admin/users";
+const ADMIN_API = "https://meta-earn-14.onrender.com/api/admin";
 
 const token = localStorage.getItem("token");
 
