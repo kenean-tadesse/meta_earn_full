@@ -356,7 +356,7 @@ async function loadWithdrawals() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/withdrawals",
+            "https://meta-earn-14.onrender.com/api/withdrawals",
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -527,7 +527,7 @@ return;
 
 const response=await fetch(
 
-`http://localhost:5000/api/withdrawals/approve/${id}`,
+`https://meta-earn-14.onrender.com/api/withdrawals/approve/${id}`,
 
 {
 
@@ -562,7 +562,7 @@ return;
 
 const response=await fetch(
 
-`http://localhost:5000/api/withdrawals/reject/${id}`,
+`https://meta-earn-14.onrender.com/api/withdrawals/reject/${id}`,
 
 {
 
