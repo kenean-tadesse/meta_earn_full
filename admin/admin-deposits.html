@@ -138,7 +138,7 @@ async function loadDeposits(){
 try{
 
 const response = await fetch(
-"http://localhost:5000/api/deposits",
+"https://meta-earn-14.onrender.com/api/deposits",
 {
     headers: {
         Authorization: `Bearer ${token}`
@@ -216,7 +216,7 @@ async function approveDeposit(id){
 
 
 const response = await fetch(
-`http://localhost:5000/api/deposits/approve/${id}`,
+`https://meta-earn-14.onrender.com/api/deposits/approve/${id}`,
 {
 
 method:"PUT",
