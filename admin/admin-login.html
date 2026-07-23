@@ -205,7 +205,7 @@ try{
 
 
 const response = await fetch(
-"http://localhost:5000/api/auth/login",
+"https://meta-earn-14.onrender.com/api/auth/login",
 {
 
 method:"POST",
@@ -264,7 +264,49 @@ window.location.href =
 
 },1000);
 
+//successfull login, redirect to admin dashboard
+if(data.success){
 
+
+    if(data.user.role !== "admin"){
+
+        message.className="red";
+
+        message.innerHTML =
+        "Access denied. Admin only.";
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "adminToken",
+        data.token
+    );
+
+
+    localStorage.setItem(
+        "adminUser",
+        JSON.stringify(data.user)
+    );
+
+
+    message.className="green";
+
+    message.innerHTML =
+    "Login successful";
+
+
+    setTimeout(()=>{
+
+        window.location.href =
+        "admin-admin.html";
+
+    },1000);
+
+
+}
 
 }else{
 
