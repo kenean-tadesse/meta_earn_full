@@ -19,7 +19,7 @@ const rowsPerPage = 10;
 // API
 // ==========================================
 
-const API = "http://localhost:5000";
+const API = "https://meta-earn-14.onrender.com";
 
 async function api(url, method = "GET", body = null) {
     const options = {
