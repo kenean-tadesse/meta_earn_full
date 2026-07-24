@@ -3,9 +3,9 @@
 // admin-referral.js
 // ==========================================
 
-const token = localStorage.getItem("token");
+const adminToken = localStorage.getItem("adminToken");
 
-if (!token) {
+if (!adminToken) {
     window.location.href = "admin-login.html";
 }
 
@@ -26,7 +26,7 @@ async function api(url, method = "GET", body = null) {
         method,
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + adminToken
         }
     };
 
