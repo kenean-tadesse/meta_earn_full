@@ -9,8 +9,6 @@
 const API = "https://meta-earn-14.onrender.com/api/admin/users";
 const ADMIN_API = "https://meta-earn-14.onrender.com/api/admin";
 
-const token = localStorage.getItem("token");
-
 let users = [];
 
 
@@ -18,12 +16,10 @@ let users = [];
 // CHECK ADMIN TOKEN
 // ================================
 
-if (!token) {
+const token = localStorage.getItem("adminToken");
 
-    alert("Admin session expired. Please login again.");
-
-    window.location.href = "login.html";
-
+if (!adminToken) {
+    window.location.href = "admin-login.html";
 }
 
 
@@ -41,7 +37,7 @@ async function loadUsers() {
 
             headers: {
 
-                "Authorization": "Bearer " + token,
+                "Authorization": "Bearer " + adminToken,
 
                 "Content-Type": "application/json"
 
