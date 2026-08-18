@@ -8,7 +8,9 @@
 
 <title>Meta Earn | VIP Level 4</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -28,11 +30,18 @@ overflow-x:hidden;
 body::before{
 content:"";
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 background:
-radial-gradient(circle at top left,#f59e0b 0%,transparent 40%),
-radial-gradient(circle at bottom right,#eab308 0%,transparent 40%);
+radial-gradient(
+circle at top left,
+#f59e0b 0%,
+transparent 40%
+),
+radial-gradient(
+circle at bottom right,
+#eab308 0%,
+transparent 40%
+);
 z-index:-1;
 }
 
@@ -48,14 +57,28 @@ justify-content:space-between;
 align-items:center;
 margin-bottom:30px;
 flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
 font-size:36px;
 font-weight:900;
-background:linear-gradient(90deg,#fbbf24,#fde68a);
+background:
+linear-gradient(
+90deg,
+#fbbf24,
+#fde68a
+);
 -webkit-background-clip:text;
+background-clip:text;
 -webkit-text-fill-color:transparent;
+}
+
+#vipText{
+margin-top:6px;
+font-size:15px;
+font-weight:600;
+color:#fef3c7;
 }
 
 .logoutBtn{
@@ -66,17 +89,27 @@ padding:12px 20px;
 border-radius:12px;
 cursor:pointer;
 font-weight:bold;
+transition:.2s;
+}
+
+.logoutBtn:hover{
+background:#b91c1c;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(220px,1fr)
+);
 gap:20px;
 margin-bottom:30px;
 }
 
 .card{
 background:rgba(255,255,255,.06);
+-webkit-backdrop-filter:blur(20px);
 backdrop-filter:blur(20px);
 padding:25px;
 border-radius:20px;
@@ -113,6 +146,10 @@ border-radius:20px;
 margin-bottom:30px;
 }
 
+.progressBox h2{
+margin-bottom:5px;
+}
+
 .progress{
 height:18px;
 background:#222;
@@ -124,8 +161,19 @@ margin-top:15px;
 .progressFill{
 width:0%;
 height:100%;
-background:linear-gradient(90deg,#f59e0b,#fde047);
+background:
+linear-gradient(
+90deg,
+#f59e0b,
+#fde047
+);
 transition:.5s;
+}
+
+.progressText{
+margin-top:10px;
+font-size:14px;
+color:#d1d5db;
 }
 
 .sectionTitle{
@@ -136,7 +184,11 @@ margin-bottom:20px;
 
 .taskList{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(320px,1fr)
+);
 gap:20px;
 }
 
@@ -145,6 +197,11 @@ background:rgba(255,255,255,.06);
 padding:20px;
 border-radius:20px;
 border:1px solid rgba(255,255,255,.08);
+transition:.3s;
+}
+
+.task:hover{
+transform:translateY(-5px);
 }
 
 .task h3{
@@ -154,6 +211,7 @@ margin-bottom:10px;
 .task p{
 opacity:.75;
 margin-bottom:15px;
+line-height:1.5;
 }
 
 .reward{
@@ -170,15 +228,61 @@ border-radius:12px;
 cursor:pointer;
 font-size:16px;
 font-weight:bold;
-background:linear-gradient(90deg,#f59e0b,#facc15);
+background:
+linear-gradient(
+90deg,
+#f59e0b,
+#facc15
+);
 color:#111;
+transition:.2s;
+}
+
+.task button:hover:not(:disabled){
+opacity:.9;
+transform:translateY(-1px);
+}
+
+.task button:disabled{
+cursor:not-allowed;
+opacity:.8;
+}
+
+.completedButton{
+background:#16a34a !important;
+color:#fff !important;
+}
+
+.loading{
+text-align:center;
+padding:30px;
+color:#d1d5db;
+}
+
+.errorBox{
+background:rgba(220,38,38,.15);
+border:1px solid rgba(248,113,113,.4);
+padding:20px;
+border-radius:15px;
+color:#fecaca;
+text-align:center;
+}
+
+.emptyBox{
+background:rgba(255,255,255,.06);
+padding:30px;
+border-radius:15px;
+text-align:center;
+color:#d1d5db;
 }
 
 .footer{
 text-align:center;
 margin-top:50px;
 opacity:.6;
+padding-bottom:25px;
 }
+
 .back-button{
 position:fixed;
 top:20px;
@@ -188,13 +292,18 @@ height:50px;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#2563eb,#06b6d4);
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#06b6d4
+);
 color:#fff;
-text-decoration:none;
 font-size:26px;
 font-weight:bold;
 border-radius:50%;
-box-shadow:0 8px 20px rgba(0,0,0,.25);
+box-shadow:
+0 8px 20px rgba(0,0,0,.25);
 cursor:pointer;
 z-index:9999;
 border:none;
@@ -203,286 +312,827 @@ transition:.25s;
 }
 
 .back-button:hover{
-background:linear-gradient(135deg,#1d4ed8,#0891b2);
-box-shadow:0 12px 25px rgba(0,0,0,.35);
+background:
+linear-gradient(
+135deg,
+#1d4ed8,
+#0891b2
+);
+box-shadow:
+0 12px 25px rgba(0,0,0,.35);
 }
 
 .back-button:active{
 transform:scale(.96);
 }
+
+@media(max-width:600px){
+
+.container{
+padding:15px;
+padding-top:85px;
+}
+
+.logo{
+font-size:28px;
+}
+
+.sectionTitle{
+font-size:24px;
+}
+
+.taskList{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 
 </head>
 
+
 <body>
 
-    <button class="back-button" onclick="goBack()" title="Back">
-    ←
+
+<!-- BACK BUTTON -->
+
+<button
+class="back-button"
+onclick="goBack()"
+title="Back"
+aria-label="Go back"
+>
+←
 </button>
+
+
 <div class="container">
+
+
+<!-- HEADER -->
 
 <div class="header">
 
 <div>
 
 <div class="logo">
-
 META EARN
-
 </div>
 
 <div id="vipText">
-
 VIP Level 4
-
 </div>
 
 </div>
 
-<button class="logoutBtn" onclick="logout()">
 
+<button
+class="logoutBtn"
+onclick="logout()"
+>
 Logout
-
 </button>
 
 </div>
 
+
+<!-- CARDS -->
+
 <div class="cards">
+
+
+<!-- WALLET -->
 
 <div class="card">
 
 <div class="title">
-
 Wallet Balance
-
 </div>
 
 <div class="value green">
 
-<span id="balance">0.00</span> ETB
+<span id="balance">
+0.00
+</span>
+
+ETB
 
 </div>
 
 </div>
+
+
+<!-- VIP LEVEL -->
 
 <div class="card">
 
 <div class="title">
-
 VIP Level
-
 </div>
 
-<div class="value blue" id="vipLevel">
-
+<div
+class="value blue"
+id="vipLevel"
+>
 4
-
 </div>
 
 </div>
+
+
+<!-- COMPLETED -->
 
 <div class="card">
 
 <div class="title">
-
 Completed Today
-
 </div>
 
 <div class="value gold">
 
-<span id="completedCount">0</span>
+<span id="completedCount">
+0
+</span>
 
 </div>
 
 </div>
+
+
+<!-- AVAILABLE -->
 
 <div class="card">
 
 <div class="title">
-
 Available Tasks
-
 </div>
 
 <div class="value">
 
-<span id="taskCount">0</span>
+<span id="taskCount">
+0
+</span>
 
 </div>
 
 </div>
 
+
 </div>
+
+
+<!-- PROGRESS -->
 
 <div class="progressBox">
 
-<h2>Today's Progress</h2>
+<h2>
+Today's Progress
+</h2>
 
 <div class="progress">
 
-<div class="progressFill" id="progressFill"></div>
+<div
+class="progressFill"
+id="progressFill"
+></div>
 
 </div>
 
+<div
+class="progressText"
+id="progressText"
+>
+0 of 0 tasks completed
 </div>
+
+</div>
+
+
+<!-- TASK TITLE -->
 
 <h2 class="sectionTitle">
-
 VIP 4 Tasks
-
 </h2>
 
-<div class="taskList" id="taskContainer">
 
-Loading Tasks...
+<!-- TASK CONTAINER -->
+
+<div
+class="taskList"
+id="taskContainer"
+>
+
+<div class="loading">
+Loading VIP 4 Tasks...
+</div>
 
 </div>
+
+
+<!-- FOOTER -->
 
 <div class="footer">
-
 © 2026 Meta Earn
+</div>
+
 
 </div>
 
-</div>
 
 <script>
 
-function goBack(){
 
-    // If there is a previous page
-    if(document.referrer && history.length > 1){
+/*
+====================================================
+META EARN VIP LEVEL 4
+====================================================
 
-        history.back();
+PRODUCTION SERVER:
 
-    }else{
+https://meta-earn-14.onrender.com
 
-        // Change this to your dashboard or home page
-        window.location.href = "dashboard.html";
+API:
 
-    }
+https://meta-earn-14.onrender.com/api
 
-}
-const API="http://localhost:5000/api";
+IMPORTANT:
+This page does NOT use localhost.
+====================================================
+*/
 
-const token=localStorage.getItem("token");
+
+const API =
+"https://meta-earn-14.onrender.com/api";
+
+
+/*
+====================================================
+STATE
+====================================================
+*/
+
+let token =
+localStorage.getItem("token");
+
+let completed = 0;
+
+let totalTasks = 0;
+
+let wallet = 0;
+
+let vip = 4;
+
+
+/*
+====================================================
+CHECK LOGIN
+====================================================
+*/
+
+function checkAuthentication(){
+
+token =
+localStorage.getItem("token");
 
 if(!token){
 
-location.href="login.html";
+window.location.href =
+"login.html";
+
+return false;
 
 }
 
-let completed=0;
+return true;
 
-let totalTasks=0;
+}
 
-let wallet=0;
 
-let vip=1;
+/*
+====================================================
+SAFE JSON RESPONSE
+====================================================
+*/
+
+async function getJsonResponse(response){
+
+const contentType =
+response.headers.get("content-type") || "";
+
+
+if(
+contentType.includes("application/json")
+){
+
+return await response.json();
+
+}
+
+
+await response.text();
+
+throw new Error(
+"Server returned a non-JSON response."
+);
+
+}
+
+
+/*
+====================================================
+LOAD PROFILE
+====================================================
+*/
 
 async function loadProfile(){
 
-const res=await fetch(API+"/auth/profile",{
+if(
+!checkAuthentication()
+){
+
+return false;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+API + "/auth/profile",
+{
+method:"GET",
 
 headers:{
-Authorization:"Bearer "+token
-}
+"Authorization":
+"Bearer " + token,
 
-});
+"Content-Type":
+"application/json"
+},
 
-const data=await res.json();
-
-if(!data.success){
-
-localStorage.removeItem("token");
-
-location.href="login.html";
-
-return;
+cache:"no-store"
 
 }
+);
 
-wallet=data.user.balance;
 
-vip=data.user.vip_level;
+/*
+401 = INVALID TOKEN
+*/
 
-if(vip<4){
+if(
+response.status === 401
+){
 
-alert("VIP Level 4 required.");
+localStorage.removeItem(
+"token"
+);
 
-location.href="dashboard.html";
+window.location.href =
+"login.html";
 
-return;
-
-}
-
-document.getElementById("balance").innerHTML=wallet;
-
-document.getElementById("vipLevel").innerHTML=vip;
-
-document.getElementById("vipText").innerHTML="VIP "+vip;
-
-}
-async function loadTasks(){
-
-const res=await fetch(API+"/tasks",{
-
-headers:{
-Authorization:"Bearer "+token
-}
-
-});
-
-const data=await res.json();
-
-if(!data.success){
-
-alert(data.message);
-
-return;
+return false;
 
 }
 
-// Only VIP 4 tasks
-const tasks=data.tasks.filter(task=>task.required_vip===4);
 
-totalTasks=tasks.length;
+/*
+OTHER HTTP ERROR
+*/
 
-document.getElementById("taskCount").innerHTML=totalTasks;
+if(
+!response.ok
+){
 
-const container=document.getElementById("taskContainer");
-
-container.innerHTML="";
-
-if(tasks.length===0){
-
-container.innerHTML="<h2>No VIP 4 Tasks Available</h2>";
-
-return;
+throw new Error(
+"Profile HTTP error: " +
+response.status
+);
 
 }
 
-tasks.forEach(task=>{
 
-const card=document.createElement("div");
+const data =
+await getJsonResponse(
+response
+);
 
-card.className="task";
 
-card.innerHTML=`
+/*
+CHECK API RESPONSE
+*/
 
-<h3>${task.title}</h3>
+if(
+!data ||
+data.success !== true
+){
 
-<p>${task.description}</p>
+console.error(
+"Profile response:",
+data
+);
 
-<div class="reward">
+localStorage.removeItem(
+"token"
+);
 
-Reward : ${Number(task.commission).toFixed(2)} ETB
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+if(!data.user){
+
+throw new Error(
+"User information missing."
+);
+
+}
+
+
+const user =
+data.user;
+
+
+/*
+BALANCE
+*/
+
+wallet =
+Number(
+user.balance ?? 0
+);
+
+
+/*
+VIP LEVEL
+
+Your existing backend appears
+to use vip_level.
+*/
+
+vip =
+Number(
+user.vip_level ??
+user.level ??
+0
+);
+
+
+/*
+VIP 4 ACCESS
+*/
+
+if(
+vip < 4
+){
+
+alert(
+"VIP Level 4 membership is required."
+);
+
+window.location.href =
+"dashboard.html";
+
+return false;
+
+}
+
+
+/*
+DISPLAY BALANCE
+*/
+
+document.getElementById(
+"balance"
+).textContent =
+wallet.toFixed(2);
+
+
+/*
+DISPLAY VIP
+*/
+
+document.getElementById(
+"vipLevel"
+).textContent =
+vip;
+
+
+/*
+DISPLAY VIP TEXT
+*/
+
+document.getElementById(
+"vipText"
+).textContent =
+"VIP Level " + vip;
+
+
+return true;
+
+}
+catch(error){
+
+console.error(
+"Profile error:",
+error
+);
+
+
+document.getElementById(
+"taskContainer"
+).innerHTML = `
+
+<div class="errorBox">
+
+Unable to load your profile.
+
+<br><br>
+
+Please refresh the page
+and try again.
 
 </div>
 
-<button onclick="completeTask(${task.id},this)">
+`;
+
+
+return false;
+
+}
+
+}
+
+
+/*
+====================================================
+LOAD VIP 4 TASKS
+====================================================
+*/
+
+async function loadTasks(){
+
+if(
+!checkAuthentication()
+){
+
+return;
+
+}
+
+
+const container =
+document.getElementById(
+"taskContainer"
+);
+
+
+container.innerHTML = `
+
+<div class="loading">
+
+Loading VIP 4 Tasks...
+
+</div>
+
+`;
+
+
+try{
+
+const response =
+await fetch(
+API + "/tasks",
+{
+method:"GET",
+
+headers:{
+"Authorization":
+"Bearer " + token,
+
+"Content-Type":
+"application/json"
+},
+
+cache:"no-store"
+
+}
+);
+
+
+/*
+401
+*/
+
+if(
+response.status === 401
+){
+
+localStorage.removeItem(
+"token"
+);
+
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+/*
+HTTP ERROR
+*/
+
+if(
+!response.ok
+){
+
+throw new Error(
+"Tasks HTTP error: " +
+response.status
+);
+
+}
+
+
+const data =
+await getJsonResponse(
+response
+);
+
+
+/*
+API ERROR
+*/
+
+if(
+!data ||
+data.success !== true
+){
+
+container.innerHTML = `
+
+<div class="errorBox">
+
+${
+data?.message ||
+"Unable to load tasks."
+}
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+/*
+GET TASK ARRAY
+*/
+
+const allTasks =
+Array.isArray(
+data.tasks
+)
+? data.tasks
+: [];
+
+
+/*
+ONLY VIP 4 TASKS
+*/
+
+const tasks =
+allTasks.filter(
+function(task){
+
+return Number(
+task.required_vip
+) === 4;
+
+}
+);
+
+
+/*
+TOTAL TASKS
+*/
+
+totalTasks =
+tasks.length;
+
+
+document.getElementById(
+"taskCount"
+).textContent =
+totalTasks;
+
+
+container.innerHTML =
+"";
+
+
+/*
+NO TASKS
+*/
+
+if(
+tasks.length === 0
+){
+
+container.innerHTML = `
+
+<div class="emptyBox">
+
+No VIP 4 Tasks
+are currently available.
+
+</div>
+
+`;
+
+completed = 0;
+
+updateProgress();
+
+return;
+
+}
+
+
+/*
+CREATE TASKS
+*/
+
+tasks.forEach(
+function(task){
+
+const card =
+document.createElement(
+"div"
+);
+
+card.className =
+"task";
+
+
+const title =
+escapeHtml(
+task.title ??
+"VIP 4 Task"
+);
+
+
+const description =
+escapeHtml(
+task.description ??
+"Complete this task."
+);
+
+
+const reward =
+Number(
+task.commission ??
+task.reward ??
+0
+);
+
+
+const taskId =
+task.id ??
+task.task_id;
+
+
+card.innerHTML = `
+
+<h3>
+${title}
+</h3>
+
+<p>
+${description}
+</p>
+
+<div class="reward">
+
+Reward :
+${reward.toFixed(2)}
+ETB
+
+</div>
+
+<button
+type="button"
+>
 
 Complete Task
 
@@ -490,121 +1140,470 @@ Complete Task
 
 `;
 
-container.appendChild(card);
 
-});
+const button =
+card.querySelector(
+"button"
+);
+
+
+button.addEventListener(
+"click",
+function(){
+
+completeTask(
+taskId,
+button
+);
+
+}
+);
+
+
+container.appendChild(
+card
+);
+
+}
+);
+
 
 updateProgress();
 
 }
+catch(error){
 
-async function completeTask(taskId,button){
+console.error(
+"Tasks error:",
+error
+);
 
-button.disabled=true;
 
-button.innerHTML="Processing...";
+container.innerHTML = `
 
-try{
+<div class="errorBox">
 
-const res=await fetch(API+"/tasks/complete/"+taskId,{
+Unable to connect
+to the task server.
 
-method:"POST",
+<br><br>
 
-headers:{
+Please refresh
+and try again.
 
-Authorization:"Bearer "+token,
+</div>
 
-"Content-Type":"application/json"
+`;
 
 }
 
-});
+}
 
-const data=await res.json();
 
-if(!data.success){
+/*
+====================================================
+COMPLETE VIP 4 TASK
+====================================================
+*/
 
-alert(data.message);
+async function completeTask(
+taskId,
+button
+){
 
-button.disabled=false;
-
-button.innerHTML="Complete Task";
+if(
+!checkAuthentication()
+){
 
 return;
 
 }
 
-button.innerHTML="✔ Completed";
 
-button.style.background="#16a34a";
+if(!taskId){
 
-button.disabled=true;
+alert(
+"Invalid task ID."
+);
 
-wallet=data.balance;
+return;
 
-document.getElementById("balance").innerHTML=
-Number(wallet).toFixed(2);
+}
+
+
+button.disabled =
+true;
+
+button.textContent =
+"Processing...";
+
+
+try{
+
+const response =
+await fetch(
+API +
+"/tasks/complete/" +
+encodeURIComponent(
+taskId
+),
+{
+method:"POST",
+
+headers:{
+"Authorization":
+"Bearer " + token,
+
+"Content-Type":
+"application/json"
+}
+
+}
+);
+
+
+/*
+401
+*/
+
+if(
+response.status === 401
+){
+
+localStorage.removeItem(
+"token"
+);
+
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+const data =
+await getJsonResponse(
+response
+);
+
+
+/*
+TASK FAILED
+*/
+
+if(
+!response.ok ||
+data.success !== true
+){
+
+alert(
+data?.message ||
+"Unable to complete this task."
+);
+
+button.disabled =
+false;
+
+button.textContent =
+"Complete Task";
+
+return;
+
+}
+
+
+/*
+SUCCESS
+*/
+
+button.textContent =
+"✔ Completed";
+
+button.classList.add(
+"completedButton"
+);
+
+button.disabled =
+true;
+
+
+/*
+UPDATE BALANCE
+*/
+
+if(
+data.balance !== undefined &&
+data.balance !== null
+){
+
+wallet =
+Number(
+data.balance
+);
+
+}
+else{
+
+await loadProfile();
+
+}
+
+
+document.getElementById(
+"balance"
+).textContent =
+wallet.toFixed(2);
+
+
+/*
+UPDATE COMPLETED COUNT
+*/
 
 completed++;
 
-document.getElementById("completedCount").innerHTML=
+
+document.getElementById(
+"completedCount"
+).textContent =
 completed;
+
 
 updateProgress();
 
+
+/*
+REWARD
+*/
+
+const reward =
+Number(
+data.reward ??
+data.commission ??
+0
+);
+
+
 alert(
 
-"🎉 Task Completed Successfully!\n\n"+
+"🎉 Task Completed Successfully!\n\n" +
 
-"Reward : "+data.reward+" ETB"
+(
+data.message ||
+"VIP 4 task completed successfully."
+) +
+
+"\n\nReward : " +
+
+reward.toFixed(2) +
+
+" ETB"
 
 );
 
 }
 catch(error){
 
-console.log(error);
+console.error(
+"Complete task error:",
+error
+);
 
-alert("Unable to connect to server.");
+alert(
+"Unable to connect to the server."
+);
 
-button.disabled=false;
+button.disabled =
+false;
 
-button.innerHTML="Complete Task";
+button.textContent =
+"Complete Task";
 
 }
 
 }
+
+
+/*
+====================================================
+UPDATE PROGRESS
+====================================================
+*/
 
 function updateProgress(){
 
-let percent=0;
+let percent = 0;
 
-if(totalTasks>0){
 
-percent=(completed/totalTasks)*100;
+if(
+totalTasks > 0
+){
+
+percent =
+(
+completed /
+totalTasks
+) * 100;
 
 }
 
-document.getElementById("progressFill").style.width=
-percent+"%";
+
+percent =
+Math.min(
+Math.max(
+percent,
+0
+),
+100
+);
+
+
+document.getElementById(
+"progressFill"
+).style.width =
+percent + "%";
+
+
+document.getElementById(
+"progressText"
+).textContent =
+
+completed +
+" of " +
+totalTasks +
+" tasks completed";
 
 }
+
+
+/*
+====================================================
+ESCAPE HTML
+====================================================
+*/
+
+function escapeHtml(value){
+
+return String(value)
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
+
+}
+
+
+/*
+====================================================
+LOGOUT
+====================================================
+*/
 
 function logout(){
 
-localStorage.removeItem("token");
+localStorage.removeItem(
+"token"
+);
 
-location.href="login.html";
+localStorage.removeItem(
+"authToken"
+);
+
+window.location.href =
+"login.html";
 
 }
 
-window.onload=async()=>{
 
+/*
+====================================================
+BACK
+====================================================
+*/
+
+function goBack(){
+
+if(
+document.referrer &&
+history.length > 1
+){
+
+history.back();
+
+}
+else{
+
+window.location.href =
+"dashboard.html";
+
+}
+
+}
+
+
+/*
+====================================================
+PAGE LOAD
+====================================================
+*/
+
+window.addEventListener(
+"load",
+async function(){
+
+if(
+!checkAuthentication()
+){
+
+return;
+
+}
+
+
+/*
+FIRST:
+LOAD PROFILE
+
+SECOND:
+LOAD TASKS
+*/
+
+const profileLoaded =
 await loadProfile();
+
+
+if(
+profileLoaded
+){
 
 await loadTasks();
 
-};
+}
+
+}
+);
+
 
 </script>
 
