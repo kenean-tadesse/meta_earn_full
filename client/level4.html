@@ -9,341 +9,334 @@
 <title>Meta Earn | VIP Level 4</title>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,sans-serif;
 }
 
 body{
-background:#0b0b10;
-color:#fff;
-overflow-x:hidden;
+    background:#0b0b10;
+    color:#fff;
+    overflow-x:hidden;
 }
 
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(
-circle at top left,
-#f59e0b 0%,
-transparent 40%
-),
-radial-gradient(
-circle at bottom right,
-#eab308 0%,
-transparent 40%
-);
-z-index:-1;
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at top left,
+            #f59e0b 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #eab308 0%,
+            transparent 40%
+        );
+    z-index:-1;
 }
 
 .container{
-max-width:1200px;
-margin:auto;
-padding:20px;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
 .header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-flex-wrap:wrap;
-gap:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-font-size:36px;
-font-weight:900;
-background:
-linear-gradient(
-90deg,
-#fbbf24,
-#fde68a
-);
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
+    font-size:36px;
+    font-weight:900;
+    background:linear-gradient(
+        90deg,
+        #fbbf24,
+        #fde68a
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 #vipText{
-margin-top:6px;
-font-size:15px;
-font-weight:600;
-color:#fef3c7;
+    margin-top:6px;
+    font-size:15px;
+    font-weight:600;
+    color:#fef3c7;
 }
 
 .logoutBtn{
-background:#dc2626;
-color:#fff;
-border:none;
-padding:12px 20px;
-border-radius:12px;
-cursor:pointer;
-font-weight:bold;
-transition:.2s;
+    background:#dc2626;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
 }
 
 .logoutBtn:hover{
-background:#b91c1c;
+    background:#b91c1c;
 }
 
 .cards{
-display:grid;
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(220px,1fr)
-);
-gap:20px;
-margin-bottom:30px;
+    display:grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
+    gap:20px;
+    margin-bottom:30px;
 }
 
 .card{
-background:rgba(255,255,255,.06);
--webkit-backdrop-filter:blur(20px);
-backdrop-filter:blur(20px);
-padding:25px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.06);
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+    padding:25px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
 }
 
 .title{
-font-size:14px;
-opacity:.7;
-margin-bottom:10px;
+    font-size:14px;
+    opacity:.7;
+    margin-bottom:10px;
 }
 
 .value{
-font-size:30px;
-font-weight:bold;
+    font-size:30px;
+    font-weight:bold;
 }
 
 .green{
-color:#22c55e;
+    color:#22c55e;
 }
 
 .gold{
-color:#fbbf24;
+    color:#fbbf24;
 }
 
 .blue{
-color:#38bdf8;
+    color:#38bdf8;
 }
 
 .progressBox{
-background:rgba(255,255,255,.06);
-padding:25px;
-border-radius:20px;
-margin-bottom:30px;
+    background:rgba(255,255,255,.06);
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:30px;
 }
 
 .progressBox h2{
-margin-bottom:5px;
+    margin-bottom:5px;
 }
 
 .progress{
-height:18px;
-background:#222;
-border-radius:30px;
-overflow:hidden;
-margin-top:15px;
+    height:18px;
+    background:#222;
+    border-radius:30px;
+    overflow:hidden;
+    margin-top:15px;
 }
 
 .progressFill{
-width:0%;
-height:100%;
-background:
-linear-gradient(
-90deg,
-#f59e0b,
-#fde047
-);
-transition:.5s;
+    width:0%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        #f59e0b,
+        #fde047
+    );
+    transition:.5s;
 }
 
 .progressText{
-margin-top:10px;
-font-size:14px;
-color:#d1d5db;
+    margin-top:10px;
+    font-size:14px;
+    color:#d1d5db;
 }
 
 .sectionTitle{
-font-size:30px;
-font-weight:800;
-margin-bottom:20px;
+    font-size:30px;
+    font-weight:800;
+    margin-bottom:20px;
 }
 
 .taskList{
-display:grid;
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(320px,1fr)
-);
-gap:20px;
+    display:grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(320px,1fr)
+        );
+    gap:20px;
 }
 
 .task{
-background:rgba(255,255,255,.06);
-padding:20px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,.08);
-transition:.3s;
+    background:rgba(255,255,255,.06);
+    padding:20px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
 }
 
 .task:hover{
-transform:translateY(-5px);
+    transform:translateY(-5px);
 }
 
 .task h3{
-margin-bottom:10px;
+    margin-bottom:10px;
 }
 
 .task p{
-opacity:.75;
-margin-bottom:15px;
-line-height:1.5;
+    opacity:.75;
+    margin-bottom:15px;
+    line-height:1.5;
 }
 
 .reward{
-color:#22c55e;
-font-weight:bold;
-margin-bottom:15px;
+    color:#22c55e;
+    font-weight:bold;
+    margin-bottom:15px;
 }
 
 .task button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-size:16px;
-font-weight:bold;
-background:
-linear-gradient(
-90deg,
-#f59e0b,
-#facc15
-);
-color:#111;
-transition:.2s;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    background:linear-gradient(
+        90deg,
+        #f59e0b,
+        #facc15
+    );
+    color:#111;
+    transition:.2s;
 }
 
 .task button:hover:not(:disabled){
-opacity:.9;
-transform:translateY(-1px);
+    opacity:.9;
 }
 
 .task button:disabled{
-cursor:not-allowed;
-opacity:.8;
+    cursor:not-allowed;
+    opacity:.8;
 }
 
 .completedButton{
-background:#16a34a !important;
-color:#fff !important;
+    background:#16a34a !important;
+    color:#fff !important;
 }
 
 .loading{
-text-align:center;
-padding:30px;
-color:#d1d5db;
+    text-align:center;
+    padding:30px;
+    color:#d1d5db;
 }
 
 .errorBox{
-background:rgba(220,38,38,.15);
-border:1px solid rgba(248,113,113,.4);
-padding:20px;
-border-radius:15px;
-color:#fecaca;
-text-align:center;
+    background:rgba(220,38,38,.15);
+    border:1px solid rgba(248,113,113,.4);
+    padding:20px;
+    border-radius:15px;
+    color:#fecaca;
+    text-align:center;
 }
 
 .emptyBox{
-background:rgba(255,255,255,.06);
-padding:30px;
-border-radius:15px;
-text-align:center;
-color:#d1d5db;
+    background:rgba(255,255,255,.06);
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    color:#d1d5db;
 }
 
 .footer{
-text-align:center;
-margin-top:50px;
-opacity:.6;
-padding-bottom:25px;
+    text-align:center;
+    margin-top:50px;
+    opacity:.6;
+    padding-bottom:25px;
 }
 
 .back-button{
-position:fixed;
-top:20px;
-left:20px;
-width:50px;
-height:50px;
-display:flex;
-justify-content:center;
-align-items:center;
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#06b6d4
-);
-color:#fff;
-font-size:26px;
-font-weight:bold;
-border-radius:50%;
-box-shadow:
-0 8px 20px rgba(0,0,0,.25);
-cursor:pointer;
-z-index:9999;
-border:none;
-outline:none;
-transition:.25s;
+    position:fixed;
+    top:20px;
+    left:20px;
+    width:50px;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+    color:#fff;
+    font-size:26px;
+    font-weight:bold;
+    border-radius:50%;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.25);
+    cursor:pointer;
+    z-index:9999;
+    border:none;
+    outline:none;
+    transition:.25s;
 }
 
 .back-button:hover{
-background:
-linear-gradient(
-135deg,
-#1d4ed8,
-#0891b2
-);
-box-shadow:
-0 12px 25px rgba(0,0,0,.35);
+    background:linear-gradient(
+        135deg,
+        #1d4ed8,
+        #0891b2
+    );
 }
 
 .back-button:active{
-transform:scale(.96);
+    transform:scale(.96);
 }
 
 @media(max-width:600px){
 
-.container{
-padding:15px;
-padding-top:85px;
-}
+    .container{
+        padding:15px;
+        padding-top:85px;
+    }
 
-.logo{
-font-size:28px;
-}
+    .logo{
+        font-size:28px;
+    }
 
-.sectionTitle{
-font-size:24px;
-}
+    .sectionTitle{
+        font-size:24px;
+    }
 
-.taskList{
-grid-template-columns:1fr;
-}
+    .taskList{
+        grid-template-columns:1fr;
+    }
 
 }
 
@@ -358,12 +351,12 @@ grid-template-columns:1fr;
 <!-- BACK BUTTON -->
 
 <button
-class="back-button"
-onclick="goBack()"
-title="Back"
-aria-label="Go back"
+    class="back-button"
+    onclick="goBack()"
+    title="Back"
+    aria-label="Go back"
 >
-←
+    ←
 </button>
 
 
@@ -374,110 +367,109 @@ aria-label="Go back"
 
 <div class="header">
 
-<div>
+    <div>
 
-<div class="logo">
-META EARN
+        <div class="logo">
+            META EARN
+        </div>
+
+        <div id="vipText">
+            VIP Level 4
+        </div>
+
+    </div>
+
+
+    <button
+        class="logoutBtn"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
 </div>
 
-<div id="vipText">
-VIP Level 4
-</div>
 
-</div>
-
-
-<button
-class="logoutBtn"
-onclick="logout()"
->
-Logout
-</button>
-
-</div>
-
-
-<!-- CARDS -->
+<!-- DASHBOARD CARDS -->
 
 <div class="cards">
 
 
-<!-- WALLET -->
+    <!-- WALLET -->
 
-<div class="card">
+    <div class="card">
 
-<div class="title">
-Wallet Balance
-</div>
+        <div class="title">
+            Wallet Balance
+        </div>
 
-<div class="value green">
+        <div class="value green">
 
-<span id="balance">
-0.00
-</span>
+            <span id="balance">
+                0.00
+            </span>
 
-ETB
+            ETB
 
-</div>
+        </div>
 
-</div>
-
-
-<!-- VIP LEVEL -->
-
-<div class="card">
-
-<div class="title">
-VIP Level
-</div>
-
-<div
-class="value blue"
-id="vipLevel"
->
-4
-</div>
-
-</div>
+    </div>
 
 
-<!-- COMPLETED -->
+    <!-- VIP -->
 
-<div class="card">
+    <div class="card">
 
-<div class="title">
-Completed Today
-</div>
+        <div class="title">
+            VIP Level
+        </div>
 
-<div class="value gold">
+        <div
+            class="value blue"
+            id="vipLevel"
+        >
+            4
+        </div>
 
-<span id="completedCount">
-0
-</span>
-
-</div>
-
-</div>
+    </div>
 
 
-<!-- AVAILABLE -->
+    <!-- COMPLETED -->
 
-<div class="card">
+    <div class="card">
 
-<div class="title">
-Available Tasks
-</div>
+        <div class="title">
+            Completed Today
+        </div>
 
-<div class="value">
+        <div class="value gold">
 
-<span id="taskCount">
-0
-</span>
+            <span id="completedCount">
+                0
+            </span>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
+
+    <!-- TASKS -->
+
+    <div class="card">
+
+        <div class="title">
+            Available Tasks
+        </div>
+
+        <div class="value">
+
+            <span id="taskCount">
+                0
+            </span>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -486,25 +478,25 @@ Available Tasks
 
 <div class="progressBox">
 
-<h2>
-Today's Progress
-</h2>
+    <h2>
+        Today's Progress
+    </h2>
 
-<div class="progress">
+    <div class="progress">
 
-<div
-class="progressFill"
-id="progressFill"
-></div>
+        <div
+            class="progressFill"
+            id="progressFill"
+        ></div>
 
-</div>
+    </div>
 
-<div
-class="progressText"
-id="progressText"
->
-0 of 0 tasks completed
-</div>
+    <div
+        class="progressText"
+        id="progressText"
+    >
+        0 of 0 tasks completed
+    </div>
 
 </div>
 
@@ -512,20 +504,20 @@ id="progressText"
 <!-- TASK TITLE -->
 
 <h2 class="sectionTitle">
-VIP 4 Tasks
+    VIP 4 Tasks
 </h2>
 
 
 <!-- TASK CONTAINER -->
 
 <div
-class="taskList"
-id="taskContainer"
+    class="taskList"
+    id="taskContainer"
 >
 
-<div class="loading">
-Loading VIP 4 Tasks...
-</div>
+    <div class="loading">
+        Loading VIP 4 Tasks...
+    </div>
 
 </div>
 
@@ -533,7 +525,7 @@ Loading VIP 4 Tasks...
 <!-- FOOTER -->
 
 <div class="footer">
-© 2026 Meta Earn
+    © 2026 Meta Earn
 </div>
 
 
@@ -542,13 +534,12 @@ Loading VIP 4 Tasks...
 
 <script>
 
-
 /*
-====================================================
-META EARN VIP LEVEL 4
-====================================================
+========================================================
+META EARN - VIP LEVEL 4
+========================================================
 
-PRODUCTION SERVER:
+PRODUCTION BACKEND:
 
 https://meta-earn-14.onrender.com
 
@@ -557,23 +548,36 @@ API:
 https://meta-earn-14.onrender.com/api
 
 IMPORTANT:
-This page does NOT use localhost.
-====================================================
+NO localhost:5000 IS USED IN THIS FILE.
+========================================================
 */
-
-
-const API =
-"https://meta-earn-14.onrender.com/api";
 
 
 /*
-====================================================
-STATE
-====================================================
+========================================================
+API URL
+========================================================
+*/
+
+const API =
+    "https://meta-earn-14.onrender.com/api";
+
+
+/*
+========================================================
+AUTH TOKEN
+========================================================
 */
 
 let token =
-localStorage.getItem("token");
+    localStorage.getItem("token");
+
+
+/*
+========================================================
+VARIABLES
+========================================================
+*/
 
 let completed = 0;
 
@@ -581,1029 +585,1010 @@ let totalTasks = 0;
 
 let wallet = 0;
 
-let vip = 4;
+let vip = 0;
 
 
 /*
-====================================================
+========================================================
 CHECK LOGIN
-====================================================
+========================================================
 */
 
-function checkAuthentication(){
+function checkLogin(){
 
-token =
-localStorage.getItem("token");
+    token =
+        localStorage.getItem("token");
 
-if(!token){
 
-window.location.href =
-"login.html";
+    if(!token){
 
-return false;
+        window.location.href =
+            "login.html";
 
-}
+        return false;
+    }
 
-return true;
 
+    return true;
 }
 
 
 /*
-====================================================
-SAFE JSON RESPONSE
-====================================================
-*/
-
-async function getJsonResponse(response){
-
-const contentType =
-response.headers.get("content-type") || "";
-
-
-if(
-contentType.includes("application/json")
-){
-
-return await response.json();
-
-}
-
-
-await response.text();
-
-throw new Error(
-"Server returned a non-JSON response."
-);
-
-}
-
-
-/*
-====================================================
+========================================================
 LOAD PROFILE
-====================================================
+========================================================
 */
 
 async function loadProfile(){
 
-if(
-!checkAuthentication()
-){
+    if(!checkLogin()){
 
-return false;
+        return false;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API + "/auth/profile",
+                {
+                    method:"GET",
+
+                    headers:{
+                        "Authorization":
+                            "Bearer " + token,
+
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    cache:"no-store"
+                }
+            );
+
+
+        /*
+        ================================================
+        INVALID TOKEN
+        ================================================
+        */
+
+        if(response.status === 401){
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            window.location.href =
+                "login.html";
+
+            return false;
+        }
+
+
+        /*
+        ================================================
+        SERVER ERROR
+        ================================================
+        */
+
+        if(!response.ok){
+
+            throw new Error(
+                "Profile request failed: " +
+                response.status
+            );
+        }
+
+
+        /*
+        ================================================
+        JSON
+        ================================================
+        */
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Profile response:",
+            data
+        );
+
+
+        /*
+        ================================================
+        API SUCCESS CHECK
+        ================================================
+        */
+
+        if(!data.success){
+
+            alert(
+                data.message ||
+                "Unable to load profile."
+            );
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            window.location.href =
+                "login.html";
+
+            return false;
+        }
+
+
+        if(!data.user){
+
+            throw new Error(
+                "User data was not returned."
+            );
+        }
+
+
+        /*
+        ================================================
+        GET USER
+        ================================================
+        */
+
+        const user =
+            data.user;
+
+
+        /*
+        ================================================
+        BALANCE
+        ================================================
+        */
+
+        wallet =
+            Number(
+                user.balance || 0
+            );
+
+
+        /*
+        ================================================
+        VIP LEVEL
+        ================================================
+        */
+
+        vip =
+            Number(
+                user.vip_level || 0
+            );
+
+
+        /*
+        ================================================
+        CHECK VIP 4
+        ================================================
+        */
+
+        if(vip < 4){
+
+            alert(
+                "VIP Level 4 membership is required."
+            );
+
+            window.location.href =
+                "dashboard.html";
+
+            return false;
+        }
+
+
+        /*
+        ================================================
+        DISPLAY BALANCE
+        ================================================
+        */
+
+        document.getElementById(
+            "balance"
+        ).textContent =
+            wallet.toFixed(2);
+
+
+        /*
+        ================================================
+        DISPLAY VIP
+        ================================================
+        */
+
+        document.getElementById(
+            "vipLevel"
+        ).textContent =
+            vip;
+
+
+        document.getElementById(
+            "vipText"
+        ).textContent =
+            "VIP Level " + vip;
+
+
+        return true;
+
+    }
+    catch(error){
+
+        console.error(
+            "loadProfile error:",
+            error
+        );
+
+
+        document.getElementById(
+            "taskContainer"
+        ).innerHTML = `
+
+            <div class="errorBox">
+
+                Unable to connect
+                to the server.
+
+                <br><br>
+
+                Please check your internet
+                connection and refresh the page.
+
+            </div>
+
+        `;
+
+
+        return false;
+    }
 
 }
 
 
-try{
-
-const response =
-await fetch(
-API + "/auth/profile",
-{
-method:"GET",
-
-headers:{
-"Authorization":
-"Bearer " + token,
-
-"Content-Type":
-"application/json"
-},
-
-cache:"no-store"
-
-}
-);
-
-
 /*
-401 = INVALID TOKEN
-*/
-
-if(
-response.status === 401
-){
-
-localStorage.removeItem(
-"token"
-);
-
-window.location.href =
-"login.html";
-
-return false;
-
-}
-
-
-/*
-OTHER HTTP ERROR
-*/
-
-if(
-!response.ok
-){
-
-throw new Error(
-"Profile HTTP error: " +
-response.status
-);
-
-}
-
-
-const data =
-await getJsonResponse(
-response
-);
-
-
-/*
-CHECK API RESPONSE
-*/
-
-if(
-!data ||
-data.success !== true
-){
-
-console.error(
-"Profile response:",
-data
-);
-
-localStorage.removeItem(
-"token"
-);
-
-window.location.href =
-"login.html";
-
-return false;
-
-}
-
-
-if(!data.user){
-
-throw new Error(
-"User information missing."
-);
-
-}
-
-
-const user =
-data.user;
-
-
-/*
-BALANCE
-*/
-
-wallet =
-Number(
-user.balance ?? 0
-);
-
-
-/*
-VIP LEVEL
-
-Your existing backend appears
-to use vip_level.
-*/
-
-vip =
-Number(
-user.vip_level ??
-user.level ??
-0
-);
-
-
-/*
-VIP 4 ACCESS
-*/
-
-if(
-vip < 4
-){
-
-alert(
-"VIP Level 4 membership is required."
-);
-
-window.location.href =
-"dashboard.html";
-
-return false;
-
-}
-
-
-/*
-DISPLAY BALANCE
-*/
-
-document.getElementById(
-"balance"
-).textContent =
-wallet.toFixed(2);
-
-
-/*
-DISPLAY VIP
-*/
-
-document.getElementById(
-"vipLevel"
-).textContent =
-vip;
-
-
-/*
-DISPLAY VIP TEXT
-*/
-
-document.getElementById(
-"vipText"
-).textContent =
-"VIP Level " + vip;
-
-
-return true;
-
-}
-catch(error){
-
-console.error(
-"Profile error:",
-error
-);
-
-
-document.getElementById(
-"taskContainer"
-).innerHTML = `
-
-<div class="errorBox">
-
-Unable to load your profile.
-
-<br><br>
-
-Please refresh the page
-and try again.
-
-</div>
-
-`;
-
-
-return false;
-
-}
-
-}
-
-
-/*
-====================================================
-LOAD VIP 4 TASKS
-====================================================
+========================================================
+LOAD TASKS
+========================================================
 */
 
 async function loadTasks(){
 
-if(
-!checkAuthentication()
-){
+    if(!checkLogin()){
 
-return;
+        return;
+    }
 
-}
 
+    const container =
+        document.getElementById(
+            "taskContainer"
+        );
 
-const container =
-document.getElementById(
-"taskContainer"
-);
 
+    container.innerHTML = `
 
-container.innerHTML = `
+        <div class="loading">
 
-<div class="loading">
+            Loading VIP 4 Tasks...
 
-Loading VIP 4 Tasks...
+        </div>
 
-</div>
+    `;
 
-`;
 
+    try{
 
-try{
+        const response =
+            await fetch(
+                API + "/tasks",
+                {
+                    method:"GET",
 
-const response =
-await fetch(
-API + "/tasks",
-{
-method:"GET",
+                    headers:{
+                        "Authorization":
+                            "Bearer " + token,
 
-headers:{
-"Authorization":
-"Bearer " + token,
+                        "Content-Type":
+                            "application/json"
+                    },
 
-"Content-Type":
-"application/json"
-},
+                    cache:"no-store"
+                }
+            );
 
-cache:"no-store"
 
-}
-);
+        /*
+        ================================================
+        TOKEN EXPIRED
+        ================================================
+        */
 
+        if(response.status === 401){
 
-/*
-401
-*/
+            localStorage.removeItem(
+                "token"
+            );
 
-if(
-response.status === 401
-){
+            window.location.href =
+                "login.html";
 
-localStorage.removeItem(
-"token"
-);
+            return;
+        }
 
-window.location.href =
-"login.html";
 
-return;
+        /*
+        ================================================
+        HTTP ERROR
+        ================================================
+        */
 
-}
+        if(!response.ok){
 
+            throw new Error(
+                "Tasks request failed: " +
+                response.status
+            );
+        }
 
-/*
-HTTP ERROR
-*/
 
-if(
-!response.ok
-){
+        /*
+        ================================================
+        JSON
+        ================================================
+        */
 
-throw new Error(
-"Tasks HTTP error: " +
-response.status
-);
+        const data =
+            await response.json();
 
-}
 
+        console.log(
+            "Tasks response:",
+            data
+        );
 
-const data =
-await getJsonResponse(
-response
-);
 
+        if(!data.success){
 
-/*
-API ERROR
-*/
+            container.innerHTML = `
 
-if(
-!data ||
-data.success !== true
-){
+                <div class="errorBox">
 
-container.innerHTML = `
+                    ${
+                        data.message ||
+                        "Unable to load tasks."
+                    }
 
-<div class="errorBox">
+                </div>
 
-${
-data?.message ||
-"Unable to load tasks."
-}
+            `;
 
-</div>
+            return;
+        }
 
-`;
 
-return;
+        /*
+        ================================================
+        ALL TASKS
+        ================================================
+        */
 
-}
+        const allTasks =
+            Array.isArray(data.tasks)
+                ? data.tasks
+                : [];
 
 
-/*
-GET TASK ARRAY
-*/
+        /*
+        ================================================
+        ONLY VIP 4 TASKS
+        ================================================
+        */
 
-const allTasks =
-Array.isArray(
-data.tasks
-)
-? data.tasks
-: [];
+        const tasks =
+            allTasks.filter(
+                task =>
+                    Number(
+                        task.required_vip
+                    ) === 4
+            );
 
 
-/*
-ONLY VIP 4 TASKS
-*/
+        /*
+        ================================================
+        TOTAL
+        ================================================
+        */
 
-const tasks =
-allTasks.filter(
-function(task){
+        totalTasks =
+            tasks.length;
 
-return Number(
-task.required_vip
-) === 4;
 
-}
-);
+        document.getElementById(
+            "taskCount"
+        ).textContent =
+            totalTasks;
 
 
-/*
-TOTAL TASKS
-*/
+        /*
+        ================================================
+        CLEAR CONTAINER
+        ================================================
+        */
 
-totalTasks =
-tasks.length;
+        container.innerHTML =
+            "";
 
 
-document.getElementById(
-"taskCount"
-).textContent =
-totalTasks;
+        /*
+        ================================================
+        NO TASKS
+        ================================================
+        */
 
+        if(tasks.length === 0){
 
-container.innerHTML =
-"";
+            container.innerHTML = `
 
+                <div class="emptyBox">
 
-/*
-NO TASKS
-*/
+                    No VIP 4 tasks are
+                    currently available.
 
-if(
-tasks.length === 0
-){
+                </div>
 
-container.innerHTML = `
+            `;
 
-<div class="emptyBox">
+            updateProgress();
 
-No VIP 4 Tasks
-are currently available.
+            return;
+        }
 
-</div>
 
-`;
+        /*
+        ================================================
+        CREATE TASK CARDS
+        ================================================
+        */
 
-completed = 0;
+        tasks.forEach(
+            task => {
 
-updateProgress();
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-return;
 
-}
+                card.className =
+                    "task";
 
 
-/*
-CREATE TASKS
-*/
+                const title =
+                    task.title ||
+                    "VIP 4 Task";
 
-tasks.forEach(
-function(task){
 
-const card =
-document.createElement(
-"div"
-);
+                const description =
+                    task.description ||
+                    "Complete this task.";
 
-card.className =
-"task";
 
+                const commission =
+                    Number(
+                        task.commission || 0
+                    );
 
-const title =
-escapeHtml(
-task.title ??
-"VIP 4 Task"
-);
 
+                const taskId =
+                    task.id;
 
-const description =
-escapeHtml(
-task.description ??
-"Complete this task."
-);
 
+                card.innerHTML = `
 
-const reward =
-Number(
-task.commission ??
-task.reward ??
-0
-);
+                    <h3>
+                        ${escapeHtml(title)}
+                    </h3>
 
+                    <p>
+                        ${escapeHtml(description)}
+                    </p>
 
-const taskId =
-task.id ??
-task.task_id;
+                    <div class="reward">
 
+                        Reward:
+                        ${commission.toFixed(2)}
+                        ETB
 
-card.innerHTML = `
+                    </div>
 
-<h3>
-${title}
-</h3>
+                    <button
+                        type="button"
+                    >
+                        Complete Task
+                    </button>
 
-<p>
-${description}
-</p>
+                `;
 
-<div class="reward">
 
-Reward :
-${reward.toFixed(2)}
-ETB
+                const button =
+                    card.querySelector(
+                        "button"
+                    );
 
-</div>
 
-<button
-type="button"
->
+                button.addEventListener(
+                    "click",
+                    function(){
 
-Complete Task
+                        completeTask(
+                            taskId,
+                            button
+                        );
 
-</button>
+                    }
+                );
 
-`;
 
+                container.appendChild(
+                    card
+                );
 
-const button =
-card.querySelector(
-"button"
-);
+            }
+        );
 
 
-button.addEventListener(
-"click",
-function(){
+        updateProgress();
 
-completeTask(
-taskId,
-button
-);
+    }
+    catch(error){
 
-}
-);
+        console.error(
+            "loadTasks error:",
+            error
+        );
 
 
-container.appendChild(
-card
-);
+        container.innerHTML = `
 
-}
-);
+            <div class="errorBox">
 
+                Unable to load VIP 4 tasks.
 
-updateProgress();
+                <br><br>
 
-}
-catch(error){
+                Please refresh the page.
 
-console.error(
-"Tasks error:",
-error
-);
+            </div>
 
+        `;
 
-container.innerHTML = `
-
-<div class="errorBox">
-
-Unable to connect
-to the task server.
-
-<br><br>
-
-Please refresh
-and try again.
-
-</div>
-
-`;
-
-}
+    }
 
 }
 
 
 /*
-====================================================
-COMPLETE VIP 4 TASK
-====================================================
+========================================================
+COMPLETE TASK
+========================================================
 */
 
 async function completeTask(
-taskId,
-button
+    taskId,
+    button
 ){
 
-if(
-!checkAuthentication()
-){
+    if(!checkLogin()){
 
-return;
+        return;
+    }
+
+
+    if(!taskId){
+
+        alert(
+            "Invalid task ID."
+        );
+
+        return;
+    }
+
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "Processing...";
+
+
+    try{
+
+        const response =
+            await fetch(
+                API +
+                "/tasks/complete/" +
+                encodeURIComponent(taskId),
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Authorization":
+                            "Bearer " + token,
+
+                        "Content-Type":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        /*
+        ================================================
+        TOKEN ERROR
+        ================================================
+        */
+
+        if(response.status === 401){
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        /*
+        ================================================
+        READ RESPONSE
+        ================================================
+        */
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Complete task response:",
+            data
+        );
+
+
+        /*
+        ================================================
+        FAILED
+        ================================================
+        */
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            alert(
+                data.message ||
+                "Unable to complete task."
+            );
+
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "Complete Task";
+
+            return;
+        }
+
+
+        /*
+        ================================================
+        SUCCESS
+        ================================================
+        */
+
+        button.textContent =
+            "✔ Completed";
+
+
+        button.classList.add(
+            "completedButton"
+        );
+
+
+        button.disabled =
+            true;
+
+
+        /*
+        ================================================
+        UPDATE BALANCE
+        ================================================
+        */
+
+        if(
+            data.balance !== undefined
+        ){
+
+            wallet =
+                Number(
+                    data.balance
+                );
+
+        }
+        else{
+
+            /*
+            Reload profile if backend
+            does not return balance.
+            */
+
+            await loadProfile();
+
+        }
+
+
+        document.getElementById(
+            "balance"
+        ).textContent =
+            wallet.toFixed(2);
+
+
+        /*
+        ================================================
+        COMPLETED COUNT
+        ================================================
+        */
+
+        completed++;
+
+
+        document.getElementById(
+            "completedCount"
+        ).textContent =
+            completed;
+
+
+        /*
+        ================================================
+        PROGRESS
+        ================================================
+        */
+
+        updateProgress();
+
+
+        /*
+        ================================================
+        REWARD
+        ================================================
+        */
+
+        const reward =
+            Number(
+                data.reward || 0
+            );
+
+
+        alert(
+
+            "🎉 Task Completed Successfully!\n\n" +
+
+            (
+                data.message ||
+                "VIP 4 task completed."
+            ) +
+
+            "\n\nReward: " +
+
+            reward.toFixed(2) +
+
+            " ETB"
+
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "completeTask error:",
+            error
+        );
+
+
+        alert(
+            "Unable to connect to the server."
+        );
+
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "Complete Task";
+
+    }
 
 }
-
-
-if(!taskId){
-
-alert(
-"Invalid task ID."
-);
-
-return;
-
-}
-
-
-button.disabled =
-true;
-
-button.textContent =
-"Processing...";
-
-
-try{
-
-const response =
-await fetch(
-API +
-"/tasks/complete/" +
-encodeURIComponent(
-taskId
-),
-{
-method:"POST",
-
-headers:{
-"Authorization":
-"Bearer " + token,
-
-"Content-Type":
-"application/json"
-}
-
-}
-);
 
 
 /*
-401
-*/
-
-if(
-response.status === 401
-){
-
-localStorage.removeItem(
-"token"
-);
-
-window.location.href =
-"login.html";
-
-return;
-
-}
-
-
-const data =
-await getJsonResponse(
-response
-);
-
-
-/*
-TASK FAILED
-*/
-
-if(
-!response.ok ||
-data.success !== true
-){
-
-alert(
-data?.message ||
-"Unable to complete this task."
-);
-
-button.disabled =
-false;
-
-button.textContent =
-"Complete Task";
-
-return;
-
-}
-
-
-/*
-SUCCESS
-*/
-
-button.textContent =
-"✔ Completed";
-
-button.classList.add(
-"completedButton"
-);
-
-button.disabled =
-true;
-
-
-/*
-UPDATE BALANCE
-*/
-
-if(
-data.balance !== undefined &&
-data.balance !== null
-){
-
-wallet =
-Number(
-data.balance
-);
-
-}
-else{
-
-await loadProfile();
-
-}
-
-
-document.getElementById(
-"balance"
-).textContent =
-wallet.toFixed(2);
-
-
-/*
-UPDATE COMPLETED COUNT
-*/
-
-completed++;
-
-
-document.getElementById(
-"completedCount"
-).textContent =
-completed;
-
-
-updateProgress();
-
-
-/*
-REWARD
-*/
-
-const reward =
-Number(
-data.reward ??
-data.commission ??
-0
-);
-
-
-alert(
-
-"🎉 Task Completed Successfully!\n\n" +
-
-(
-data.message ||
-"VIP 4 task completed successfully."
-) +
-
-"\n\nReward : " +
-
-reward.toFixed(2) +
-
-" ETB"
-
-);
-
-}
-catch(error){
-
-console.error(
-"Complete task error:",
-error
-);
-
-alert(
-"Unable to connect to the server."
-);
-
-button.disabled =
-false;
-
-button.textContent =
-"Complete Task";
-
-}
-
-}
-
-
-/*
-====================================================
+========================================================
 UPDATE PROGRESS
-====================================================
+========================================================
 */
 
 function updateProgress(){
 
-let percent = 0;
+    let percentage =
+        0;
 
 
-if(
-totalTasks > 0
-){
+    if(totalTasks > 0){
 
-percent =
-(
-completed /
-totalTasks
-) * 100;
+        percentage =
+            (
+                completed /
+                totalTasks
+            ) * 100;
 
-}
+    }
 
 
-percent =
-Math.min(
-Math.max(
-percent,
-0
-),
-100
-);
+    if(percentage > 100){
+
+        percentage = 100;
+    }
 
 
-document.getElementById(
-"progressFill"
-).style.width =
-percent + "%";
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        percentage + "%";
 
 
-document.getElementById(
-"progressText"
-).textContent =
+    document.getElementById(
+        "progressText"
+    ).textContent =
 
-completed +
-" of " +
-totalTasks +
-" tasks completed";
+        completed +
+        " of " +
+        totalTasks +
+        " tasks completed";
 
 }
 
 
 /*
-====================================================
+========================================================
 ESCAPE HTML
-====================================================
+========================================================
 */
 
 function escapeHtml(value){
 
-return String(value)
+    return String(value)
 
-.replace(
-/&/g,
-"&amp;"
-)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-.replace(
-/</g,
-"&lt;"
-)
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-.replace(
-/>/g,
-"&gt;"
-)
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-.replace(
-/"/g,
-"&quot;"
-)
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-.replace(
-/'/g,
-"&#039;"
-);
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /*
-====================================================
+========================================================
 LOGOUT
-====================================================
+========================================================
 */
 
 function logout(){
 
-localStorage.removeItem(
-"token"
-);
+    localStorage.removeItem(
+        "token"
+    );
 
-localStorage.removeItem(
-"authToken"
-);
-
-window.location.href =
-"login.html";
+    window.location.href =
+        "login.html";
 
 }
 
 
 /*
-====================================================
-BACK
-====================================================
+========================================================
+BACK BUTTON
+========================================================
 */
 
 function goBack(){
 
-if(
-document.referrer &&
-history.length > 1
-){
+    if(
+        document.referrer &&
+        history.length > 1
+    ){
 
-history.back();
+        history.back();
 
-}
-else{
+    }
+    else{
 
-window.location.href =
-"dashboard.html";
+        window.location.href =
+            "dashboard.html";
 
-}
+    }
 
 }
 
 
 /*
-====================================================
+========================================================
 PAGE LOAD
-====================================================
+========================================================
 */
 
 window.addEventListener(
-"load",
-async function(){
+    "load",
+    async function(){
 
-if(
-!checkAuthentication()
-){
+        /*
+        Check token
+        */
 
-return;
+        if(!checkLogin()){
 
-}
-
-
-/*
-FIRST:
-LOAD PROFILE
-
-SECOND:
-LOAD TASKS
-*/
-
-const profileLoaded =
-await loadProfile();
+            return;
+        }
 
 
-if(
-profileLoaded
-){
+        /*
+        Load profile first
+        */
 
-await loadTasks();
+        const profileLoaded =
+            await loadProfile();
 
-}
 
-}
+        /*
+        Only load tasks if
+        profile is valid.
+        */
+
+        if(profileLoaded){
+
+            await loadTasks();
+
+        }
+
+    }
 );
-
 
 </script>
 
