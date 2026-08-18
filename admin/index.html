@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,9 +8,15 @@
 
 <title>Meta_Earn Admin Panel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 *{
     margin:0;
@@ -20,18 +27,30 @@
 
 body{
 
-    background:radial-gradient(circle at top,#0b1220,#050913);
+    background:
+    radial-gradient(
+        circle at top,
+        #0b1220,
+        #050913
+    );
+
     color:white;
+
     min-height:100vh;
 
 }
 
-/* Header */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
     padding:20px 30px;
@@ -40,37 +59,51 @@ body{
 
     backdrop-filter:blur(15px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    -webkit-backdrop-filter:blur(15px);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
 
 }
+
 
 .logo{
 
     font-size:30px;
+
     font-weight:800;
+
     color:#38bdf8;
 
 }
 
+
 .right{
 
     display:flex;
+
     align-items:center;
+
     gap:15px;
 
 }
 
+
 .admin-name{
 
     color:#22c55e;
+
     font-weight:700;
+
     font-size:16px;
 
 }
 
+
 .logout{
 
     border:none;
+
     cursor:pointer;
 
     padding:12px 22px;
@@ -81,11 +114,17 @@ body{
 
     font-weight:bold;
 
-    background:linear-gradient(135deg,#ef4444,#dc2626);
+    background:
+    linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
 
     transition:.3s;
 
 }
+
 
 .logout:hover{
 
@@ -93,13 +132,25 @@ body{
 
 }
 
-/* Main */
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
 
 .container{
 
     padding:30px;
 
+    max-width:1400px;
+
+    margin:auto;
+
 }
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
 
 .welcome{
 
@@ -107,12 +158,15 @@ body{
 
 }
 
+
 .welcome h1{
 
     font-size:34px;
+
     margin-bottom:10px;
 
 }
+
 
 .welcome p{
 
@@ -120,23 +174,33 @@ body{
 
 }
 
-/* Cards */
+
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(250px,1fr)
+    );
 
     gap:20px;
 
 }
 
+
 .card{
 
-    background:rgba(255,255,255,.06);
+    background:
+    rgba(255,255,255,.06);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+    1px solid rgba(255,255,255,.08);
 
     border-radius:18px;
 
@@ -144,19 +208,25 @@ body{
 
     transition:.3s;
 
-    box-shadow:0 0 20px rgba(37,99,235,.25);
+    box-shadow:
+    0 0 20px
+    rgba(37,99,235,.25);
 
     text-align:center;
 
 }
 
+
 .card:hover{
 
     transform:translateY(-8px);
 
-    box-shadow:0 0 30px #2563eb;
+    box-shadow:
+    0 0 30px
+    #2563eb;
 
 }
+
 
 .card h2{
 
@@ -164,13 +234,21 @@ body{
 
 }
 
+
 .card p{
 
     color:#94a3b8;
 
     margin-bottom:18px;
 
+    min-height:45px;
+
 }
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .btn{
 
@@ -188,17 +266,28 @@ body{
 
     font-weight:bold;
 
-    background:linear-gradient(135deg,#6366f1,#2563eb);
+    background:
+    linear-gradient(
+        135deg,
+        #6366f1,
+        #2563eb
+    );
 
     transition:.3s;
 
 }
+
 
 .btn:hover{
 
     transform:scale(1.03);
 
 }
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer{
 
@@ -210,265 +299,563 @@ body{
 
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .header{
+
+        padding:18px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .right{
+
+        gap:8px;
+
+    }
+
+    .admin-name{
+
+        display:none;
+
+    }
+
+    .container{
+
+        padding:20px;
+
+    }
+
+    .welcome h1{
+
+        font-size:27px;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOADING SCREEN
+===================================================== */
+
+#loadingScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050913;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+
+.loadingBox{
+
+    text-align:center;
+
+}
+
+
+.loadingBox h2{
+
+    color:#38bdf8;
+
+    margin-bottom:10px;
+
+}
+
+
+.loadingBox p{
+
+    color:#94a3b8;
+
+}
+
 </style>
 
 </head>
 
+
 <body>
 
-<script>
 
-/* ===============================
-   ADMIN LOGIN PROTECTION
-================================ */
+<!-- =====================================================
+     LOADING SCREEN
+===================================================== -->
 
-const token = localStorage.getItem("adminToken");
+<div id="loadingScreen">
 
-if(!token){
+    <div class="loadingBox">
 
-    window.location.href="admin-login.html";
+        <h2>Meta_Earn ADMIN</h2>
 
-}
+        <p>Checking administrator access...</p>
 
-/* ===============================
-   LOAD ADMIN NAME
-================================ */
+    </div>
 
-window.onload=function(){
+</div>
 
-    const admin=JSON.parse(localStorage.getItem("adminUser"));
 
-    if(admin){
 
-        document.getElementById("adminName").innerHTML=
-
-        admin.username ||
-        admin.name ||
-        "Administrator";
-
-    }
-
-}
-
-/* ===============================
-   LOGOUT
-================================ */
-
-function logout(){
-
-    if(confirm("Logout from admin panel?")){
-
-        localStorage.removeItem("adminToken");
-
-        localStorage.removeItem("adminUser");
-
-        window.location.href="admin-login.html";
-
-    }
-
-}
-
-</script>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <div class="header">
 
-<div class="logo">
 
-Meta_Earn ADMIN
+    <div class="logo">
+
+        Meta_Earn ADMIN
+
+    </div>
+
+
+    <div class="right">
+
+
+        <div
+        class="admin-name"
+        id="adminName">
+
+            Administrator
+
+        </div>
+
+
+        <button
+        class="logout"
+        onclick="logout()">
+
+            Logout
+
+        </button>
+
+
+    </div>
+
 
 </div>
 
-<div class="right">
 
-<div
-class="admin-name"
-id="adminName">
 
-Administrator
-
-</div>
-
-<button
-class="logout"
-onclick="logout()">
-
-Logout
-
-</button>
-
-</div>
-
-</div>
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="container">
 
-<div class="welcome">
 
-<h1>
+    <div class="welcome">
 
-Welcome Back Admin
 
-</h1>
+        <h1>
 
-<p>
+            Welcome Back Admin
 
-Manage your Meta Earn platform safely and efficiently.
+        </h1>
 
-</p>
+
+        <p>
+
+            Manage your Meta Earn platform safely and efficiently.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="cards">
+
+
+
+        <!-- =================================================
+             DEPOSITS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>💰 Deposits</h2>
+
+            <p>
+
+                Approve or reject user deposit requests.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-deposits.html')">
+
+                Manage Deposits
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             WITHDRAWALS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>🏦 Withdrawals</h2>
+
+            <p>
+
+                Review and approve withdrawal requests.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-withdrawals.html')">
+
+                Manage Withdrawals
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             USERS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>👥 Users</h2>
+
+            <p>
+
+                View, manage and monitor registered users.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-users.html')">
+
+                Manage Users
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TASKS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>📋 Tasks</h2>
+
+            <p>
+
+                Create, edit and manage work items.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-tasks.html')">
+
+                Manage Tasks
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LEVELS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>⭐ Levels</h2>
+
+            <p>
+
+                Approve or reject level upgrade requests.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-levels.html')">
+
+                Manage Levels
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             REFERRALS
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>🎁 Referral</h2>
+
+            <p>
+
+                Manage referral commissions and bonuses.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-referral.html')">
+
+                Manage Referral
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <div class="card">
+
+            <h2>⚙ Profile</h2>
+
+            <p>
+
+                Update your administrator profile and settings.
+
+            </p>
+
+            <button
+            class="btn"
+            onclick="openPage('admin-profile.html')">
+
+                Open Profile
+
+            </button>
+
+        </div>
+
+
+
+    </div>
+
 
 </div>
 
-<div class="cards">
-    <!-- ===========================
-     DEPOSITS
-=========================== -->
 
-<div class="card">
 
-    <h2>💰 Deposits</h2>
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-    <p>
-        Approve or reject user deposit requests.
-    </p>
+<div class="footer">
 
-    <button
-        class="btn"
-        onclick="location.href='admin-deposits.html'">
-
-        Manage Deposits
-
-    </button>
+    © 2026 Meta_Earn Admin Panel
 
 </div>
 
-<!-- ===========================
-     WITHDRAWALS
-=========================== -->
 
-<div class="card">
 
-    <h2>🏦 Withdrawals</h2>
+<script>
 
-    <p>
-        Review and approve withdrawal requests.
-    </p>
+/* =====================================================
+   ADMIN AUTHENTICATION
+===================================================== */
 
-    <button
-        class="btn"
-        onclick="location.href='admin-withdrawals.html'">
+const adminToken =
+    localStorage.getItem("adminToken");
 
-        Manage Withdrawals
 
-    </button>
+/* =====================================================
+   CHECK LOGIN
+===================================================== */
 
-</div>
+if(!adminToken){
 
-<!-- ===========================
-     USERS
-=========================== -->
+    window.location.replace(
+        "admin-login.html"
+    );
 
-<div class="card">
+}
 
-    <h2>👥 Users</h2>
 
-    <p>
-        View, manage and monitor registered users.
-    </p>
+/* =====================================================
+   LOAD ADMIN INFORMATION
+===================================================== */
 
-    <button
-        class="btn"
-        onclick="location.href='admin-users.html'">
+function loadAdmin(){
 
-        Manage Users
+    const adminData =
+        localStorage.getItem("adminUser");
 
-    </button>
 
-</div>
+    if(!adminData){
 
-<!-- ===========================
-     TASKS
-=========================== -->
+        document.getElementById(
+            "adminName"
+        ).textContent =
+            "Administrator";
 
-<div class="card">
+        return;
 
-    <h2>📋 Tasks</h2>
+    }
 
-    <p>
-        Create, edit and manage work items.
-    </p>
 
-    <button
-        class="btn"
-        onclick="location.href='admin-tasks.html'">
+    try{
 
-        Manage Tasks
+        const admin =
+            JSON.parse(adminData);
 
-    </button>
 
-</div>
+        const name =
 
-<!-- ===========================
-     LEVELS
-=========================== -->
+            admin.username ||
 
-<div class="card">
+            admin.fullname ||
 
-    <h2>⭐ Levels</h2>
+            admin.name ||
 
-    <p>
-        Approve or reject level upgrade requests.
-    </p>
+            admin.email ||
 
-    <button
-        class="btn"
-        onclick="location.href='admin-levels.html'">
+            "Administrator";
 
-        Manage Levels
 
-    </button>
+        document.getElementById(
+            "adminName"
+        ).textContent = name;
 
-</div>
 
-<!-- ===========================
-     REFERRALS
-=========================== -->
+    }catch(error){
 
-<div class="card">
+        console.error(
+            "Admin user data error:",
+            error
+        );
 
-    <h2>🎁 Referral</h2>
+        document.getElementById(
+            "adminName"
+        ).textContent =
+            "Administrator";
 
-    <p>
-        Manage referral commissions and bonuses.
-    </p>
+    }
 
-    <button
-        class="btn"
-        onclick="location.href='admin-referral.html'">
+}
 
-        Manage Referral
 
-    </button>
+/* =====================================================
+   OPEN ADMIN PAGE
+===================================================== */
 
-</div>
+function openPage(page){
 
-<!-- ===========================
-     PROFILE
-=========================== -->
+    window.location.href = page;
 
-<div class="card">
+}
 
-    <h2>⚙ Profile</h2>
 
-    <p>
-        Update your administrator profile and settings.
-    </p>
+/* =====================================================
+   LOGOUT
+===================================================== */
 
-    <button
-        class="btn"
-        onclick="location.href='admin-profile.html'">
+function logout(){
 
-        Open Profile
+    const confirmed =
+        confirm(
+            "Logout from admin panel?"
+        );
 
-    </button>
 
-</div>
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "adminToken"
+    );
+
+    localStorage.removeItem(
+        "adminUser"
+    );
+
+
+    window.location.replace(
+        "admin-login.html"
+    );
+
+}
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadAdmin();
+
+
+        /*
+         * Small delay so the loading screen
+         * does not flash unnecessarily.
+         */
+
+        setTimeout(
+            function(){
+
+                document.getElementById(
+                    "loadingScreen"
+                ).style.display = "none";
+
+            },
+            300
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
