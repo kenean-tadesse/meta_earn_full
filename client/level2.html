@@ -467,48 +467,11 @@ body::before {
 
 <script>
 
-/*
-=========================================================
-META EARN LEVEL 2
-PRODUCTION API CONFIGURATION
-=========================================================
-*/
-
-/*
- IMPORTANT:
-
- Your deployed backend is:
-
- https://meta-earn-14.onrender.com
-
- Your API prefix is:
-
- /api
-
- Therefore:
-
- /api/auth/profile
- /api/tasks
- /api/tasks/complete/:id
-*/
+<script>
 
 const API = "https://meta-earn-14.onrender.com/api";
 
-
-/*
-=========================================================
-AUTH TOKEN
-=========================================================
-*/
-
 let token = localStorage.getItem("token");
-
-
-/*
-=========================================================
-APPLICATION STATE
-=========================================================
-*/
 
 let completed = 0;
 let totalTasks = 0;
@@ -516,20 +479,16 @@ let wallet = 0;
 let vip = 2;
 
 
-/*
-=========================================================
-CHECK LOGIN
-=========================================================
-*/
+/* =========================
+   AUTH CHECK
+========================= */
 
 function checkAuthentication() {
 
     token = localStorage.getItem("token");
 
     if (!token) {
-
         window.location.href = "login.html";
-
         return false;
     }
 
@@ -537,11 +496,9 @@ function checkAuthentication() {
 }
 
 
-/*
-=========================================================
-SAFE JSON RESPONSE
-=========================================================
-*/
+/* =========================
+   SAFE JSON
+========================= */
 
 async function getJsonResponse(response) {
 
@@ -549,9 +506,7 @@ async function getJsonResponse(response) {
         response.headers.get("content-type") || "";
 
     if (contentType.includes("application/json")) {
-
         return await response.json();
-
     }
 
     const text = await response.text();
@@ -563,11 +518,9 @@ async function getJsonResponse(response) {
 }
 
 
-/*
-=========================================================
-LOAD USER PROFILE
-=========================================================
-*/
+/* =========================
+   LOAD PROFILE
+========================= */
 
 async function loadProfile() {
 
@@ -592,17 +545,7 @@ async function loadProfile() {
         );
 
 
-        /*
-        ================================================
-        UNAUTHORIZED
-        ================================================
-        */
-
         if (response.status === 401) {
-
-            console.warn(
-                "Authentication token is invalid or expired."
-            );
 
             localStorage.removeItem("token");
 
@@ -612,29 +555,18 @@ async function loadProfile() {
         }
 
 
-        /*
-        ================================================
-        SERVER ERROR
-        ================================================
-        */
-
         if (!response.ok) {
 
             throw new Error(
-                "Profile request failed. HTTP " +
+                "Profile request failed: HTTP " +
                 response.status
             );
         }
 
 
-        const data = await getJsonResponse(response);
+        const data =
+            await getJsonResponse(response);
 
-
-        /*
-        ================================================
-        CHECK API RESPONSE
-        ================================================
-        */
 
         if (!data || data.success !== true) {
 
@@ -651,16 +583,10 @@ async function loadProfile() {
         }
 
 
-        /*
-        ================================================
-        USER DATA
-        ================================================
-        */
-
         if (!data.user) {
 
             throw new Error(
-                "Profile response does not contain user data."
+                "User data was not returned by the server."
             );
         }
 
@@ -668,22 +594,10 @@ async function loadProfile() {
         const user = data.user;
 
 
-        /*
-        ================================================
-        BALANCE
-        ================================================
-        */
-
         wallet = Number(
             user.balance ?? 0
         );
 
-
-        /*
-        ================================================
-        VIP LEVEL
-        ================================================
-        */
 
         vip = Number(
             user.vip_level ??
@@ -692,20 +606,16 @@ async function loadProfile() {
         );
 
 
-        /*
-        ================================================
-        DISPLAY PROFILE
-        ================================================
-        */
-
         document.getElementById(
             "balance"
-        ).textContent = wallet.toFixed(2);
+        ).textContent =
+            wallet.toFixed(2);
 
 
         document.getElementById(
             "vipLevel"
-        ).textContent = vip;
+        ).textContent =
+            vip;
 
 
         document.getElementById(
@@ -725,21 +635,13 @@ async function loadProfile() {
         );
 
 
-        /*
-        ================================================
-        DO NOT LEAVE AN UNCAUGHT PROMISE ERROR
-        ================================================
-        */
-
-        const container =
-            document.getElementById("taskContainer");
-
-        container.innerHTML = `
+        document.getElementById(
+            "taskContainer"
+        ).innerHTML = `
             <div class="errorBox">
                 Unable to load your profile.
                 <br><br>
-                Please check your internet connection
-                and try again.
+                Please refresh the page.
             </div>
         `;
 
@@ -748,11 +650,9 @@ async function loadProfile() {
 }
 
 
-/*
-=========================================================
-LOAD TASKS
-=========================================================
-*/
+/* =========================
+   LOAD TASKS
+========================= */
 
 async function loadTasks() {
 
@@ -760,8 +660,11 @@ async function loadTasks() {
         return;
     }
 
+
     const container =
-        document.getElementById("taskContainer");
+        document.getElementById(
+            "taskContainer"
+        );
 
 
     container.innerHTML = `
@@ -788,12 +691,6 @@ async function loadTasks() {
         );
 
 
-        /*
-        ================================================
-        UNAUTHORIZED
-        ================================================
-        */
-
         if (response.status === 401) {
 
             localStorage.removeItem("token");
@@ -807,7 +704,7 @@ async function loadTasks() {
         if (!response.ok) {
 
             throw new Error(
-                "Tasks request failed. HTTP " +
+                "Tasks request failed: HTTP " +
                 response.status
             );
         }
@@ -832,12 +729,6 @@ async function loadTasks() {
         }
 
 
-        /*
-        ================================================
-        TASK ARRAY
-        ================================================
-        */
-
         const tasks =
             Array.isArray(data.tasks)
                 ? data.tasks
@@ -849,17 +740,12 @@ async function loadTasks() {
 
         document.getElementById(
             "taskCount"
-        ).textContent = totalTasks;
+        ).textContent =
+            totalTasks;
 
 
         container.innerHTML = "";
 
-
-        /*
-        ================================================
-        NO TASKS
-        ================================================
-        */
 
         if (tasks.length === 0) {
 
@@ -877,13 +763,7 @@ async function loadTasks() {
         }
 
 
-        /*
-        ================================================
-        DISPLAY TASKS
-        ================================================
-        */
-
-        tasks.forEach(task => {
+        tasks.forEach(function(task) {
 
             const card =
                 document.createElement("div");
@@ -893,8 +773,7 @@ async function loadTasks() {
 
             const title =
                 escapeHtml(
-                    task.title ??
-                    "Task"
+                    task.title ?? "Task"
                 );
 
 
@@ -905,7 +784,7 @@ async function loadTasks() {
                 );
 
 
-            const commission =
+            const reward =
                 Number(
                     task.commission ??
                     task.reward ??
@@ -930,7 +809,7 @@ async function loadTasks() {
 
                 <div class="reward">
                     Reward:
-                    ${commission.toFixed(2)}
+                    ${reward.toFixed(2)}
                     ETB
                 </div>
 
@@ -950,7 +829,7 @@ async function loadTasks() {
 
             button.addEventListener(
                 "click",
-                function () {
+                function() {
 
                     completeTask(
                         taskId,
@@ -965,12 +844,6 @@ async function loadTasks() {
 
         });
 
-
-        /*
-        ================================================
-        INITIAL PROGRESS
-        ================================================
-        */
 
         updateProgress();
 
@@ -992,15 +865,12 @@ async function loadTasks() {
         `;
 
     }
-
 }
 
 
-/*
-=========================================================
-COMPLETE TASK
-=========================================================
-*/
+/* =========================
+   COMPLETE TASK
+========================= */
 
 async function completeTask(
     taskId,
@@ -1014,19 +884,11 @@ async function completeTask(
 
     if (!taskId) {
 
-        alert(
-            "Invalid task ID."
-        );
+        alert("Invalid task ID.");
 
         return;
     }
 
-
-    /*
-    ================================================
-    PREVENT DOUBLE CLICK
-    ================================================
-    */
 
     button.disabled = true;
 
@@ -1051,12 +913,6 @@ async function completeTask(
         );
 
 
-        /*
-        ================================================
-        AUTH ERROR
-        ================================================
-        */
-
         if (response.status === 401) {
 
             localStorage.removeItem("token");
@@ -1072,13 +928,10 @@ async function completeTask(
             await getJsonResponse(response);
 
 
-        /*
-        ================================================
-        TASK FAILED
-        ================================================
-        */
-
-        if (!response.ok || data.success !== true) {
+        if (
+            !response.ok ||
+            data.success !== true
+        ) {
 
             alert(
                 data?.message ||
@@ -1094,12 +947,6 @@ async function completeTask(
         }
 
 
-        /*
-        ================================================
-        TASK SUCCESS
-        ================================================
-        */
-
         button.textContent =
             "✔ Completed";
 
@@ -1109,12 +956,6 @@ async function completeTask(
 
         button.disabled = true;
 
-
-        /*
-        ================================================
-        UPDATE BALANCE
-        ================================================
-        */
 
         if (
             data.balance !== undefined &&
@@ -1128,9 +969,9 @@ async function completeTask(
         else {
 
             /*
-            If backend doesn't return balance,
-            reload profile.
-            */
+             * IMPORTANT:
+             * await is inside this async function.
+             */
 
             await loadProfile();
 
@@ -1143,13 +984,8 @@ async function completeTask(
             Number(wallet).toFixed(2);
 
 
-        /*
-        ================================================
-        UPDATE COMPLETED COUNT
-        ================================================
-        */
-
         completed++;
+
 
         document.getElementById(
             "completedCount"
@@ -1159,12 +995,6 @@ async function completeTask(
 
         updateProgress();
 
-
-        /*
-        ================================================
-        SUCCESS MESSAGE
-        ================================================
-        */
 
         const reward =
             Number(
@@ -1195,8 +1025,7 @@ async function completeTask(
 
 
         alert(
-            "Unable to connect to the server.\n\n" +
-            "Please check your internet connection."
+            "Unable to connect to the server."
         );
 
 
@@ -1206,15 +1035,12 @@ async function completeTask(
             "Complete Task";
 
     }
-
 }
 
 
-/*
-=========================================================
-UPDATE PROGRESS
-=========================================================
-*/
+/* =========================
+   PROGRESS
+========================= */
 
 function updateProgress() {
 
@@ -1228,10 +1054,6 @@ function updateProgress() {
 
     }
 
-
-    /*
-    Never allow more than 100%
-    */
 
     percent =
         Math.min(
@@ -1253,15 +1075,12 @@ function updateProgress() {
         " of " +
         totalTasks +
         " tasks completed";
-
 }
 
 
-/*
-=========================================================
-ESCAPE HTML
-=========================================================
-*/
+/* =========================
+   ESCAPE HTML
+========================= */
 
 function escapeHtml(value) {
 
@@ -1275,34 +1094,26 @@ function escapeHtml(value) {
 }
 
 
-/*
-=========================================================
-LOGOUT
-=========================================================
-*/
+/* =========================
+   LOGOUT
+========================= */
 
 function logout() {
 
     localStorage.removeItem("token");
 
-    /*
-    Remove other possible authentication values
-    if your application uses them.
-    */
-
-    localStorage.removeItem("authToken");
+    localStorage.removeItem(
+        "authToken"
+    );
 
     window.location.href =
         "login.html";
-
 }
 
 
-/*
-=========================================================
-BACK BUTTON
-=========================================================
-*/
+/* =========================
+   BACK BUTTON
+========================= */
 
 function goBack() {
 
@@ -1320,41 +1131,25 @@ function goBack() {
             "dashboard.html";
 
     }
-
 }
 
 
-/*
-=========================================================
-PAGE INITIALIZATION
-=========================================================
-*/
+/* =========================
+   START PAGE
+========================= */
 
 window.addEventListener(
     "load",
-    async function () {
-
-        /*
-        First make sure user is logged in.
-        */
+    async function() {
 
         if (!checkAuthentication()) {
             return;
         }
 
 
-        /*
-        Load profile first.
-        */
-
         const profileLoaded =
             await loadProfile();
 
-
-        /*
-        Only load tasks if profile
-        authentication was successful.
-        */
 
         if (profileLoaded) {
 
@@ -1364,6 +1159,8 @@ window.addEventListener(
 
     }
 );
+
+</script>
 
 </script>
 
