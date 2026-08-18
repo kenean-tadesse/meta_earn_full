@@ -4,18 +4,23 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Meta_Earn Admin Panel</title>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 
 /* =====================================================
-   GLOBAL
+   RESET
 ===================================================== */
 
 *{
@@ -25,14 +30,19 @@ rel="stylesheet">
     font-family:'Inter',sans-serif;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body{
 
     background:
-    radial-gradient(
-        circle at top,
-        #0b1220,
-        #050913
-    );
+        radial-gradient(
+            circle at top,
+            #0b1220,
+            #050913
+        );
 
     color:white;
 
@@ -55,17 +65,20 @@ body{
 
     padding:20px 30px;
 
-    background:rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,0.05);
 
     backdrop-filter:blur(15px);
 
     -webkit-backdrop-filter:blur(15px);
 
     border-bottom:
-    1px solid rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,0.08);
 
 }
 
+
+/* LOGO */
 
 .logo{
 
@@ -78,6 +91,8 @@ body{
 }
 
 
+/* RIGHT SIDE */
+
 .right{
 
     display:flex;
@@ -89,6 +104,8 @@ body{
 }
 
 
+/* ADMIN NAME */
+
 .admin-name{
 
     color:#22c55e;
@@ -99,6 +116,8 @@ body{
 
 }
 
+
+/* LOGOUT */
 
 .logout{
 
@@ -115,11 +134,11 @@ body{
     font-weight:bold;
 
     background:
-    linear-gradient(
-        135deg,
-        #ef4444,
-        #dc2626
-    );
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
 
     transition:.3s;
 
@@ -134,7 +153,7 @@ body{
 
 
 /* =====================================================
-   MAIN CONTAINER
+   MAIN
 ===================================================== */
 
 .container{
@@ -184,23 +203,25 @@ body{
     display:grid;
 
     grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(250px,1fr)
-    );
+        repeat(
+            auto-fit,
+            minmax(250px,1fr)
+        );
 
     gap:20px;
 
 }
 
 
+/* CARD */
+
 .card{
 
     background:
-    rgba(255,255,255,.06);
+        rgba(255,255,255,0.06);
 
     border:
-    1px solid rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,0.08);
 
     border-radius:18px;
 
@@ -209,8 +230,8 @@ body{
     transition:.3s;
 
     box-shadow:
-    0 0 20px
-    rgba(37,99,235,.25);
+        0 0 20px
+        rgba(37,99,235,0.25);
 
     text-align:center;
 
@@ -222,8 +243,8 @@ body{
     transform:translateY(-8px);
 
     box-shadow:
-    0 0 30px
-    #2563eb;
+        0 0 30px
+        #2563eb;
 
 }
 
@@ -267,11 +288,11 @@ body{
     font-weight:bold;
 
     background:
-    linear-gradient(
-        135deg,
-        #6366f1,
-        #2563eb
-    );
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #2563eb
+        );
 
     transition:.3s;
 
@@ -301,51 +322,6 @@ body{
 
 
 /* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:700px){
-
-    .header{
-
-        padding:18px;
-
-    }
-
-    .logo{
-
-        font-size:22px;
-
-    }
-
-    .right{
-
-        gap:8px;
-
-    }
-
-    .admin-name{
-
-        display:none;
-
-    }
-
-    .container{
-
-        padding:20px;
-
-    }
-
-    .welcome h1{
-
-        font-size:27px;
-
-    }
-
-}
-
-
-/* =====================================================
    LOADING SCREEN
 ===================================================== */
 
@@ -353,7 +329,10 @@ body{
 
     position:fixed;
 
-    inset:0;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 
     background:#050913;
 
@@ -390,6 +369,45 @@ body{
 
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .header{
+
+        padding:18px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .admin-name{
+
+        display:none;
+
+    }
+
+    .container{
+
+        padding:20px;
+
+    }
+
+    .welcome h1{
+
+        font-size:27px;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -408,7 +426,9 @@ body{
 
         <h2>Meta_Earn ADMIN</h2>
 
-        <p>Checking administrator access...</p>
+        <p>
+            Checking administrator access...
+        </p>
 
     </div>
 
@@ -434,8 +454,9 @@ body{
 
 
         <div
-        class="admin-name"
-        id="adminName">
+            class="admin-name"
+            id="adminName"
+        >
 
             Administrator
 
@@ -443,8 +464,9 @@ body{
 
 
         <button
-        class="logout"
-        onclick="logout()">
+            class="logout"
+            onclick="logout()"
+        >
 
             Logout
 
@@ -459,14 +481,13 @@ body{
 
 
 <!-- =====================================================
-     MAIN
+     MAIN CONTAINER
 ===================================================== -->
 
 <div class="container">
 
 
     <div class="welcome">
-
 
         <h1>
 
@@ -477,17 +498,16 @@ body{
 
         <p>
 
-            Manage your Meta Earn platform safely and efficiently.
+            Manage your Meta Earn platform safely
+            and efficiently.
 
         </p>
-
 
     </div>
 
 
 
     <div class="cards">
-
 
 
         <!-- =================================================
@@ -505,8 +525,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-deposits.html')">
+                class="btn"
+                onclick="openPage('admin-deposits.html')"
+            >
 
                 Manage Deposits
 
@@ -531,8 +552,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-withdrawals.html')">
+                class="btn"
+                onclick="openPage('admin-withdrawals.html')"
+            >
 
                 Manage Withdrawals
 
@@ -557,8 +579,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-users.html')">
+                class="btn"
+                onclick="openPage('admin-users.html')"
+            >
 
                 Manage Users
 
@@ -583,8 +606,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-tasks.html')">
+                class="btn"
+                onclick="openPage('admin-tasks.html')"
+            >
 
                 Manage Tasks
 
@@ -609,8 +633,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-levels.html')">
+                class="btn"
+                onclick="openPage('admin-levels.html')"
+            >
 
                 Manage Levels
 
@@ -635,8 +660,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-referral.html')">
+                class="btn"
+                onclick="openPage('admin-referral.html')"
+            >
 
                 Manage Referral
 
@@ -661,8 +687,9 @@ body{
             </p>
 
             <button
-            class="btn"
-            onclick="openPage('admin-profile.html')">
+                class="btn"
+                onclick="openPage('admin-profile.html')"
+            >
 
                 Open Profile
 
@@ -671,9 +698,7 @@ body{
         </div>
 
 
-
     </div>
-
 
 </div>
 
@@ -694,7 +719,7 @@ body{
 <script>
 
 /* =====================================================
-   ADMIN AUTHENTICATION
+   ADMIN TOKEN
 ===================================================== */
 
 const adminToken =
@@ -702,7 +727,7 @@ const adminToken =
 
 
 /* =====================================================
-   CHECK LOGIN
+   CHECK ADMIN LOGIN
 ===================================================== */
 
 if(!adminToken){
@@ -715,16 +740,16 @@ if(!adminToken){
 
 
 /* =====================================================
-   LOAD ADMIN INFORMATION
+   LOAD ADMIN USER
 ===================================================== */
 
-function loadAdmin(){
+function loadAdminUser(){
 
-    const adminData =
+    const savedUser =
         localStorage.getItem("adminUser");
 
 
-    if(!adminData){
+    if(!savedUser){
 
         document.getElementById(
             "adminName"
@@ -739,10 +764,10 @@ function loadAdmin(){
     try{
 
         const admin =
-            JSON.parse(adminData);
+            JSON.parse(savedUser);
 
 
-        const name =
+        const displayName =
 
             admin.username ||
 
@@ -757,13 +782,16 @@ function loadAdmin(){
 
         document.getElementById(
             "adminName"
-        ).textContent = name;
+        ).textContent =
+            displayName;
 
 
-    }catch(error){
+    }
+
+    catch(error){
 
         console.error(
-            "Admin user data error:",
+            "Admin user error:",
             error
         );
 
@@ -778,7 +806,7 @@ function loadAdmin(){
 
 
 /* =====================================================
-   OPEN ADMIN PAGE
+   OPEN PAGE
 ===================================================== */
 
 function openPage(page){
@@ -794,13 +822,13 @@ function openPage(page){
 
 function logout(){
 
-    const confirmed =
+    const confirmLogout =
         confirm(
             "Logout from admin panel?"
         );
 
 
-    if(!confirmed){
+    if(!confirmLogout){
 
         return;
 
@@ -824,27 +852,31 @@ function logout(){
 
 
 /* =====================================================
-   PAGE LOAD
+   PAGE READY
 ===================================================== */
 
 window.addEventListener(
     "DOMContentLoaded",
     function(){
 
-        loadAdmin();
+        loadAdminUser();
 
-
-        /*
-         * Small delay so the loading screen
-         * does not flash unnecessarily.
-         */
 
         setTimeout(
             function(){
 
-                document.getElementById(
-                    "loadingScreen"
-                ).style.display = "none";
+                const loading =
+                    document.getElementById(
+                        "loadingScreen"
+                    );
+
+
+                if(loading){
+
+                    loading.style.display =
+                        "none";
+
+                }
 
             },
             300
