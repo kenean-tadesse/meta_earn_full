@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meta_Earn Deposit</title>
+<title>Meta Earn | Withdrawal</title>
 
 <style>
 
@@ -12,11 +13,11 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    background: radial-gradient(circle at top, #0b1220, #050913);
+    background:radial-gradient(circle at top,#0b1220,#050913);
     color:white;
     min-height:100vh;
     display:flex;
@@ -24,21 +25,75 @@ body{
     align-items:center;
 }
 
-/* Main Card */
-.deposit-card{
-    width:380px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.1);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button{
+    position:fixed;
+    top:20px;
+    left:20px;
+    width:50px;
+    height:50px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:#fff;
+
+    font-size:26px;
+    font-weight:bold;
+
+    border-radius:50%;
+    border:none;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    cursor:pointer;
+    z-index:9999;
+
+    transition:.25s;
+}
+
+.back-button:hover{
+    background:linear-gradient(135deg,#1d4ed8,#0891b2);
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+    transform:scale(.96);
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.withdraw-card{
+    width:390px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+
     padding:30px;
+
     border-radius:25px;
+
     text-align:center;
+
     box-shadow:0 0 25px #2563eb;
-    animation: glow 2s infinite alternate;
+
+    animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
+
     from{
         box-shadow:0 0 15px #2563eb;
     }
@@ -46,7 +101,13 @@ body{
     to{
         box-shadow:0 0 35px #38bdf8;
     }
+
 }
+
+
+/* =========================
+   TITLE
+========================= */
 
 h1{
     margin-bottom:20px;
@@ -54,136 +115,171 @@ h1{
 }
 
 
-/* Account Section */
+/* =========================
+   BALANCE
+========================= */
 
-.account-box{
+.balance-box{
     background:#111827;
+
     padding:18px;
+
     border-radius:15px;
+
     margin-bottom:20px;
 }
 
-.account-title{
+.balance-title{
     color:#94a3b8;
     font-size:14px;
 }
 
-.account-number{
-    font-size:26px;
+.balance{
+    font-size:28px;
     font-weight:bold;
+
     color:#22c55e;
-    margin:10px 0;
+
+    margin-top:8px;
 }
 
 
-.owner{
-    color:#e2e8f0;
-}
-
-
-/* Buttons */
-
-.copy-btn,
-.submit-btn{
-
-    width:100%;
-    padding:13px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:15px;
-    font-weight:bold;
-    color:white;
-    background:linear-gradient(135deg,#6366f1,#3b82f6);
-    transition:0.3s;
-}
-
-
-.copy-btn:hover,
-.submit-btn:hover{
-    transform:scale(1.03);
-}
-
-
-.copy-btn{
-    margin-top:10px;
-}
-
-
-/* Inputs */
+/* =========================
+   INPUTS
+========================= */
 
 input{
 
     width:100%;
+
     margin-top:15px;
+
     padding:13px;
+
     border-radius:12px;
+
     border:1px solid #334155;
+
     background:#0b1220;
+
     color:white;
+
     outline:none;
 
+    font-size:15px;
 }
 
+input:focus{
+    border-color:#3b82f6;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
 
 .submit-btn{
+
+    width:100%;
+
     margin-top:20px;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:scale(1.03);
+}
+
+.submit-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
 }
 
 
-/* Message */
+/* =========================
+   MESSAGE
+========================= */
 
 #message{
 
     margin-top:15px;
+
     font-weight:bold;
 
-}
+    line-height:1.6;
 
+    min-height:25px;
+}
 
 .yellow{
     color:#facc15;
 }
 
-
 .green{
     color:#22c55e;
 }
 
-
 .red{
     color:#ef4444;
 }
-.back-button{
-position:fixed;
-top:20px;
-left:20px;
-width:50px;
-height:50px;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#2563eb,#06b6d4);
-color:#fff;
-text-decoration:none;
-font-size:26px;
-font-weight:bold;
-border-radius:50%;
-box-shadow:0 8px 20px rgba(0,0,0,.25);
-cursor:pointer;
-z-index:9999;
-border:none;
-outline:none;
-transition:.25s;
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status-box{
+
+    margin-top:20px;
+
+    background:#111827;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    text-align:left;
+
+    display:none;
 }
 
-.back-button:hover{
-background:linear-gradient(135deg,#1d4ed8,#0891b2);
-box-shadow:0 12px 25px rgba(0,0,0,.35);
+.status-title{
+    color:#94a3b8;
+    font-size:13px;
+    margin-bottom:5px;
 }
 
-.back-button:active{
-transform:scale(.96);
+.status-value{
+    font-weight:bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:20px;
+    color:#64748b;
+    font-size:12px;
 }
 
 </style>
@@ -192,234 +288,863 @@ transform:scale(.96);
 
 
 <body>
-<button class="back-button" onclick="goBack()" title="Back">
+
+
+<button
+    class="back-button"
+    onclick="goBack()"
+    title="Back"
+>
     ←
 </button>
 
-<div class="deposit-card">
 
-    <h1>Deposit Balance</h1>
+<div class="withdraw-card">
 
-
-    <div class="account-box">
-
-        <p class="account-title">
-            Deposit Account Number
-        </p>
+    <h1>
+        Withdraw Balance
+    </h1>
 
 
-        <div class="account-number" id="accountNumber">
-            1000191981743
+    <!-- BALANCE -->
+
+    <div class="balance-box">
+
+        <div class="balance-title">
+            Available Balance
         </div>
 
-
-        <button class="copy-btn" onclick="copyAccount()">
-            Copy Account Number
-        </button>
-
-
-        <p class="owner">
-            Account Holder:
-            <b>Workenh Tadesse</b>
-        </p>
-
+        <div class="balance">
+            <span id="balance">
+                0.00
+            </span>
+            ETB
+        </div>
 
     </div>
 
 
-    <input 
-        type="text"
-        id="username"
-        placeholder="Enter your username">
+    <!-- AMOUNT -->
 
-
-    <input 
+    <input
         type="number"
         id="amount"
-        placeholder="Enter deposit amount">
+        placeholder="Enter withdrawal amount"
+        min="1"
+        step="0.01"
+    >
 
 
-    <button class="submit-btn" onclick="submitDeposit()">
-        Submit Deposit
+    <!-- ACCOUNT -->
+
+    <input
+        type="text"
+        id="accountNumber"
+        placeholder="Enter account number"
+        autocomplete="off"
+    >
+
+
+    <!-- SUBMIT -->
+
+    <button
+        class="submit-btn"
+        id="submitButton"
+        onclick="submitWithdrawal()"
+    >
+        Submit Withdrawal
     </button>
 
 
+    <!-- MESSAGE -->
+
     <div id="message"></div>
 
+
+    <!-- STATUS -->
+
+    <div
+        class="status-box"
+        id="statusBox"
+    >
+
+        <div class="status-title">
+            Withdrawal Status
+        </div>
+
+        <div
+            class="status-value"
+            id="statusValue"
+        >
+            -
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 Meta Earn
+    </div>
 
 </div>
 
 
 <script>
 
+/* =========================================================
+   META EARN API
+========================================================= */
+
+const API = "https://meta-earn-14.onrender.com/api";
+
+
+/*
+    IMPORTANT:
+
+    Keep these endpoint names the same as your existing backend.
+
+    If your current withdrawal code already uses different
+    endpoint names, change ONLY these two lines.
+*/
+
+const WITHDRAW_CREATE_ENDPOINT = API + "/withdrawals";
+
+const WITHDRAW_STATUS_ENDPOINT = API + "/withdrawals/my";
+
+
+/* =========================================================
+   TOKEN
+========================================================= */
+
+const token = localStorage.getItem("token");
+
+
+/* =========================================================
+   LOGIN CHECK
+========================================================= */
+
+if(!token){
+
+    window.location.href = "login.html";
+
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentBalance = 0;
+
+let statusTimer = null;
+
+let statusPollingTimer = null;
+
+
+/* =========================================================
+   GO BACK
+========================================================= */
+
 function goBack(){
 
-    // If there is a previous page
     if(document.referrer && history.length > 1){
 
         history.back();
 
     }else{
 
-        // Change this to your dashboard or home page
         window.location.href = "dashboard.html";
 
     }
 
 }
-/* Copy Account Number */
-
-function copyAccount(){
-
-    navigator.clipboard.writeText(
-        "1000191981743"
-    );
-
-    alert(
-        "Account number copied successfully!"
-    );
-
-}
 
 
- /* =========================================================
-   META_EARN - DEPOSITS ROUTE (HTML COMPATIBLE VERSION)
+/* =========================================================
+   MESSAGE FUNCTION
 ========================================================= */
 
-const express = require("express");
-const router = express.Router();
-const db = require("../config/db");
+function showMessage(text,type){
 
-// ===============================
-// CREATE DEPOSIT (FROM YOUR HTML)
-// ===============================
-router.post("/", async (req, res) => {
-    try {
-        const { username, amount, method } = req.body;
+    const message =
+        document.getElementById("message");
 
-        // ===============================
-        // VALIDATION
-        // ===============================
-        if (!username || !amount) {
-            return res.status(400).json({
-                success: false,
-                message: "Username and amount are required"
-            });
-        }
+    message.className = type || "";
 
-        if (amount <= 0) {
-            return res.status(400).json({
-                success: false,
-                message: "Invalid amount"
-            });
-        }
+    message.innerHTML = text;
 
-        // ===============================
-        // CHECK USER EXISTS
-        // ===============================
-        const [users] = await db.query(
-            "SELECT * FROM users WHERE username = ?",
-            [username]
-        );
-
-        if (users.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found"
-            });
-        }
-
-        const user = users[0];
-
-        // ===============================
-        // INSERT DEPOSIT
-        // ===============================
-        const [result] = await db.query(
-            `INSERT INTO deposits (user_id, amount, method, status, created_at)
-             VALUES (?, ?, ?, 'pending', NOW())`,
-            [user.id, amount, method || "manual"]
-        );
-
-        res.json({
-            success: true,
-            message: "Deposit submitted successfully",
-            depositId: result.insertId,
-            user: {
-                id: user.id,
-                username: user.username
-            }
-        });
-
-    } catch (error) {
-        console.error("Deposit Error:", error);
-        res.status(500).json({
-            success: false,
-            message: "Server error",
-            error: error.message
-        });
-    }
-});
-
-// ===============================
-// GET ALL DEPOSITS (ADMIN)
-// ===============================
-router.get("/", async (req, res) => {
-    try {
-        const [rows] = await db.query(
-            `SELECT d.*, u.username
-            FROM deposits d
-            LEFT JOIN users u ON d.user_id = u.id
-            ORDER BY d.created_at DESC`
-        );
-
-        res.json({
-            success: true,
-            deposits: rows
-        });
-
-    } catch (error) {
-        console.error("Error fetching deposits:", error);
-        res.status(500).json({
-            success: false,
-            message: "Server error",
-            error: error.message
-        });
-    }
-});
-
-// ===============================
-// APPROVE DEPOSIT
-// ===============================
-// Client-side deposit handling
-async function submitDeposit() {
-    const username = document.getElementById("username").value; 
-    const amount = document.getElementById("amount").value; 
-    const message = document.getElementById("message");
-    if (!username || !amount) { 
-        message.className = "red"; 
-        message.innerHTML = "Username and amount are required."; 
-        return; 
-    } 
-    try { 
-        const response = await fetch("https://meta-earn-14.onrender.com/api/deposits", { 
-            method: "POST", 
-            headers: { "Content-Type": "application/json" }, 
-            body: JSON.stringify({ username, amount }) 
-        }); 
-        const data = await response.json(); 
-        if (data.success) { 
-            message.className = "yellow";
-            message.innerHTML = "⏳ Waiting for admin approval<br> Your deposit request has been submitted successfully."; 
-        } else { 
-            message.className = "red"; 
-            message.innerHTML = data.message; 
-        } 
-    } catch (error) { 
-        message.className = "red"; 
-        message.innerHTML = "Server connection failed.";
-        console.log(error); 
-    } 
 }
+
+
+/* =========================================================
+   CLEAR MESSAGE
+   AFTER 60 SECONDS
+========================================================= */
+
+function clearMessageAfterOneMinute(){
+
+    if(statusTimer){
+
+        clearTimeout(statusTimer);
+
+    }
+
+    statusTimer = setTimeout(() => {
+
+        const message =
+            document.getElementById("message");
+
+        message.innerHTML = "";
+
+        message.className = "";
+
+    },60000);
+
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+function showWithdrawalSuccess(amount){
+
+    showMessage(
+
+        "✅ Withdrawal successful!<br>" +
+        "Amount: " +
+        Number(amount).toFixed(2) +
+        " ETB",
+
+        "green"
+
+    );
+
+
+    /*
+        Success message remains visible
+        for exactly 60 seconds.
+    */
+
+    clearMessageAfterOneMinute();
+
+}
+
+
+/* =========================================================
+   PENDING MESSAGE
+========================================================= */
+
+function showPendingMessage(){
+
+    showMessage(
+
+        "⏳ Withdrawal request submitted.<br>" +
+        "Waiting for admin approval.",
+
+        "yellow"
+
+    );
+
+}
+
+
+/* =========================================================
+   REJECTED MESSAGE
+========================================================= */
+
+function showRejectedMessage(){
+
+    showMessage(
+
+        "❌ Your withdrawal request was rejected.",
+
+        "red"
+
+    );
+
+}
+
+
+/* =========================================================
+   LOAD PROFILE / BALANCE
+========================================================= */
+
+async function loadProfile(){
+
+    try{
+
+        const response =
+            await fetch(
+
+                API + "/auth/profile",
+
+                {
+
+                    method:"GET",
+
+                    headers:{
+                        "Authorization":
+                            "Bearer " + token,
+
+                        "Content-Type":
+                            "application/json"
+                    }
+
+                }
+
+            );
+
+
+        if(response.status === 401){
+
+            localStorage.removeItem("token");
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(!data.success){
+
+            showMessage(
+
+                data.message ||
+                "Unable to load balance.",
+
+                "red"
+
+            );
+
+            return;
+
+        }
+
+
+        currentBalance =
+            Number(data.user.balance || 0);
+
+
+        document.getElementById("balance")
+            .textContent =
+            currentBalance.toFixed(2);
+
+
+    }catch(error){
+
+        console.error(
+            "Profile error:",
+            error
+        );
+
+
+        showMessage(
+
+            "Unable to connect to server.",
+
+            "red"
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBMIT WITHDRAWAL
+========================================================= */
+
+async function submitWithdrawal(){
+
+    const amountInput =
+        document.getElementById("amount");
+
+    const accountInput =
+        document.getElementById("accountNumber");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    const amount =
+        Number(amountInput.value);
+
+    const accountNumber =
+        accountInput.value.trim();
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
+
+    if(!amount || amount <= 0){
+
+        showMessage(
+
+            "Please enter a valid withdrawal amount.",
+
+            "red"
+
+        );
+
+        return;
+
+    }
+
+
+    if(!accountNumber){
+
+        showMessage(
+
+            "Please enter your account number.",
+
+            "red"
+
+        );
+
+        return;
+
+    }
+
+
+    if(amount > currentBalance){
+
+        showMessage(
+
+            "Insufficient balance.",
+
+            "red"
+
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       DISABLE BUTTON
+    ========================= */
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "Submitting...";
+
+
+    try{
+
+        const response =
+            await fetch(
+
+                WITHDRAW_CREATE_ENDPOINT,
+
+                {
+
+                    method:"POST",
+
+                    headers:{
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    },
+
+                    body:JSON.stringify({
+
+                        amount:amount,
+
+                        account_number:
+                            accountNumber
+
+                    })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /* =========================
+           REQUEST FAILED
+        ========================= */
+
+        if(!response.ok || !data.success){
+
+            showMessage(
+
+                data.message ||
+                "Withdrawal request failed.",
+
+                "red"
+
+            );
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "Submit Withdrawal";
+
+            return;
+
+        }
+
+
+        /*
+            VERY IMPORTANT:
+
+            We DO NOT show "Withdrawal successful"
+            here.
+
+            The request is only PENDING.
+        */
+
+        showPendingMessage();
+
+
+        /*
+            Start checking for admin approval.
+        */
+
+        startApprovalChecking(
+            data.withdrawalId ||
+            data.id
+        );
+
+
+        /*
+            Clear inputs.
+        */
+
+        amountInput.value = "";
+
+        accountInput.value = "";
+
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+            "Submit Withdrawal";
+
+
+    }catch(error){
+
+        console.error(
+            "Withdrawal error:",
+            error
+        );
+
+
+        showMessage(
+
+            "Server connection failed.",
+
+            "red"
+
+        );
+
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+            "Submit Withdrawal";
+
+    }
+
+}
+
+
+/* =========================================================
+   START APPROVAL CHECK
+========================================================= */
+
+function startApprovalChecking(withdrawalId){
+
+    /*
+        Stop previous polling if there is one.
+    */
+
+    if(statusPollingTimer){
+
+        clearInterval(
+            statusPollingTimer
+        );
+
+    }
+
+
+    /*
+        If backend did not return an ID,
+        we cannot safely check one request.
+    */
+
+    if(!withdrawalId){
+
+        console.warn(
+            "No withdrawal ID returned by server."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Check immediately.
+    */
+
+    checkWithdrawalStatus(
+        withdrawalId
+    );
+
+
+    /*
+        Then check every 5 seconds.
+    */
+
+    statusPollingTimer =
+        setInterval(() => {
+
+            checkWithdrawalStatus(
+                withdrawalId
+            );
+
+        },5000);
+
+}
+
+
+/* =========================================================
+   CHECK WITHDRAWAL STATUS
+========================================================= */
+
+async function checkWithdrawalStatus(
+    withdrawalId
+){
+
+    try{
+
+        /*
+            The backend should return the
+            current status of this withdrawal.
+
+            Example:
+
+            {
+                success:true,
+                withdrawal:{
+                    id:10,
+                    status:"pending"
+                }
+            }
+
+            or:
+
+            {
+                success:true,
+                withdrawal:{
+                    id:10,
+                    status:"approved"
+                }
+            }
+        */
+
+
+        const response =
+            await fetch(
+
+                WITHDRAW_STATUS_ENDPOINT +
+                "/" +
+                withdrawalId,
+
+                {
+
+                    method:"GET",
+
+                    headers:{
+
+                        "Authorization":
+                            "Bearer " + token,
+
+                        "Content-Type":
+                            "application/json"
+
+                    }
+
+                }
+
+            );
+
+
+        if(!response.ok){
+
+            return;
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(!data.success){
+
+            return;
+
+        }
+
+
+        const withdrawal =
+            data.withdrawal;
+
+
+        if(!withdrawal){
+
+            return;
+
+        }
+
+
+        const status =
+            String(
+                withdrawal.status || ""
+            ).toLowerCase();
+
+
+        /* =========================
+           PENDING
+        ========================= */
+
+        if(
+            status === "pending"
+        ){
+
+            showPendingMessage();
+
+            return;
+
+        }
+
+
+        /* =========================
+           APPROVED
+        ========================= */
+
+        if(
+            status === "approved" ||
+            status === "completed" ||
+            status === "success" ||
+            status === "successful"
+        ){
+
+            /*
+                STOP polling.
+
+                Admin has approved.
+            */
+
+            if(statusPollingTimer){
+
+                clearInterval(
+                    statusPollingTimer
+                );
+
+                statusPollingTimer = null;
+
+            }
+
+
+            /*
+                NOW — AND ONLY NOW —
+                show success.
+            */
+
+            showWithdrawalSuccess(
+                withdrawal.amount
+            );
+
+
+            /*
+                Reload balance.
+
+                The backend should already have
+                deducted the balance during approval.
+            */
+
+            await loadProfile();
+
+
+            return;
+
+        }
+
+
+        /* =========================
+           REJECTED
+        ========================= */
+
+        if(
+            status === "rejected" ||
+            status === "declined" ||
+            status === "cancelled"
+        ){
+
+            if(statusPollingTimer){
+
+                clearInterval(
+                    statusPollingTimer
+                );
+
+                statusPollingTimer = null;
+
+            }
+
+
+            showRejectedMessage();
+
+            return;
+
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "Status check error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+    "load",
+    async function(){
+
+        await loadProfile();
+
+    }
+);
 
 </script>
 
