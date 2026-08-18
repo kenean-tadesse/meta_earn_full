@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meta Earn Admin - Withdrawal Management</title>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
+<title>Meta_Earn Deposit</title>
 
 <style>
 
@@ -19,1344 +12,414 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#07111f;
+    background: radial-gradient(circle at top, #0b1220, #050913);
     color:white;
-    padding:25px;
-}
-
-.header{
+    min-height:100vh;
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
-    margin-bottom:25px;
 }
 
-.header h1{
-    font-size:30px;
-    font-weight:700;
-    color:#38bdf8;
+/* Main Card */
+.deposit-card{
+    width:380px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px #2563eb;
+    animation: glow 2s infinite alternate;
 }
 
-.subtitle{
-    color:#94a3b8;
-    margin-top:6px;
+@keyframes glow{
+    from{
+        box-shadow:0 0 15px #2563eb;
+    }
+
+    to{
+        box-shadow:0 0 35px #38bdf8;
+    }
 }
 
-.logout-btn{
-    background:#dc2626;
-    color:white;
-    border:none;
-    padding:11px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-.logout-btn:hover{
-    background:#b91c1c;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-bottom:25px;
-}
-
-.card{
-    background:rgba(255,255,255,.05);
-    border-radius:18px;
-    padding:20px;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 0 20px rgba(37,99,235,.25);
-}
-
-.card h3{
-    font-size:15px;
-    color:#94a3b8;
-    margin-bottom:10px;
-}
-
-.card h2{
-    font-size:32px;
-}
-
-.search-box{
+h1{
     margin-bottom:20px;
+    font-size:28px;
 }
 
-.search-box input{
-    width:100%;
-    padding:15px;
-    border:none;
-    outline:none;
-    border-radius:14px;
+
+/* Account Section */
+
+.account-box{
     background:#111827;
-    color:white;
-    font-size:15px;
-}
-
-.table-container{
-    background:rgba(255,255,255,.05);
-    border-radius:18px;
-    padding:20px;
-    overflow:auto;
-    box-shadow:0 0 20px rgba(37,99,235,.25);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:900px;
-}
-
-th{
-    padding:15px;
-    color:#38bdf8;
-    font-size:14px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-td{
-    padding:15px;
-    text-align:center;
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.pending{
-    color:#facc15;
-    font-weight:bold;
-}
-
-.approved{
-    color:#22c55e;
-    font-weight:bold;
-}
-
-.rejected{
-    color:#ef4444;
-    font-weight:bold;
-}
-
-.approve-btn{
-    background:#22c55e;
-    color:white;
-    padding:9px 18px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
-    margin-right:5px;
-}
-
-.reject-btn{
-    background:#ef4444;
-    color:white;
-    padding:9px 18px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-.approve-btn:hover{
-    background:#16a34a;
-}
-
-.reject-btn:hover{
-    background:#dc2626;
-}
-
-.approve-btn:disabled,
-.reject-btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-.empty{
-    text-align:center;
-    padding:40px;
-    color:#94a3b8;
-}
-
-.message{
-    display:none;
+    padding:18px;
+    border-radius:15px;
     margin-bottom:20px;
-    padding:15px;
-    border-radius:12px;
-    font-weight:600;
 }
 
-.message.success{
-    display:block;
-    background:rgba(34,197,94,.12);
-    border:1px solid #22c55e;
+.account-title{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.account-number{
+    font-size:26px;
+    font-weight:bold;
     color:#22c55e;
+    margin:10px 0;
 }
 
-.message.error{
-    display:block;
-    background:rgba(239,68,68,.12);
-    border:1px solid #ef4444;
-    color:#ef4444;
+
+.owner{
+    color:#e2e8f0;
 }
 
-.message.warning{
-    display:block;
-    background:rgba(250,204,21,.12);
-    border:1px solid #facc15;
+
+/* Buttons */
+
+.copy-btn,
+.submit-btn{
+
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    transition:0.3s;
+}
+
+
+.copy-btn:hover,
+.submit-btn:hover{
+    transform:scale(1.03);
+}
+
+
+.copy-btn{
+    margin-top:10px;
+}
+
+
+/* Inputs */
+
+input{
+
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #334155;
+    background:#0b1220;
+    color:white;
+    outline:none;
+
+}
+
+
+.submit-btn{
+    margin-top:20px;
+}
+
+
+/* Message */
+
+#message{
+
+    margin-top:15px;
+    font-weight:bold;
+
+}
+
+
+.yellow{
     color:#facc15;
 }
 
-@media(max-width:900px){
 
-    body{
-        padding:15px;
-    }
+.green{
+    color:#22c55e;
+}
 
-    .header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
-    }
 
+.red{
+    color:#ef4444;
+}
+.back-button{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:#fff;
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+border-radius:50%;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+cursor:pointer;
+z-index:9999;
+border:none;
+outline:none;
+transition:.25s;
+}
+
+.back-button:hover{
+background:linear-gradient(135deg,#1d4ed8,#0891b2);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.back-button:active{
+transform:scale(.96);
 }
 
 </style>
 
 </head>
 
+
 <body>
+<button class="back-button" onclick="goBack()" title="Back">
+    ←
+</button>
 
-<div class="header">
+<div class="deposit-card">
 
-    <div>
+    <h1>Deposit Balance</h1>
 
-        <h1>
-            Withdrawal Management
-        </h1>
 
-        <div class="subtitle">
-            Manage and approve user withdrawal requests
+    <div class="account-box">
+
+        <p class="account-title">
+            Deposit Account Number
+        </p>
+
+
+        <div class="account-number" id="accountNumber">
+            1000191981743
         </div>
 
+
+        <button class="copy-btn" onclick="copyAccount()">
+            Copy Account Number
+        </button>
+
+
+        <p class="owner">
+            Account Holder:
+            <b>Workenh Tadesse</b>
+        </p>
+
+
     </div>
 
-    <button
-        class="logout-btn"
-        onclick="logoutAdmin()"
-    >
-        Logout
+
+    <input 
+        type="text"
+        id="username"
+        placeholder="Enter your username">
+
+
+    <input 
+        type="number"
+        id="amount"
+        placeholder="Enter deposit amount">
+
+
+    <button class="submit-btn" onclick="submitDeposit()">
+        Submit Deposit
     </button>
 
-</div>
 
+    <div id="message"></div>
 
-<div id="message" class="message"></div>
-
-
-<div class="stats">
-
-    <div class="card">
-
-        <h3>
-            Total Withdrawals
-        </h3>
-
-        <h2 id="totalWithdrawals">
-            0
-        </h2>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>
-            Pending
-        </h3>
-
-        <h2 id="pendingWithdrawals">
-            0
-        </h2>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>
-            Approved
-        </h3>
-
-        <h2 id="approvedWithdrawals">
-            0
-        </h2>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>
-            Rejected
-        </h3>
-
-        <h2 id="rejectedWithdrawals">
-            0
-        </h2>
-
-    </div>
-
-</div>
-
-
-<div class="search-box">
-
-    <input
-        type="text"
-        id="search"
-        placeholder="Search by username..."
-        oninput="searchWithdrawal()"
-    >
-
-</div>
-
-
-<div class="table-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-    <th>ID</th>
-
-    <th>User</th>
-
-    <th>Amount</th>
-
-    <th>Bank</th>
-
-    <th>Account</th>
-
-    <th>Status</th>
-
-    <th>Date</th>
-
-    <th>Action</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="withdrawTable">
-
-<tr>
-
-    <td
-        colspan="8"
-        class="empty"
-    >
-        Loading withdrawals...
-    </td>
-
-</tr>
-
-</tbody>
-
-</table>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   META EARN ADMIN WITHDRAWAL MANAGEMENT
-   BACKEND:
-   https://meta-earn-14.onrender.com
-========================================================= */
+function goBack(){
 
+    // If there is a previous page
+    if(document.referrer && history.length > 1){
 
-const API =
-    "https://meta-earn-14.onrender.com/api";
+        history.back();
 
+    }else{
 
-/* =========================================================
-   IMPORTANT:
-   ONLY USE adminToken
-========================================================= */
-
-const token =
-    localStorage.getItem("adminToken");
-
-
-let allWithdrawals = [];
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-function showMessage(text, type = "success"){
-
-    const message =
-        document.getElementById("message");
-
-    message.className =
-        "message " + type;
-
-    message.innerHTML = text;
-
-}
-
-
-/* =========================================================
-   HIDE MESSAGE
-========================================================= */
-
-function hideMessage(){
-
-    const message =
-        document.getElementById("message");
-
-    message.className =
-        "message";
-
-    message.innerHTML = "";
-
-}
-
-
-/* =========================================================
-   CHECK ADMIN LOGIN
-========================================================= */
-
-function checkAdminToken(){
-
-    if(!token){
-
-        showMessage(
-            "Admin login required. Please login again.",
-            "error"
-        );
-
-        setTimeout(() => {
-
-            window.location.href =
-                "admin-login.html";
-
-        },1500);
-
-        return false;
+        // Change this to your dashboard or home page
+        window.location.href = "dashboard.html";
 
     }
 
-    return true;
+}
+/* Copy Account Number */
+
+function copyAccount(){
+
+    navigator.clipboard.writeText(
+        "1000191981743"
+    );
+
+    alert(
+        "Account number copied successfully!"
+    );
 
 }
 
 
-/* =========================================================
-   AUTHORIZATION HEADER
+ /* =========================================================
+   META_EARN - DEPOSITS ROUTE (HTML COMPATIBLE VERSION)
 ========================================================= */
 
-function authHeaders(){
+const express = require("express");
+const router = express.Router();
+const db = require("../config/db");
 
-    return {
+// ===============================
+// CREATE DEPOSIT (FROM YOUR HTML)
+// ===============================
+router.post("/", async (req, res) => {
+    try {
+        const { username, amount, method } = req.body;
 
-        "Authorization":
-            "Bearer " + token,
-
-        "Content-Type":
-            "application/json"
-
-    };
-
-}
-
-
-/* =========================================================
-   LOAD WITHDRAWALS
-========================================================= */
-
-async function loadWithdrawals(){
-
-    if(!checkAdminToken()){
-        return;
-    }
-
-    try{
-
-        const response =
-            await fetch(
-                API + "/withdrawals",
-                {
-                    method:"GET",
-                    headers:authHeaders()
-                }
-            );
-
-
-        /* ===============================
-           ADMIN TOKEN INVALID
-        =============================== */
-
-        if(response.status === 401){
-
-            showMessage(
-                "Unauthorized: your admin session has expired or the token is invalid. Please login again.",
-                "error"
-            );
-
-            localStorage.removeItem(
-                "adminToken"
-            );
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "admin-login.html";
-
-            },2000);
-
-            return;
-
+        // ===============================
+        // VALIDATION
+        // ===============================
+        if (!username || !amount) {
+            return res.status(400).json({
+                success: false,
+                message: "Username and amount are required"
+            });
         }
 
-
-        if(response.status === 403){
-
-            showMessage(
-                "Access denied. This account does not have administrator permission.",
-                "error"
-            );
-
-            return;
-
+        if (amount <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid amount"
+            });
         }
 
-
-        const data =
-            await response.json();
-
-
-        const table =
-            document.getElementById(
-                "withdrawTable"
-            );
-
-
-        if(!data.success){
-
-            table.innerHTML = `
-                <tr>
-                    <td
-                        colspan="8"
-                        class="empty"
-                    >
-                        ${escapeHtml(
-                            data.message ||
-                            "Failed to load withdrawals"
-                        )}
-                    </td>
-                </tr>
-            `;
-
-            return;
-
-        }
-
-
-        allWithdrawals =
-            Array.isArray(data.withdrawals)
-                ? data.withdrawals
-                : [];
-
-
-        updateStatistics();
-
-        displayWithdrawals(
-            allWithdrawals
+        // ===============================
+        // CHECK USER EXISTS
+        // ===============================
+        const [users] = await db.query(
+            "SELECT * FROM users WHERE username = ?",
+            [username]
         );
 
-
-    }catch(error){
-
-        console.error(
-            "Load withdrawals error:",
-            error
-        );
-
-
-        document.getElementById(
-            "withdrawTable"
-        ).innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="8"
-                    class="empty"
-                >
-                    Server connection failed.
-                </td>
-
-            </tr>
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================================
-   STATISTICS
-========================================================= */
-
-function updateStatistics(){
-
-    document.getElementById(
-        "totalWithdrawals"
-    ).textContent =
-        allWithdrawals.length;
-
-
-    document.getElementById(
-        "pendingWithdrawals"
-    ).textContent =
-        allWithdrawals.filter(
-            item =>
-                String(item.status)
-                .toLowerCase()
-                === "pending"
-        ).length;
-
-
-    document.getElementById(
-        "approvedWithdrawals"
-    ).textContent =
-        allWithdrawals.filter(
-            item =>
-                String(item.status)
-                .toLowerCase()
-                === "approved"
-        ).length;
-
-
-    document.getElementById(
-        "rejectedWithdrawals"
-    ).textContent =
-        allWithdrawals.filter(
-            item =>
-                String(item.status)
-                .toLowerCase()
-                === "rejected"
-        ).length;
-
-}
-
-
-/* =========================================================
-   DISPLAY WITHDRAWALS
-========================================================= */
-
-function displayWithdrawals(list){
-
-    const table =
-        document.getElementById(
-            "withdrawTable"
-        );
-
-
-    table.innerHTML = "";
-
-
-    if(!list.length){
-
-        table.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="8"
-                    class="empty"
-                >
-                    No withdrawal requests found.
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    list.forEach(item => {
-
-        const status =
-            String(item.status || "")
-            .toLowerCase();
-
-
-        let action = "";
-
-
-        if(status === "pending"){
-
-            action = `
-
-                <button
-                    class="approve-btn"
-                    id="approve-${item.id}"
-                    onclick="approveWithdrawal(${item.id})"
-                >
-                    Approve
-                </button>
-
-
-                <button
-                    class="reject-btn"
-                    id="reject-${item.id}"
-                    onclick="rejectWithdrawal(${item.id})"
-                >
-                    Reject
-                </button>
-
-            `;
-
-        }else{
-
-            action = "Completed";
-
+        if (users.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
         }
 
+        const user = users[0];
 
-        const username =
-            item.username || "-";
+        // ===============================
+        // INSERT DEPOSIT
+        // ===============================
+        const [result] = await db.query(
+            `INSERT INTO deposits (user_id, amount, method, status, created_at)
+             VALUES (?, ?, ?, 'pending', NOW())`,
+            [user.id, amount, method || "manual"]
+        );
 
-
-        const bankName =
-            item.bank_name || "-";
-
-
-        const bankAccount =
-            item.bank_account || "-";
-
-
-        const amount =
-            Number(item.amount || 0)
-            .toFixed(2);
-
-
-        const date =
-            item.created_at
-                ? new Date(
-                    item.created_at
-                  ).toLocaleString()
-                : "-";
-
-
-        table.innerHTML += `
-
-            <tr>
-
-                <td>
-                    ${item.id}
-                </td>
-
-
-                <td>
-                    ${escapeHtml(
-                        username
-                    )}
-                </td>
-
-
-                <td>
-                    ${amount} Birr
-                </td>
-
-
-                <td>
-                    ${escapeHtml(
-                        bankName
-                    )}
-                </td>
-
-
-                <td>
-                    ${escapeHtml(
-                        bankAccount
-                    )}
-                </td>
-
-
-                <td class="${escapeHtml(status)}">
-
-                    ${escapeHtml(
-                        status.toUpperCase()
-                    )}
-
-                </td>
-
-
-                <td>
-                    ${escapeHtml(date)}
-                </td>
-
-
-                <td>
-                    ${action}
-                </td>
-
-            </tr>
-
-        `;
-
-    });
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function searchWithdrawal(){
-
-    const text =
-        document
-        .getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    const filtered =
-        allWithdrawals.filter(item => {
-
-            const username =
-                String(
-                    item.username || ""
-                ).toLowerCase();
-
-
-            return username.includes(text);
-
+        res.json({
+            success: true,
+            message: "Deposit submitted successfully",
+            depositId: result.insertId,
+            user: {
+                id: user.id,
+                username: user.username
+            }
         });
 
+    } catch (error) {
+        console.error("Deposit Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error",
+            error: error.message
+        });
+    }
+});
 
-    displayWithdrawals(
-        filtered
-    );
+// ===============================
+// GET ALL DEPOSITS (ADMIN)
+// ===============================
+router.get("/", async (req, res) => {
+    try {
+        const [rows] = await db.query(
+            `SELECT d.*, u.username
+            FROM deposits d
+            LEFT JOIN users u ON d.user_id = u.id
+            ORDER BY d.created_at DESC`
+        );
 
+        res.json({
+            success: true,
+            deposits: rows
+        });
+
+    } catch (error) {
+        console.error("Error fetching deposits:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error",
+            error: error.message
+        });
+    }
+});
+
+// ===============================
+// APPROVE DEPOSIT
+// ===============================
+// Client-side deposit handling
+async function submitDeposit() {
+    const username = document.getElementById("username").value; 
+    const amount = document.getElementById("amount").value; 
+    const message = document.getElementById("message");
+    if (!username || !amount) { 
+        message.className = "red"; 
+        message.innerHTML = "Username and amount are required."; 
+        return; 
+    } 
+    try { 
+        const response = await fetch("https://meta-earn-14.onrender.com/api/deposits", { 
+            method: "POST", 
+            headers: { "Content-Type": "application/json" }, 
+            body: JSON.stringify({ username, amount }) 
+        }); 
+        const data = await response.json(); 
+        if (data.success) { 
+            message.className = "yellow";
+            message.innerHTML = "⏳ Waiting for admin approval<br> Your deposit request has been submitted successfully."; 
+        } else { 
+            message.className = "red"; 
+            message.innerHTML = data.message; 
+        } 
+    } catch (error) { 
+        message.className = "red"; 
+        message.innerHTML = "Server connection failed.";
+        console.log(error); 
+    } 
 }
-
-
-/* =========================================================
-   APPROVE WITHDRAWAL
-========================================================= */
-
-async function approveWithdrawal(id){
-
-    if(!checkAdminToken()){
-        return;
-    }
-
-
-    const confirmed =
-        confirm(
-            "Are you sure you want to approve withdrawal #" +
-            id +
-            "?"
-        );
-
-
-    if(!confirmed){
-        return;
-    }
-
-
-    const approveButton =
-        document.getElementById(
-            "approve-" + id
-        );
-
-
-    const rejectButton =
-        document.getElementById(
-            "reject-" + id
-        );
-
-
-    if(approveButton){
-        approveButton.disabled = true;
-        approveButton.textContent =
-            "Approving...";
-    }
-
-
-    if(rejectButton){
-        rejectButton.disabled = true;
-    }
-
-
-    try{
-
-        const response =
-            await fetch(
-
-                API +
-                "/withdrawals/approve/" +
-                id,
-
-                {
-
-                    method:"PUT",
-
-                    headers:
-                        authHeaders()
-
-                }
-
-            );
-
-
-        /* ===============================
-           401
-        =============================== */
-
-        if(response.status === 401){
-
-            showMessage(
-                "401 Unauthorized: the backend rejected the admin token.",
-                "error"
-            );
-
-            if(approveButton){
-                approveButton.disabled = false;
-                approveButton.textContent =
-                    "Approve";
-            }
-
-            if(rejectButton){
-                rejectButton.disabled = false;
-            }
-
-            return;
-
-        }
-
-
-        /* ===============================
-           403
-        =============================== */
-
-        if(response.status === 403){
-
-            showMessage(
-                "403 Forbidden: your account is not authorized to approve withdrawals.",
-                "error"
-            );
-
-            if(approveButton){
-                approveButton.disabled = false;
-                approveButton.textContent =
-                    "Approve";
-            }
-
-            if(rejectButton){
-                rejectButton.disabled = false;
-            }
-
-            return;
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if(!data.success){
-
-            showMessage(
-                data.message ||
-                "Withdrawal approval failed.",
-                "error"
-            );
-
-
-            if(approveButton){
-
-                approveButton.disabled =
-                    false;
-
-                approveButton.textContent =
-                    "Approve";
-
-            }
-
-
-            if(rejectButton){
-
-                rejectButton.disabled =
-                    false;
-
-            }
-
-            return;
-
-        }
-
-
-        /* ===============================
-           SUCCESS
-        =============================== */
-
-        showMessage(
-            data.message ||
-            "Withdrawal approved successfully.",
-            "success"
-        );
-
-
-        await loadWithdrawals();
-
-
-    }catch(error){
-
-        console.error(
-            "Approve withdrawal error:",
-            error
-        );
-
-
-        showMessage(
-            "Server connection failed while approving withdrawal.",
-            "error"
-        );
-
-
-        if(approveButton){
-
-            approveButton.disabled =
-                false;
-
-            approveButton.textContent =
-                "Approve";
-
-        }
-
-
-        if(rejectButton){
-
-            rejectButton.disabled =
-                false;
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   REJECT WITHDRAWAL
-========================================================= */
-
-async function rejectWithdrawal(id){
-
-    if(!checkAdminToken()){
-        return;
-    }
-
-
-    const confirmed =
-        confirm(
-            "Are you sure you want to reject withdrawal #" +
-            id +
-            "?"
-        );
-
-
-    if(!confirmed){
-        return;
-    }
-
-
-    const approveButton =
-        document.getElementById(
-            "approve-" + id
-        );
-
-
-    const rejectButton =
-        document.getElementById(
-            "reject-" + id
-        );
-
-
-    if(rejectButton){
-
-        rejectButton.disabled =
-            true;
-
-        rejectButton.textContent =
-            "Rejecting...";
-
-    }
-
-
-    if(approveButton){
-
-        approveButton.disabled =
-            true;
-
-    }
-
-
-    try{
-
-        const response =
-            await fetch(
-
-                API +
-                "/withdrawals/reject/" +
-                id,
-
-                {
-
-                    method:"PUT",
-
-                    headers:
-                        authHeaders()
-
-                }
-
-            );
-
-
-        if(response.status === 401){
-
-            showMessage(
-                "401 Unauthorized: the backend rejected the admin token.",
-                "error"
-            );
-
-            if(rejectButton){
-
-                rejectButton.disabled =
-                    false;
-
-                rejectButton.textContent =
-                    "Reject";
-
-            }
-
-            if(approveButton){
-
-                approveButton.disabled =
-                    false;
-
-            }
-
-            return;
-
-        }
-
-
-        if(response.status === 403){
-
-            showMessage(
-                "403 Forbidden: your account is not authorized to reject withdrawals.",
-                "error"
-            );
-
-            if(rejectButton){
-
-                rejectButton.disabled =
-                    false;
-
-                rejectButton.textContent =
-                    "Reject";
-
-            }
-
-            if(approveButton){
-
-                approveButton.disabled =
-                    false;
-
-            }
-
-            return;
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if(!data.success){
-
-            showMessage(
-                data.message ||
-                "Withdrawal rejection failed.",
-                "error"
-            );
-
-
-            if(rejectButton){
-
-                rejectButton.disabled =
-                    false;
-
-                rejectButton.textContent =
-                    "Reject";
-
-            }
-
-
-            if(approveButton){
-
-                approveButton.disabled =
-                    false;
-
-            }
-
-            return;
-
-        }
-
-
-        showMessage(
-            data.message ||
-            "Withdrawal rejected successfully.",
-            "success"
-        );
-
-
-        await loadWithdrawals();
-
-
-    }catch(error){
-
-        console.error(
-            "Reject withdrawal error:",
-            error
-        );
-
-
-        showMessage(
-            "Server connection failed while rejecting withdrawal.",
-            "error"
-        );
-
-
-        if(rejectButton){
-
-            rejectButton.disabled =
-                false;
-
-            rejectButton.textContent =
-                "Reject";
-
-        }
-
-
-        if(approveButton){
-
-            approveButton.disabled =
-                false;
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHtml(value){
-
-    return String(value)
-
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   ADMIN LOGOUT
-========================================================= */
-
-function logoutAdmin(){
-
-    localStorage.removeItem(
-        "adminToken"
-    );
-
-    window.location.href =
-        "admin-login.html";
-
-}
-
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        loadWithdrawals();
-
-    }
-);
-
-
-/* =========================================================
-   AUTO REFRESH
-   Every 10 seconds
-========================================================= */
-
-setInterval(
-    function(){
-
-        if(
-            document.visibilityState
-            === "visible"
-        ){
-
-            loadWithdrawals();
-
-        }
-
-    },
-    10000
-);
 
 </script>
 
