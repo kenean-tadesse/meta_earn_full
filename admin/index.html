@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Meta_Earn Admin Panel</title>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
 
 *{
     margin:0;
@@ -30,99 +18,59 @@
     font-family:'Inter',sans-serif;
 }
 
-
-/* =====================================================
-   BODY
-===================================================== */
-
 body{
 
-    background:
-        radial-gradient(
-            circle at top,
-            #0b1220,
-            #050913
-        );
-
+    background:radial-gradient(circle at top,#0b1220,#050913);
     color:white;
-
     min-height:100vh;
 
 }
 
-
-/* =====================================================
-   HEADER
-===================================================== */
+/* Header */
 
 .header{
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
     padding:20px 30px;
 
-    background:
-        rgba(255,255,255,0.05);
+    background:rgba(255,255,255,.05);
 
     backdrop-filter:blur(15px);
 
-    -webkit-backdrop-filter:blur(15px);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
 
 }
-
-
-/* LOGO */
 
 .logo{
 
     font-size:30px;
-
     font-weight:800;
-
     color:#38bdf8;
 
 }
 
-
-/* RIGHT SIDE */
-
 .right{
 
     display:flex;
-
     align-items:center;
-
     gap:15px;
 
 }
 
-
-/* ADMIN NAME */
-
 .admin-name{
 
     color:#22c55e;
-
     font-weight:700;
-
     font-size:16px;
 
 }
 
-
-/* LOGOUT */
-
 .logout{
 
     border:none;
-
     cursor:pointer;
 
     padding:12px 22px;
@@ -133,17 +81,11 @@ body{
 
     font-weight:bold;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ef4444,
-            #dc2626
-        );
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
     transition:.3s;
 
 }
-
 
 .logout:hover{
 
@@ -151,25 +93,13 @@ body{
 
 }
 
-
-/* =====================================================
-   MAIN
-===================================================== */
+/* Main */
 
 .container{
 
     padding:30px;
 
-    max-width:1400px;
-
-    margin:auto;
-
 }
-
-
-/* =====================================================
-   WELCOME
-===================================================== */
 
 .welcome{
 
@@ -177,15 +107,12 @@ body{
 
 }
 
-
 .welcome h1{
 
     font-size:34px;
-
     margin-bottom:10px;
 
 }
-
 
 .welcome p{
 
@@ -193,35 +120,23 @@ body{
 
 }
 
-
-/* =====================================================
-   CARDS
-===================================================== */
+/* Cards */
 
 .cards{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(250px,1fr)
-        );
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
     gap:20px;
 
 }
 
-
-/* CARD */
-
 .card{
 
-    background:
-        rgba(255,255,255,0.06);
+    background:rgba(255,255,255,.06);
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,.08);
 
     border-radius:18px;
 
@@ -229,25 +144,19 @@ body{
 
     transition:.3s;
 
-    box-shadow:
-        0 0 20px
-        rgba(37,99,235,0.25);
+    box-shadow:0 0 20px rgba(37,99,235,.25);
 
     text-align:center;
 
 }
 
-
 .card:hover{
 
     transform:translateY(-8px);
 
-    box-shadow:
-        0 0 30px
-        #2563eb;
+    box-shadow:0 0 30px #2563eb;
 
 }
-
 
 .card h2{
 
@@ -255,21 +164,13 @@ body{
 
 }
 
-
 .card p{
 
     color:#94a3b8;
 
     margin-bottom:18px;
 
-    min-height:45px;
-
 }
-
-
-/* =====================================================
-   BUTTON
-===================================================== */
 
 .btn{
 
@@ -287,28 +188,17 @@ body{
 
     font-weight:bold;
 
-    background:
-        linear-gradient(
-            135deg,
-            #6366f1,
-            #2563eb
-        );
+    background:linear-gradient(135deg,#6366f1,#2563eb);
 
     transition:.3s;
 
 }
-
 
 .btn:hover{
 
     transform:scale(1.03);
 
 }
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
 
 .footer{
 
@@ -320,574 +210,310 @@ body{
 
 }
 
-
-/* =====================================================
-   LOADING SCREEN
-===================================================== */
-
-#loadingScreen{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-
-    background:#050913;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:99999;
-
-}
-
-
-.loadingBox{
-
-    text-align:center;
-
-}
-
-
-.loadingBox h2{
-
-    color:#38bdf8;
-
-    margin-bottom:10px;
-
-}
-
-
-.loadingBox p{
-
-    color:#94a3b8;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:700px){
-
-    .header{
-
-        padding:18px;
-
-    }
-
-    .logo{
-
-        font-size:22px;
-
-    }
-
-    .admin-name{
-
-        display:none;
-
-    }
-
-    .container{
-
-        padding:20px;
-
-    }
-
-    .welcome h1{
-
-        font-size:27px;
-
-    }
-
-}
-
 </style>
 
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     LOADING SCREEN
-===================================================== -->
-
-<div id="loadingScreen">
-
-    <div class="loadingBox">
-
-        <h2>Meta_Earn ADMIN</h2>
-
-        <p>
-            Checking administrator access...
-        </p>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<div class="header">
-
-
-    <div class="logo">
-
-        Meta_Earn ADMIN
-
-    </div>
-
-
-    <div class="right">
-
-
-        <div
-            class="admin-name"
-            id="adminName"
-        >
-
-            Administrator
-
-        </div>
-
-
-        <button
-            class="logout"
-            onclick="logout()"
-        >
-
-            Logout
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     MAIN CONTAINER
-===================================================== -->
-
-<div class="container">
-
-
-    <div class="welcome">
-
-        <h1>
-
-            Welcome Back Admin
-
-        </h1>
-
-
-        <p>
-
-            Manage your Meta Earn platform safely
-            and efficiently.
-
-        </p>
-
-    </div>
-
-
-
-    <div class="cards">
-
-
-        <!-- =================================================
-             DEPOSITS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>💰 Deposits</h2>
-
-            <p>
-
-                Approve or reject user deposit requests.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-deposits.html')"
-            >
-
-                Manage Deposits
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             WITHDRAWALS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>🏦 Withdrawals</h2>
-
-            <p>
-
-                Review and approve withdrawal requests.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-withdrawals.html')"
-            >
-
-                Manage Withdrawals
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             USERS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>👥 Users</h2>
-
-            <p>
-
-                View, manage and monitor registered users.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-users.html')"
-            >
-
-                Manage Users
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             TASKS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>📋 Tasks</h2>
-
-            <p>
-
-                Create, edit and manage work items.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-tasks.html')"
-            >
-
-                Manage Tasks
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             LEVELS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>⭐ Levels</h2>
-
-            <p>
-
-                Approve or reject level upgrade requests.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-levels.html')"
-            >
-
-                Manage Levels
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             REFERRALS
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>🎁 Referral</h2>
-
-            <p>
-
-                Manage referral commissions and bonuses.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-referral.html')"
-            >
-
-                Manage Referral
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             PROFILE
-        ================================================== -->
-
-        <div class="card">
-
-            <h2>⚙ Profile</h2>
-
-            <p>
-
-                Update your administrator profile and settings.
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="openPage('admin-profile.html')"
-            >
-
-                Open Profile
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<div class="footer">
-
-    © 2026 Meta_Earn Admin Panel
-
-</div>
-
-
 
 <script>
 
-/* =====================================================
-   ADMIN TOKEN
-===================================================== */
+/* ===============================
+   ADMIN LOGIN PROTECTION
+================================ */
 
-const adminToken =
-    localStorage.getItem("adminToken");
+const token = localStorage.getItem("adminToken");
 
+if(!token){
 
-/* =====================================================
-   CHECK ADMIN LOGIN
-===================================================== */
-
-if(!adminToken){
-
-    window.location.replace(
-        "admin-login.html"
-    );
+    window.location.href="admin-login.html";
 
 }
 
+/* ===============================
+   LOAD ADMIN NAME
+================================ */
 
-/* =====================================================
-   LOAD ADMIN USER
-===================================================== */
+window.onload=function(){
 
-function loadAdminUser(){
+    const admin=JSON.parse(localStorage.getItem("adminUser"));
 
-    const savedUser =
-        localStorage.getItem("adminUser");
+    if(admin){
 
+        document.getElementById("adminName").innerHTML=
 
-    if(!savedUser){
-
-        document.getElementById(
-            "adminName"
-        ).textContent =
-            "Administrator";
-
-        return;
-
-    }
-
-
-    try{
-
-        const admin =
-            JSON.parse(savedUser);
-
-
-        const displayName =
-
-            admin.username ||
-
-            admin.fullname ||
-
-            admin.name ||
-
-            admin.email ||
-
-            "Administrator";
-
-
-        document.getElementById(
-            "adminName"
-        ).textContent =
-            displayName;
-
-
-    }
-
-    catch(error){
-
-        console.error(
-            "Admin user error:",
-            error
-        );
-
-        document.getElementById(
-            "adminName"
-        ).textContent =
-            "Administrator";
+        admin.username ||
+        admin.name ||
+        "Administrator";
 
     }
 
 }
 
-
-/* =====================================================
-   OPEN PAGE
-===================================================== */
-
-function openPage(page){
-
-    window.location.href = page;
-
-}
-
-
-/* =====================================================
+/* ===============================
    LOGOUT
-===================================================== */
+================================ */
 
 function logout(){
 
-    const confirmLogout =
-        confirm(
-            "Logout from admin panel?"
-        );
+    if(confirm("Logout from admin panel?")){
 
+        localStorage.removeItem("adminToken");
 
-    if(!confirmLogout){
+        localStorage.removeItem("adminUser");
 
-        return;
+        window.location.href="admin-login.html";
 
     }
-
-
-    localStorage.removeItem(
-        "adminToken"
-    );
-
-    localStorage.removeItem(
-        "adminUser"
-    );
-
-
-    window.location.replace(
-        "admin-login.html"
-    );
 
 }
 
-
-/* =====================================================
-   PAGE READY
-===================================================== */
-
-window.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        loadAdminUser();
-
-
-        setTimeout(
-            function(){
-
-                const loading =
-                    document.getElementById(
-                        "loadingScreen"
-                    );
-
-
-                if(loading){
-
-                    loading.style.display =
-                        "none";
-
-                }
-
-            },
-            300
-        );
-
-    }
-);
-
 </script>
 
+<div class="header">
+
+<div class="logo">
+
+Meta_Earn ADMIN
+
+</div>
+
+<div class="right">
+
+<div
+class="admin-name"
+id="adminName">
+
+Administrator
+
+</div>
+
+<button
+class="logout"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="welcome">
+
+<h1>
+
+Welcome Back Admin
+
+</h1>
+
+<p>
+
+Manage your Meta Earn platform safely and efficiently.
+
+</p>
+
+</div>
+
+<div class="cards">
+
+<!-- ===========================
+     DEPOSITS
+=========================== -->
+
+<div class="card">
+
+    <h2>💰 Deposits</h2>
+
+    <p>
+        Approve or reject user deposit requests.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-deposits.html'">
+
+        Manage Deposits
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     WITHDRAWALS
+=========================== -->
+
+<div class="card">
+
+    <h2>🏦 Withdrawals</h2>
+
+    <p>
+        Review and approve withdrawal requests.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-withdrawals.html'">
+
+        Manage Withdrawals
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     USERS
+=========================== -->
+
+<div class="card">
+
+    <h2>👥 Users</h2>
+
+    <p>
+        View, manage and monitor registered users.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-users.html'">
+
+        Manage Users
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     TASKS
+=========================== -->
+
+<div class="card">
+
+    <h2>📋 Tasks</h2>
+
+    <p>
+        Create, edit and manage work items.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-tasks.html'">
+
+        Manage Tasks
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     LEVELS
+=========================== -->
+
+<div class="card">
+
+    <h2>⭐ Levels</h2>
+
+    <p>
+        Approve or reject level upgrade requests.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-levels.html'">
+
+        Manage Levels
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     REFERRALS
+=========================== -->
+
+<div class="card">
+
+    <h2>🎁 Referral</h2>
+
+    <p>
+        Manage referral commissions and bonuses.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-referral.html'">
+
+        Manage Referral
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     PROFILE
+=========================== -->
+
+<div class="card">
+
+    <h2>⚙ Profile</h2>
+
+    <p>
+        Update your administrator profile and settings.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-profile.html'">
+
+        Open Profile
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     SHOP MANAGEMENT
+     ADDED ONLY
+=========================== -->
+
+<div class="card">
+
+    <h2>🛒 Shop Management</h2>
+
+    <p>
+        Manage products, categories, inventory and shop orders.
+    </p>
+
+    <button
+        class="btn"
+        onclick="location.href='admin-shop.html'">
+
+        Manage Shop
+
+    </button>
+
+</div>
+
+
+</div>
+
+<div class="footer">
+
+Meta_Earn Admin Panel © 2026
+
+</div>
+
+</div>
 
 </body>
-
 </html>
