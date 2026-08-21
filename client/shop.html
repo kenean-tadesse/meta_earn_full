@@ -1490,7 +1490,47 @@
 
 <body>
 
+<!-- BACK TO TERMINAL BUTTON -->
+<button
+    id="backTerminalButton"
+    onclick="window.location.href='terminal.html'"
+>
+    ← Back to Terminal
+</button>
 
+<style>
+#backTerminalButton {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+
+    z-index: 999999 !important;
+
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    padding: 12px 20px !important;
+
+    background: #0f172a !important;
+    color: #ffffff !important;
+
+    border: 2px solid #ffffff !important;
+    border-radius: 10px !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.35) !important;
+}
+
+#backTerminalButton:hover {
+    background: #2563eb !important;
+    transform: translateY(-2px);
+}
+</style>
 <!-- =========================================================
      ANNOUNCEMENT
 ========================================================= -->
