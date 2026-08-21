@@ -238,17 +238,9 @@ font-weight:700;
 
 font-size:15px;
 
-backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
 
--webkit-backdrop-filter:blur(15px);
-
-cursor:pointer;
-
-}
-
-.language-select option{
-
-background:#081120;
+    backdrop-filter:blur(15px);
 
 color:white;
 
@@ -417,9 +409,53 @@ color:white;
     box-shadow:0 0 10px rgba(37,99,235,.4);
 
 }
+#backTerminalButton {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+
+    z-index: 999999 !important;
+
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    padding: 12px 20px !important;
+
+    background: #0f172a !important;
+    color: #ffffff !important;
+
+    border: 2px solid #ffffff !important;
+    border-radius: 10px !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.35) !important;
+}
+
+#backTerminalButton:hover {
+    background: #2563eb !important;
+    transform: translateY(-2px);
+}
 </style>
 </head>
 <body>
+
+    <body>
+
+<!-- BACK TO TERMINAL BUTTON -->
+<button
+    id="backTerminalButton"
+    onclick="window.location.href='terminal.html'"
+>
+    ← Back to Terminal
+</button>
+
+<!-- YOUR EXISTING DASHBOARD CODE -->
+...
 <div class="language-box">
 
 <select
@@ -475,14 +511,15 @@ VIP 0
 
 <div class="referral-code-box">
 
-    <span class="referral-label">
+    <label class="referral-label" for="dashboardReferralCode">
         Referral Code
-    </span>
+    </label>
 
    <input
     id="dashboardReferralCode"
     type="text"
-    readonly>
+    readonly
+    aria-label="Referral Code">
 
     <button onclick="copyReferralCode()">
         📋
@@ -640,8 +677,8 @@ height:180px;
 overflow:hidden;
 border-radius:22px;
 background:rgba(255,255,255,.08);
-backdrop-filter:blur(18px);
 -webkit-backdrop-filter:blur(18px);
+backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.08);
 position:relative;
 }
@@ -733,12 +770,10 @@ if (!token) {
     window.location.href = "index.html";
 }
 
-const API = "https://meta-earn-14.onrender.com";
-
 async function loadProfile() {
     try {
         const response = await fetch(
-            `${API}/api/users/profile`,
+            "https://meta-earn-14.onrender.com/api/users/profile",
             {
                 method: "GET",
                 headers: {
@@ -810,9 +845,6 @@ const usernames=[
 "YonasM",
 "SelamT",
 "BirukA",
- "tesfaw ayalew",
-"alganesh belachew",  
-"Meron2026",
 "CAALTUU B",
 "Henok77",
 "KalebG",
@@ -823,21 +855,16 @@ const usernames=[
 "gueshem",
 "NardosK",
 "NahomM",
-"Workinh bayu",
 "animawT",
 "ADANEg",
-"ጠብቀው አያና",
-"BirukA",
 "RahelT",
 "DawitZ",
 
 "BethelM",
 "YaredK",
 "ezragirma",
-"ሰውመሆን ጸጋ",
 "tigistF",
 "HelinaS",
-"አየነው አለሙ",
 "tsegayeT",
 
 "KidusA",
