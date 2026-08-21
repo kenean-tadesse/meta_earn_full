@@ -1149,6 +1149,7 @@ a {
 /* =========================================================
    API
 ========================================================= */
+
 const API =
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1"
@@ -1596,11 +1597,7 @@ function createCartItem(
 
                 <button
                     class="remove-btn"
-                    onclick="
-                        removeItem(
-                            ${item.cart_id}
-                        )
-                    "
+                    onclick="removeItem(${item.cart_item_id})"
                 >
                     Remove
                 </button>
@@ -1668,34 +1665,40 @@ async function changeQuantity(
    REMOVE ITEM
 ========================================================= */
 
-async function removeItem(
-    cartId
-) {
+async function removeItem(cartItemId) {
 
     try {
 
+        if (!cartItemId) {
+            showToast("Invalid cart item ID.", "⚠️");
+            return;
+        }
+
+        console.log("Removing cart item ID:", cartItemId);
+
         await apiRequest(
-            `${API}/cart/${cartId}`,
+            `${API}/cart/${cartItemId}`,
             {
                 method: "DELETE"
             }
         );
-
 
         showToast(
             "Product removed from cart.",
             "✓"
         );
 
-
         await loadCart();
 
-    }
+    } catch (error) {
 
-    catch (error) {
+        console.error(
+            "REMOVE CART ITEM ERROR:",
+            error
+        );
 
         showToast(
-            error.message,
+            error.message || "Failed to remove product.",
             "⚠️"
         );
 
