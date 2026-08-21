@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Professional Workspace</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    font-family:"Inter",sans-serif;
+
+    color:#ffffff;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(79,70,229,.20),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(6,182,212,.16),
+            transparent 30%
+        ),
+
+        #060a13;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
+
+
+/* GRID */
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.11;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #000 18%,
+            #000 82%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.glow{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    animation:
+        floatingGlow
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+.glow-one{
+
+    width:280px;
+
+    height:280px;
+
+    top:-100px;
+
+    left:-90px;
+
+    background:#4f46e5;
+
+    opacity:.20;
+}
+
+
+.glow-two{
+
+    width:320px;
+
+    height:320px;
+
+    right:-130px;
+
+    bottom:-120px;
+
+    background:#06b6d4;
+
+    opacity:.16;
+
+    animation-delay:-3s;
+}
+
+
+.glow-three{
+
+    width:180px;
+
+    height:180px;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:#6366f1;
+
+    opacity:.06;
+
+    animation-delay:-5s;
+}
+
+
+@keyframes floatingGlow{
+
+    0%,
+    100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(25px,-20px);
+    }
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container{
+
+    width:min(1000px,92%);
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   TOP BADGE
+========================================================= */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:8px 15px;
+
+    border:1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.045);
+
+    border-radius:100px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:1.7px;
+
+    text-transform:uppercase;
+
+    color:#a5b4fc;
+
+    -webkit-backdrop-filter:blur(20px);
+
+    backdrop-filter:blur(20px);
+
+    margin-bottom:22px;
+
+    box-shadow:
+        inset 0 1px
+        rgba(255,255,255,.05);
+}
+
+
+.badge-dot{
+
+    width:7px;
+
+    height:7px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:
+        0 0 8px #22c55e,
+        0 0 18px rgba(34,197,94,.5);
+
+    animation:
+        statusPulse
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes statusPulse{
+    0%,
+    100%{
+        opacity:.5;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+h1{
+
+    font-size:
+        clamp(
+            34px,
+            5.5vw,
+            60px
+        );
+
+    line-height:1.03;
+
+    font-weight:800;
+
+    letter-spacing:-2.8px;
+
+    margin-bottom:17px;
+}
+
+
+h1 span{
+
+    background:
+        linear-gradient(
+            90deg,
+            #818cf8,
+            #22d3ee
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+
+.subtitle{
+
+    max-width:620px;
+
+    margin:0 auto;
+
+    color:#7f8ba1;
+
+    font-size:13px;
+
+    line-height:1.75;
+
+    margin-bottom:45px;
+}
+
+
+/* =========================================================
+   TWO OPTIONS
+========================================================= */
+
+.options{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:22px;
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+
+/* =========================================================
+   OPTION CARD
+========================================================= */
+
+.option{
+
+    position:relative;
+
+    min-height:315px;
+
+    padding:35px;
+
+    text-align:left;
+
+    border-radius:26px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    -webkit-backdrop-filter:blur(22px);
+
+    backdrop-filter:blur(22px);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:
+
+        transform .45s cubic-bezier(.2,.8,.2,1),
+
+        border-color .45s ease,
+
+        box-shadow .45s ease,
+
+        background .45s ease;
+}
+
+
+/* CARD TOP LINE */
+
+.option::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:10%;
+
+    width:80%;
+
+    height:1px;
+
+    opacity:.4;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+}
+
+
+/* CARD GLOW */
+
+.option::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    filter:blur(75px);
+
+    opacity:0;
+
+    transition:
+        opacity .5s ease;
+}
+
+
+.agent::before{
+
+    background:#6366f1;
+
+    top:-100px;
+
+    right:-70px;
+}
+
+
+.market::before{
+
+    background:#06b6d4;
+
+    bottom:-100px;
+
+    left:-70px;
+}
+
+
+.option:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    border-color:
+        rgba(129,140,248,.45);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,.40),
+
+        inset 0 1px
+        rgba(255,255,255,.08);
+}
+
+
+.option:hover::before{
+
+    opacity:.35;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:21px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:31px;
+
+    margin-bottom:29px;
+
+    position:relative;
+
+    z-index:3;
+
+    transition:
+        transform .4s ease;
+}
+
+
+.option:hover .icon{
+
+    transform:
+        translateY(-3px)
+        scale(1.05);
+}
+
+
+/* AGENT ICON */
+
+.agent .icon{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(99,102,241,.28),
+            rgba(79,70,229,.08)
+        );
+
+    border:
+        1px solid
+        rgba(129,140,248,.25);
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(79,70,229,.18);
+}
+
+
+/* MARKET ICON */
+
+.market .icon{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(6,182,212,.27),
+            rgba(6,182,212,.07)
+        );
+
+    border:
+        1px solid
+        rgba(34,211,238,.25);
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(6,182,212,.18);
+}
+
+
+.option h2{
+
+    position:relative;
+
+    z-index:3;
+
+    font-size:23px;
+
+    font-weight:800;
+
+    letter-spacing:-.6px;
+
+    margin-bottom:11px;
+}
+
+
+.option p{
+
+    position:relative;
+
+    z-index:3;
+
+    max-width:330px;
+
+    color:#8490a5;
+
+    font-size:11.5px;
+
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   WORKSPACE NUMBER
+========================================================= */
+
+.label{
+
+    position:absolute;
+
+    top:25px;
+
+    right:27px;
+
+    z-index:3;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+    color:#4f5b70;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow{
+
+    position:absolute;
+
+    right:27px;
+
+    bottom:27px;
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:19px;
+
+    z-index:3;
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
+}
+
+
+.agent .arrow{
+
+    color:#a5b4fc;
+
+    background:
+        rgba(99,102,241,.13);
+
+    border:
+        1px solid
+        rgba(129,140,248,.10);
+}
+
+
+.market .arrow{
+
+    color:#67e8f9;
+
+    background:
+        rgba(6,182,212,.13);
+
+    border:
+        1px solid
+        rgba(34,211,238,.10);
+}
+
+
+.option:hover .arrow{
+
+    transform:
+        translateX(7px);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    margin-top:30px;
+
+    color:#414d61;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(79,70,229,.13),
+            transparent 35%
+        ),
+
+        rgba(4,7,15,.975);
+
+    backdrop-filter:blur(25px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+
+        opacity .35s ease,
+
+        visibility .35s ease;
+}
+
+
+.loading-screen.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+
+/* =========================================================
+   LOADING CONTENT
+========================================================= */
+
+.loader-content{
+
+    width:370px;
+
+    max-width:90%;
+
+    text-align:center;
+
+    animation:
+        loaderAppear
+        .5s
+        ease
+        forwards;
+}
+
+
+@keyframes loaderAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(12px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   RING SYSTEM
+========================================================= */
+
+.ring-system{
+
+    position:relative;
+
+    width:160px;
+
+    height:160px;
+
+    margin:
+        0 auto
+        34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* =========================================================
+   RINGS
+========================================================= */
+
+.ring{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:2px solid transparent;
+
+    box-sizing:border-box;
+}
+
+
+/* OUTER */
+
+.ring-one{
+
+    width:160px;
+
+    height:160px;
+
+    border-top-color:#6366f1;
+
+    border-right-color:
+        rgba(99,102,241,.25);
+
+    animation:
+        rotateClockwise
+        1.4s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(99,102,241,.8)
+        );
+}
+
+
+/* SECOND */
+
+.ring-two{
+
+    width:124px;
+
+    height:124px;
+
+    border-top-color:#22d3ee;
+
+    border-left-color:
+        rgba(34,211,238,.25);
+    animation:
+        rotateReverse
+        1.05s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(34,211,238,.75)
+        );
+}
+
+
+/* THIRD */
+
+.ring-three{
+
+    width:86px;
+
+    height:86px;
+
+    border-bottom-color:#818cf8;
+
+    border-right-color:
+        rgba(129,140,248,.20);
+
+    animation:
+        rotateClockwise
+        .75s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(129,140,248,.7)
+        );
+}
+
+
+/* =========================================================
+   CORE
+========================================================= */
+
+.ring-core{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(99,102,241,.38),
+            rgba(6,182,212,.07)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(99,102,241,.4),
+
+        inset 0 0 20px
+        rgba(34,211,238,.15);
+
+    animation:
+        corePulse
+        1.3s
+        ease-in-out
+        infinite;
+}
+
+
+.core-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#67e8f9;
+
+    box-shadow:
+
+        0 0 8px #22d3ee,
+
+        0 0 20px #6366f1;
+
+    animation:
+        dotPulse
+        .8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   LOADING TEXT
+========================================================= */
+
+.loader-content h2{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    letter-spacing:-.5px;
+
+    margin-bottom:9px;
+}
+
+
+.loader-content p{
+
+    color:#778398;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.loading-bar{
+
+    width:245px;
+
+    height:3px;
+
+    margin:0 auto;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+.loading-bar span{
+
+    display:block;
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #06b6d4,
+            #818cf8
+        );
+
+    box-shadow:
+
+        0 0 12px
+        rgba(34,211,238,.8);
+
+    animation:
+        loadingProgress
+        1.8s
+        ease-in-out
+        forwards;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.loading-status{
+
+    margin-top:14px;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    color:#4d596d;
+}
+
+
+.dots{
+
+    display:inline-block;
+
+    width:18px;
+
+    text-align:left;
+
+    overflow:hidden;
+
+    vertical-align:bottom;
+
+    animation:
+        dots
+        1s
+        steps(4)
+        infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes rotateClockwise{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+@keyframes rotateReverse{
+
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+
+@keyframes corePulse{
+
+    0%,
+    100%{
+        transform:scale(.88);
+        opacity:.72;
+    }
+
+    50%{
+        transform:scale(1.08);
+        opacity:1;
+    }
+}
+
+
+@keyframes dotPulse{
+
+    0%,
+    100%{
+        transform:scale(.65);
+        opacity:.55;
+    }
+
+    50%{
+        transform:scale(1.35);
+        opacity:1;
+    }
+}
+
+
+@keyframes loadingProgress{
+
+    0%{
+        width:0%;
+    }
+
+    25%{
+        width:25%;
+    }
+
+    60%{
+        width:65%;
+    }
+
+    85%{
+        width:88%;
+    }
+
+    100%{
+        width:100%;
+    }
+}
+
+
+@keyframes dots{
+
+    0%{
+        width:3px;
+    }
+
+    25%{
+        width:7px;
+    }
+
+    50%{
+        width:11px;
+    }
+
+    75%{
+        width:15px;
+    }
+    100%{
+        width:3px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    body{
+
+        overflow:auto;
+
+        padding:
+            35px 0;
+    }
+
+
+    .container{
+
+        width:90%;
+    }
+
+
+    h1{
+
+        letter-spacing:-1.5px;
+
+        font-size:38px;
+    }
+
+
+    .subtitle{
+
+        font-size:12px;
+
+        margin-bottom:30px;
+    }
+
+
+    .options{
+
+        grid-template-columns:1fr;
+
+        gap:16px;
+    }
+
+
+    .option{
+
+        min-height:270px;
+
+        padding:28px;
+    }
+
+
+    .icon{
+
+        width:62px;
+
+        height:62px;
+
+        font-size:27px;
+
+        margin-bottom:23px;
+    }
+
+
+    .option h2{
+
+        font-size:20px;
+    }
+
+
+    .option p{
+
+        font-size:11px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:400px){
+
+    h1{
+
+        font-size:32px;
+    }
+
+
+    .badge{
+
+        font-size:8px;
+    }
+
+
+    .option{
+
+        min-height:255px;
+
+        padding:24px;
+    }
+
+
+    .arrow{
+
+        right:20px;
+
+        bottom:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     BACKGROUND
+======================================================= -->
+
+<div class="background">
+
+    <div class="grid"></div>
+
+    <div class="glow glow-one"></div>
+
+    <div class="glow glow-two"></div>
+
+    <div class="glow glow-three"></div>
+
+</div>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<div class="container">
+
+
+    <div class="badge">
+
+        <span class="badge-dot"></span>
+
+        Professional Workspace
+
+    </div>
+
+
+
+    <h1>
+
+        Choose Your
+        <span>Workspace</span>
+
+    </h1>
+
+
+
+    <p class="subtitle">
+
+        Select the professional environment you want to
+        enter. Powerful tools designed for professional
+        agents and intelligent market analysis.
+
+    </p>
+
+
+
+    <!-- ===================================================
+         TWO OPTIONS
+    =================================================== -->
+
+    <div class="options">
+
+
+        <!-- ===============================================
+             AGENT
+        ================================================ -->
+
+      <div
+    class="option agent"
+    onclick="openDashboard()"
+>
+
+            <span class="label">
+                WORKSPACE 01
+            </span>
+
+
+            <div class="icon">
+                👨‍💼
+            </div>
+
+
+         <h2>
+    Dashboard
+</h2>
+
+         <p>
+    Access your Meta Earn account, balance,
+    referrals, tasks, earnings, profile and
+    all your dashboard features.
+</p>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+
+        <!-- ===============================================
+             MARKET
+        ================================================ -->
+
+        <div
+    class="option market"
+    onclick="openShop()"
+>
+
+            <span class="label">
+                WORKSPACE 02
+            </span>
+
+
+            <div class="icon">
+                📊
+            </div>
+
+
+           <h2>
+    Meta Earn Shop
+</h2>
+
+
+          <p>
+    Browse available products, explore categories,
+    add products to your cart and enjoy the
+    Meta Earn shopping experience.
+</p>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer">
+
+        SECURE PROFESSIONAL PLATFORM
+        &nbsp;•&nbsp;
+        2026
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     LOADING SCREEN
+======================================================= -->
+ <div
+    class="loading-screen"
+    id="loadingScreen"
+>
+
+
+    <div class="loader-content">
+
+
+        <!-- ===============================================
+             ROTATING RING
+        ================================================ -->
+
+        <div class="ring-system">
+
+
+            <div class="ring ring-one"></div>
+
+
+            <div class="ring ring-two"></div>
+
+
+            <div class="ring ring-three"></div>
+
+
+            <div class="ring-core">
+
+                <div class="core-dot"></div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ===============================================
+             LOADING TITLE
+        ================================================ -->
+
+        <h2 id="loadingTitle">
+            Opening Workspace
+        </h2>
+
+
+        <p id="loadingSubtitle">
+            Preparing your professional environment...
+        </p>
+
+
+
+        <!-- ===============================================
+             PROGRESS
+        ================================================ -->
+
+        <div class="loading-bar">
+
+            <span></span>
+
+        </div>
+
+
+
+        <!-- ===============================================
+             STATUS
+        ================================================ -->
+
+        <div class="loading-status">
+
+            SECURELY CONNECTING
+            <span class="dots">...</span>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let isLoading = false;
+
+
+/* =========================================================
+   AGENT
+========================================================= */
+
+function openDashboard(){
+
+    if(isLoading){
+        return;
+    }
+
+    showLoading(
+        "Opening Dashboard",
+        "Preparing your Meta Earn dashboard..."
+    );
+
+    setTimeout(function(){
+
+        window.location.href =
+            "dashboard.html";
+
+    }, 1200);
+
+}
+
+
+function openShop(){
+
+    if(isLoading){
+        return;
+    }
+
+    showLoading(
+        "Opening Meta Earn Shop",
+        "Preparing your shopping experience..."
+    );
+
+    setTimeout(function(){
+
+        window.location.href =
+            "shop.html";
+
+    }, 1200);
+
+}
+
+
+/* =========================================================
+   SHOW LOADING
+========================================================= */
+
+function showLoading(title,subtitle){
+
+    isLoading = true;
+
+
+    const loadingScreen =
+        document.getElementById(
+            "loadingScreen"
+        );
+
+
+    const loadingTitle =
+        document.getElementById(
+            "loadingTitle"
+        );
+
+
+    const loadingSubtitle =
+        document.getElementById(
+            "loadingSubtitle"
+        );
+
+
+    loadingTitle.textContent =
+        title;
+
+
+    loadingSubtitle.textContent =
+        subtitle;
+
+
+    loadingScreen.classList.add("show");
+
+
+    /*
+       Restart progress animation
+       every time the loader appears.
+    */
+
+    const progress =
+        document.querySelector(
+            ".loading-bar span"
+        );
+
+
+    progress.style.animation = "none";
+
+
+    /*
+       Force browser reflow
+    */
+
+    void progress.offsetWidth;
+
+
+    progress.style.animation =
+        "loadingProgress 1.8s ease-in-out forwards";
+
+}
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        /*
+           Prevent accidentally closing
+           the loading transition.
+        */
+
+        if(
+            isLoading &&
+            event.key === "Escape"
+        ){
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
