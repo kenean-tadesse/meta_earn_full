@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Meta Earn | Secure Checkout
+</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+
+    --primary: #2563eb;
+    --secondary: #7c3aed;
+
+    --dark: #0f172a;
+
+    --text: #111827;
+
+    --muted: #64748b;
+
+    --border: #e2e8f0;
+
+    --background: #f8fafc;
+
+    --white: #ffffff;
+
+    --success: #16a34a;
+
+    --danger: #dc2626;
+
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc,
+            #eef2f7
+        );
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--dark);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    height: 76px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+.nav-container {
+
+    width:
+        min(1250px, 94%);
+
+    height: 100%;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+.brand-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+}
+
+.brand-name {
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+}
+
+.brand-subtitle {
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+
+    letter-spacing: .8px;
+
+    font-weight: 700;
+
+}
+
+.back-btn {
+
+    border:
+        1px solid var(--border);
+
+    background: white;
+
+    border-radius: 11px;
+
+    padding:
+        11px 16px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+
+    width:
+        min(1200px, 94%);
+
+    margin:
+        42px auto 80px;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    margin-bottom: 28px;
+
+}
+
+.eyebrow {
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-weight: 900;
+
+    margin-bottom: 7px;
+
+}
+
+.header h1 {
+
+    font-size: 36px;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 7px;
+
+}
+
+.header p {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   CHECKOUT GRID
+========================================================= */
+
+.checkout-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        370px;
+
+    gap: 25px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 21px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,23,42,.06);
+
+    overflow: hidden;
+
+}
+
+.card-header {
+
+    padding:
+        20px 22px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+.card-header h2 {
+
+    font-size: 17px;
+
+}
+
+.card-header p {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form {
+
+    padding: 22px;
+
+}
+
+.form-group {
+
+    margin-bottom: 17px;
+
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding:
+        13px 14px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    background: #fff;
+
+    transition: .2s;
+
+}
+
+.form-group textarea {
+
+    min-height: 100px;
+
+    resize: vertical;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.09);
+
+}
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+
+}
+
+
+/* =========================================================
+   WALLET
+========================================================= */
+
+.wallet {
+
+    margin-top: 5px;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f5f3ff
+        );
+
+    border:
+        1px solid #dbeafe;
+
+}
+
+.wallet-label {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+}
+
+.wallet-balance {
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+}
+
+.wallet-note {
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+.summary {
+
+    padding: 22px;
+
+    position: sticky;
+
+    top: 100px;
+
+}
+
+.summary-title {
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    margin-bottom: 19px;
+
+}
+
+
+/* =========================================================
+   ORDER ITEMS
+========================================================= */
+
+.order-items {
+
+    max-height: 350px;
+
+    overflow-y: auto;
+
+    margin-bottom: 17px;
+
+}
+
+.order-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+        11px 0;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+.order-image {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    background: #f1f5f9;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    flex-shrink: 0;
+
+}
+
+.order-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+.order-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+.order-name {
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+.order-qty {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 3px;
+
+}
+
+.order-price {
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   TOTALS
+========================================================= */
+
+.total-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 9px 0;
+
+    font-size: 13px;
+
+}
+
+.total-row span:first-child {
+
+    color: var(--muted);
+
+}
+
+.total-divider {
+
+    border-top:
+        1px solid var(--border);
+
+    margin: 7px 0;
+
+}
+
+.grand-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 13px;
+
+}
+
+.grand-total span:first-child {
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+}
+
+.grand-price {
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   PAY BUTTON
+========================================================= */
+
+.pay-btn {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.22);
+
+    transition: .2s;
+
+}
+
+.pay-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+.pay-btn:disabled {
+
+    background: #cbd5e1;
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.security {
+
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border-radius: 11px;
+
+    background: #f8fafc;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 25px;
+
+}
+
+.success-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+
+    color: var(--success);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 35px;
+
+    font-weight: 900;
+
+}
+
+.success h2 {
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+
+}
+
+.success p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+.order-number {
+
+    display: inline-block;
+
+    margin-top: 17px;
+
+    padding:
+        11px 17px;
+
+    border-radius: 10px;
+
+    background: #f1f5f9;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+}
+
+.success-btn {
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding:
+        13px 20px;
+
+    background: var(--dark);
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 5000;
+
+    min-width: 280px;
+
+    padding:
+        14px 16px;
+
+    border-radius: 12px;
+
+    background: var(--dark);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.2);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px) {
+
+    .checkout-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .summary {
+
+        position: static;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .header h1 {
+
+        font-size: 29px;
+
+    }
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .toast {
+
+        left: 12px;
+
+        right: 12px;
+
+        min-width: 0;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+
+    🔒 Secure Meta Earn Shop Checkout
+
+</div>
+
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="shop.html"
+            class="brand"
+        >
+
+            <div class="brand-icon">
+                M
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    Meta Earn
+                </div>
+
+                <div class="brand-subtitle">
+                    Secure Checkout
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <button
+            class="back-btn"
+            onclick="goCart()"
+        >
+            ← Back to Cart
+        </button>
+
+    </div>
+
+</nav>
+
+
+<main class="main">
+
+
+    <div class="header">
+
+        <div class="eyebrow">
+            Final Step
+        </div>
+
+        <h1>
+            Secure Checkout
+        </h1>
+
+        <p>
+            Confirm your delivery details and
+            complete your Meta Earn Shop order.
+        </p>
+
+    </div>
+
+
+    <div
+        id="checkoutContent"
+        class="checkout-grid"
+    >
+
+
+        <!-- =================================================
+             DELIVERY
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    Delivery Information
+                </h2>
+
+                <p>
+                    Tell us where your order should be delivered.
+                </p>
+
+            </div>
+
+
+            <form
+                id="checkoutForm"
+                class="form"
+            >
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="deliveryName"
+                            placeholder="Your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="deliveryPhone"
+                            placeholder="Your phone number"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="deliveryAddress"
+                        placeholder="Enter your complete delivery address"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Order Notes
+                        <span
+                            style="
+                                color:#94a3b8;
+                                font-weight:500;
+                            "
+                        >
+                            (Optional)
+                        </span>
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Any additional delivery instructions?"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="wallet">
+
+                    <div class="wallet-label">
+                        Available Meta Earn Balance
+                    </div>
+
+                    <div
+                        class="wallet-balance"
+                        id="walletBalance"
+                    >
+                        Loading...
+                    </div>
+
+                    <div class="wallet-note">
+                        Payment will be securely deducted
+                        from your Meta Earn balance after
+                        the order is confirmed.
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================== -->
+
+        <aside class="card summary">
+
+            <div class="summary-title">
+                Order Summary
+            </div>
+
+
+            <div
+                id="orderItems"
+                class="order-items"
+            >
+                Loading...
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="subtotal">
+                    0.00 ETB
+                </strong>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong>
+                    Included
+                </strong>
+
+            </div>
+
+
+            <div class="total-divider"></div>
+
+
+            <div class="grand-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span
+                    class="grand-price"
+                    id="total"
+                >
+                    0.00 ETB
+                </span>
+
+            </div>
+
+
+            <button
+                id="payButton"
+                class="pay-btn"
+                onclick="placeOrder()"
+                disabled
+            >
+                Complete Purchase
+            </button>
+
+
+            <div class="security">
+
+                🔐 Secure transaction<br>
+
+                Your balance, order and stock are
+                processed atomically by the server.
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUCCESS
+    ====================================================== -->
+
+    <section
+        id="success"
+        class="card success"
+    >
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Order Confirmed!
+        </h2>
+
+        <p>
+            Your purchase was completed successfully.
+            Your Meta Earn balance has been updated and
+            your order has been recorded.
+        </p>
+
+
+        <div
+            id="orderNumber"
+            class="order-number"
+        >
+            Order
+        </div>
+
+
+        <br>
+
+
+        <button
+            class="success-btn"
+            onclick="goOrders()"
+        >
+            View My Orders
+        </button>
+
+
+        <button
+            class="success-btn"
+            onclick="goShop()"
+            style="
+                margin-left:7px;
+                background:#2563eb;
+            "
+        >
+            Continue Shopping
+        </button>
+
+    </section>
+
+</main>
+
+
+<div
+    id="toast"
+    class="toast"
+    style="display:none"
+></div>
+
+
+<script>
+
+
+/* =========================================================
+   API
+========================================================= */
+
+const BACKEND_URL = "https://meta-earn-14.onrender.com";
+const API = `${BACKEND_URL}/api/shop`;
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart = [];
+
+let totalAmount = 0;
+
+let walletBalance = 0;
+
+
+/* =========================================================
+   TOKEN
+========================================================= */
+
+function getToken() {
+
+    return (
+        localStorage.getItem("token") ||
+        localStorage.getItem("userToken") ||
+        localStorage.getItem("authToken")
+    );
+
+}
+
+
+/* =========================================================
+   API REQUEST
+========================================================= */
+
+async function apiRequest(
+    url,
+    options = {}
+) {
+
+    const token =
+        getToken();
+
+
+    if (!token) {
+
+        throw new Error(
+            "Please login first."
+        );
+
+    }
+
+
+    const headers = {
+
+        "Content-Type":
+            "application/json"
+
+    };
+
+
+    headers.Authorization =
+        `Bearer ${token}`;
+
+
+    const response =
+        await fetch(
+            url,
+            {
+                ...options,
+                headers
+            }
+        );
+
+
+    const data =
+        await response
+            .json()
+            .catch(
+                () => ({
+                    success: false,
+                    message:
+                        "Invalid server response"
+                })
+            );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.message ||
+            "Request failed"
+        );
+
+    }
+
+
+    return data;
+
+}
+
+
+/* =========================================================
+   LOAD CART
+========================================================= */
+
+async function loadCart() {
+
+    try {
+
+        const data =
+            await apiRequest(
+                `${API}/cart`
+            );
+
+
+        cart =
+            data.cart || [];
+
+
+        totalAmount =
+            Number(
+                data.summary?.total || 0
+            );
+
+
+        renderItems();
+
+
+        document.getElementById(
+            "subtotal"
+        ).textContent =
+            `${formatPrice(
+                totalAmount
+            )} ETB`;
+
+
+        document.getElementById(
+            "total"
+        ).textContent =
+            `${formatPrice(
+                totalAmount
+            )} ETB`;
+
+
+        if (
+            cart.length === 0
+        ) {
+
+            showToast(
+                "Your cart is empty."
+            );
+
+            setTimeout(
+                goCart,
+                1200
+            );
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "payButton"
+        ).disabled = false;
+
+    }
+
+    catch (error) {
+
+        showToast(
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD USER BALANCE
+========================================================= */
+
+async function loadBalance() {
+
+    try {
+
+        /*
+         * Uses your existing user profile
+         * endpoint. No changes are made
+         * to the existing profile route.
+         */
+
+        const token =
+            getToken();
+
+
+        if (!token) {
+
+            throw new Error(
+                "Please login first."
+            );
+
+        }
+
+
+       const response =
+    await fetch(
+        `${BACKEND_URL}/api/users/profile`,
+        {
+            method: "GET",
+
+            headers: {
+                "Content-Type":
+                    "application/json",
+
+                "Authorization":
+                    `Bearer ${token}`
+            }
+        }
+    );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load wallet"
+            );
+
+        }
+
+
+        /*
+         * Support several common response
+         * structures used by existing Meta Earn
+         * profile implementations.
+         */
+
+        const user =
+            data.user ||
+            data.data ||
+            data.profile ||
+            data;
+
+
+        walletBalance =
+            Number(
+                user.balance || 0
+            );
+
+
+        document.getElementById(
+            "walletBalance"
+        ).textContent =
+            `${formatPrice(
+                walletBalance
+            )} ETB`;
+
+
+        checkBalance();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "BALANCE ERROR:",
+            error
+        );
+
+
+        document.getElementById(
+            "walletBalance"
+        ).textContent =
+            "Unable to load";
+
+
+        document.getElementById(
+            "payButton"
+        ).disabled = true;
+
+    }
+
+}
+
+
+/* =========================================================
+   CHECK BALANCE
+========================================================= */
+
+function checkBalance() {
+
+    const button =
+        document.getElementById(
+            "payButton"
+        );
+
+
+    if (
+        walletBalance <
+        totalAmount
+    ) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Insufficient Balance";
+
+        return;
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "Complete Purchase";
+
+}
+
+
+/* =========================================================
+   RENDER ITEMS
+========================================================= */
+
+function renderItems() {
+
+    const container =
+        document.getElementById(
+            "orderItems"
+        );
+
+
+    container.innerHTML =
+        cart.map(
+            item => {
+
+                const image =
+                    item.image
+                        ? `
+                            <img
+                                src="${escapeHtml(
+                                    item.image
+                                )}"
+                                alt=""
+                            >
+                          `
+                        : "🛍️";
+
+
+                return `
+
+                    <div
+                        class="order-item"
+                    >
+
+                        <div
+                            class="order-image"
+                        >
+                            ${image}
+                        </div>
+
+
+                        <div
+                            class="order-info"
+                        >
+
+                            <div
+                                class="order-name"
+                            >
+                                ${escapeHtml(
+                                    item.name
+                                )}
+                            </div>
+
+                            <div
+                                class="order-qty"
+                            >
+                                Quantity:
+                                ${item.quantity}
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="order-price"
+                        >
+                            ${formatPrice(
+                                item.total
+                            )}
+                            ETB
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+async function placeOrder() {
+
+    const button =
+        document.getElementById(
+            "payButton"
+        );
+
+
+    const deliveryName =
+        document.getElementById(
+            "deliveryName"
+        ).value.trim();
+
+
+    const deliveryPhone =
+        document.getElementById(
+            "deliveryPhone"
+        ).value.trim();
+
+
+    const deliveryAddress =
+        document.getElementById(
+            "deliveryAddress"
+        ).value.trim();
+
+
+    const notes =
+        document.getElementById(
+            "notes"
+        ).value.trim();
+
+
+    if (!deliveryName) {
+
+        showToast(
+            "Please enter your full name."
+        );
+
+        return;
+
+    }
+
+
+    if (!deliveryPhone) {
+
+        showToast(
+            "Please enter your phone number."
+        );
+
+        return;
+
+    }
+
+
+    if (!deliveryAddress) {
+
+        showToast(
+            "Please enter your delivery address."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        walletBalance <
+        totalAmount
+    ) {
+
+        showToast(
+            "Your Meta Earn balance is insufficient."
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            `Confirm purchase for ${formatPrice(
+                totalAmount
+            )} ETB?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "Processing Securely...";
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                `${API}/orders`,
+                {
+
+                    method: "POST",
+
+                    body:
+                        JSON.stringify({
+
+                            delivery_name:
+                                deliveryName,
+
+                            delivery_phone:
+                                deliveryPhone,
+
+                            delivery_address:
+                                deliveryAddress,
+
+                            notes:
+                                notes || null
+
+                        })
+
+                }
+            );
+
+
+        showSuccess(
+            data.order
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "CHECKOUT ERROR:",
+            error
+        );
+
+
+        showToast(
+            error.message
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Complete Purchase";
+
+    }
+
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+function showSuccess(
+    order
+) {
+
+    document.getElementById(
+        "checkoutContent"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "success"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "orderNumber"
+    ).textContent =
+        `Order #${
+            order.order_number
+        }`;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goCart() {
+
+    window.location.href =
+        "shop-cart.html";
+
+}
+
+
+function goShop() {
+
+    window.location.href =
+        "shop.html";
+
+}
+
+
+function goOrders() {
+
+    /*
+     * We'll create the order history
+     * page later.
+     */
+
+    window.location.href =
+        "shop-orders.html";
+
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+function formatPrice(
+    value
+) {
+
+    return (
+        Number(value) || 0
+    ).toLocaleString(
+        "en-US",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(
+    message
+) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.style.display =
+        "block";
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(
+            () => {
+
+                toast.style.display =
+                    "none";
+
+            },
+            3500
+        );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+if (!getToken()) {
+
+    showToast(
+        "Please login to continue."
+    );
+
+    setTimeout(
+        () => {
+            window.location.href =
+                "login.html";
+        },
+        1000
+    );
+
+}
+else {
+
+    loadCart();
+
+    loadBalance();
+
+}
+
+</script>
+
+</body>
+
+</html>
